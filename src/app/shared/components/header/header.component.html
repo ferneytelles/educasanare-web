@@ -1,0 +1,39 @@
+<div class="content">
+    <div class="header">
+        <div class="logo">
+            <img class="image" src="assets/images/logo.png" alt="">
+        </div>
+        <div class="menu">
+
+            <div class="options1">
+                <a class="link" href="">
+                    <span class="material-icons notranslate">
+                        help_outline
+                    </span>Ayuda
+                </a>
+                <a class="link" href="">
+                    <span class="material-icons notranslate">
+                        person_outline
+                    </span>Cuenta
+                </a>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="material-icons notranslate">
+                            language
+                        </span>
+                    </div>
+                    <select class="select" id="inputGroupSelect01">
+                      <option value="0" selected>Español</option>
+                      <option value="1">Inglés</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="options2">
+                <a class="option" *ngFor="let item of options; let i=index" [routerLink]="[item.url]" [ngClass]="{'active': active === i}">
+                    <span>{{item.text}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
