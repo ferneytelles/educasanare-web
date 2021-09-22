@@ -1,5 +1,5 @@
 <div class="container-ec">
-    <app-header class="header"></app-header>
+    <app-header class="header" [ngClass]="{'hidden': !showHeader}"></app-header>
 
     <div class="main-content">
         <router-outlet></router-outlet>

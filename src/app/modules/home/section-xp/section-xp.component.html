@@ -1,0 +1,23 @@
+<div class="content">
+    <div class="experiences">
+        <div class="card" *ngFor="let item of xp">
+            <img [src]="item.img" alt="">
+            <div class="card-body">
+                <h6 class="title">
+                    {{item.title |capitalize}}
+                </h6>
+                <span class="date">
+                    {{item.date.toLocaleDateString()}}
+                </span>
+                <p class="text">
+                    {{item.text}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="botton">
+        <button class="more">
+            Ver más...
+        </button>
+    </div>
+</div>

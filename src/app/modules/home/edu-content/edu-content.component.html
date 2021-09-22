@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="head">
+        <h4 class="title">Contenido educativo</h4>
+        <div class="borde">
+            <div class="line"></div>
+            <span class="material-icons notranslate">school</span>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="pills">
+        <div class="card" *ngFor="let item of pills">
+            <img [src]="item.img" alt="">
+            <div class="card-body">
+                <h5 class="title">
+                    {{item.title |capitalize}}
+                </h5>
+                <p class="text">
+                    {{item.text}}
+                </p>
+                <button class="btn">
+                    Ver más
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
