@@ -1,0 +1,47 @@
+.content {
+    display: flex;
+    .poll {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 65%;
+        padding-bottom: 64%;
+        background: #D8EBF6;
+        iframe {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 42px);
+        }
+    }
+    .help {
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 50px 10px;
+        .icon {
+            font-size: 22vh;
+            color: #a1a1a1;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20%;
+            text-align: center;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            a {
+                color: #0072BC;
+                text-decoration: underline;
+                margin-bottom: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}

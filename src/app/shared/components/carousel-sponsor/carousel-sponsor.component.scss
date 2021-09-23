@@ -1,0 +1,25 @@
+.content {
+    padding: 50px;
+}
+
+.carousel {
+    width: 100%;
+    .slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        padding: 0 20px;
+        height: 60px;
+        img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+    }
+     ::ng-deep .slick-prev:before,
+     ::ng-deep .slick-next:before {
+        color: #106738;
+    }
+}

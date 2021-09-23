@@ -1,0 +1,91 @@
+.content {
+    padding: 40px;
+    background-image: url(../../../../assets/images/bgxp.png);
+    background-size: cover;
+    .title {
+        text-align: center;
+        margin-bottom: 12px;
+        color: #444444;
+    }
+    .forums {
+        display: flex;
+        flex-direction: column;
+        h5 {
+            color: #555555;
+            margin-bottom: 20px;
+        }
+        .forum {
+            border-radius: 4px;
+            padding: 15px 15px 15px 30px;
+            margin-bottom: 25px;
+            background: #ffffff;
+            box-shadow: 0 0 7px 0px #00000049;
+            .head {
+                display: flex;
+                margin-bottom: 12px;
+                img {
+                    width: 4.4%;
+                    height: auto;
+                    border-radius: 100%;
+                }
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 0 10px;
+                    .date {
+                        font-size: 13px;
+                        line-height: 16px;
+                        color: #555555;
+                    }
+                }
+                .category {
+                    color: #555555;
+                    margin-left: auto;
+                    font-size: 14px;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+            .text-forum {
+                .title {
+                    text-align: start;
+                    font-size: 16px;
+                    font-weight: bold;
+                    margin-bottom: 0px;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                }
+                .text {
+                    font-size: 15px;
+                    line-height: 21px;
+                    margin-bottom: 0;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+    .botton {
+        display: flex;
+        justify-content: center;
+        .btn {
+            background: #ffffff;
+            color: #106738;
+            padding: 6px 30px;
+            border: 2px solid #106738;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px #00000049;
+            transition: all .15s ease-in-out;
+            outline: none;
+            &:hover {
+                background: #106738;
+                color: #ffffff;
+            }
+        }
+    }
+}

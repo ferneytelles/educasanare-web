@@ -1,0 +1,23 @@
+<div class="content">
+    <h4 class="title">Nuestros servicios</h4>
+    <div class="services">
+        <div class="serv" *ngFor="let item of services">
+            <span class="material-icons notranslate">
+                {{item.icon}}
+            </span>
+            <div class="info">
+                <h5 class="title">
+                    {{item.title}}
+                </h5>
+                <p class="text">
+                    {{item.text}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="botton">
+        <button class="btn">
+            Ver más servicios
+        </button>
+    </div>
+</div>

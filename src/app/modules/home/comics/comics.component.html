@@ -1,0 +1,20 @@
+<div class="content">
+    <h4 class="title">Comics</h4>
+    <div class="comics">
+        <div class="comic" *ngFor="let item of comics" [ngStyle]="{'background': item.color}">
+            <img [src]="item.img" alt="">
+            <h5 class="title">{{item.title}}</h5>
+            <p class="text">
+                {{item.text}}
+            </p>
+            <button class="btn">
+                Ver más
+            </button>
+        </div>
+    </div>
+    <div class="botton">
+        <button class="btn">
+            Ver comics
+        </button>
+    </div>
+</div>

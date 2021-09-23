@@ -1,0 +1,60 @@
+.content {
+    padding: 50px 50px 40px;
+    background-image: url(../../../../assets/images/bgxp.png);
+    background-size: cover;
+    .experiences {
+        display: flex;
+        justify-content: space-evenly;
+        .card {
+            width: 26%;
+            border: 1px solid #a1a1a1;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px #00000049;
+            img {
+                width: 100%;
+                border-radius: 5px 5px 0 0;
+            }
+            .card-body {
+                .title {
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+                .date {
+                    background: #d7d7d7;
+                    color: #000000;
+                    font-size: 15px;
+                }
+                .text {
+                    font-size: 15px;
+                    line-height: 19px;
+                    margin-bottom: 0;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+    .botton {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        .more {
+            background: #ffffff;
+            color: #106738;
+            padding: 6px 30px;
+            border: 2px solid #106738;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px #00000049;
+            transition: all .15s ease-in-out;
+            outline: none;
+            &:hover {
+                background: #106738;
+                color: #ffffff;
+            }
+        }
+    }
+}

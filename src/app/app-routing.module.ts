@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
       },
       {
+        path: 'experiencias',
+        loadChildren: () => import('./pages/experiences-page/experiences-page.module').then(m => m.ExperiencesPageModule)
+      },
+      {
         path: '**',
         redirectTo: 'inicio',
         pathMatch: 'full'

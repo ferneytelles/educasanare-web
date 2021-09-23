@@ -1,0 +1,54 @@
+<app-banner-top [text]="'Experiencias STEAM'" [icon]="'star_half'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+<div class="content">
+    <div class="top">
+        <p class="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nobis dolor accusantium perspiciatis. Accusamus, possimus facere! Voluptatem magni vel sequi voluptatum molestias? Porro hic atque natus labore accusantium esse eveniet. Lorem ipsum dolor
+            sit amet consectetur adipisicing elit.
+        </p>
+        <select class="input-group-text" id="inputGroupSelect01">
+            <option hidden selected>Ordenar por...</option>
+            <option value="1">Más reciente</option>
+            <option value="2">Más antiguo</option>
+        </select>
+    </div>
+
+    <div class="experiences">
+        <div class="card" *ngFor="let item of xp">
+            <img [src]="item.img" alt="">
+            <div class="card-body">
+                <h6 class="title">
+                    {{item.title |capitalize}}
+                </h6>
+                <span class="date">
+                    {{item.date.toLocaleDateString()}}
+                </span>
+                <p class="text">
+                    {{item.text}}
+                </p>
+                <div class="botton">
+                    <button class="btn" (click)="navigate('/experiencias/'+item.slug)">
+                        + Información
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <ngb-pagination [collectionSize]="1000" [pageSize]="40" [maxSize]="5" [rotate]="false">
+
+            <ng-template ngbPaginationPrevious>
+                <span class="material-icons-outlined notranslate">
+                    arrow_back_ios
+                    </span>
+                <span class="d-none d-md-block">Anterior</span>
+            </ng-template>
+
+            <ng-template ngbPaginationNext>
+                <span class="d-none d-md-block">Siguiente</span>
+                <span class="material-icons-outlined notranslate">
+                    arrow_forward_ios
+                    </span></ng-template>
+        </ngb-pagination>
+    </div>
+</div>
+<app-carousel-sponsor></app-carousel-sponsor>
