@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
 
   options = [
     {text: 'inicio', url: '/inicio'},
+    {text: 'interactivo', url: '/interactivo'},
     {text: 'experiencias', url: '/experiencias'},
     {text: 'calendario', url: '/calendario'},
     {text: 'nosotros', url: '/nosotros'},
@@ -31,6 +32,11 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  navigate(value: string): void{
+    this.route.navigate([value]);
+    window.scroll({top: 0, behavior: 'smooth'});
   }
 
 }

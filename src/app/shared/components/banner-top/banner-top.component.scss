@@ -1,0 +1,15 @@
+.content {
+    display: flex;
+    align-items: center;
+    padding: 24px 50px;
+    background-image: url(../../../../assets/images/bgwhite.png);
+    background-size: cover;
+    background-position: center;
+    span {
+        font-size: 40px;
+        margin-right: 8px;
+    }
+    .text {
+        margin-bottom: 0;
+    }
+}

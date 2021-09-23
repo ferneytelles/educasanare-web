@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
       if (currentScroll === 0) {
         this.showHeader = true;
       }
-      if (currentScroll > this.lastScroll && currentScroll > 300){
+      if (currentScroll > this.lastScroll && currentScroll > 500){
         this.showHeader = false;
       }
       if (currentScroll < this.lastScroll){

@@ -44,14 +44,15 @@
         margin-top: 40px;
         .more {
             background: #ffffff;
+            color: #106738;
             padding: 6px 30px;
-            border: 2px solid #888888;
+            border: 2px solid #106738;
             border-radius: 10px;
             box-shadow: 0 2px 4px #00000049;
             transition: all .15s ease-in-out;
             outline: none;
             &:hover {
-                background: #888888;
+                background: #106738;
                 color: #ffffff;
             }
         }

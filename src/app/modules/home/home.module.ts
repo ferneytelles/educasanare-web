@@ -8,6 +8,8 @@ import { EduContentComponent } from './edu-content/edu-content.component';
 import { ComicsComponent } from './comics/comics.component';
 import { ServicesComponent } from './services/services.component';
 import { SectionInfoComponent } from './section-info/section-info.component';
+import { SectionForumComponent } from './section-forum/section-forum.component';
+import { SectionPollComponent } from './section-poll/section-poll.component';
 
 
 
@@ -19,7 +21,9 @@ import { SectionInfoComponent } from './section-info/section-info.component';
     EduContentComponent,
     ComicsComponent,
     ServicesComponent,
-    SectionInfoComponent
+    SectionInfoComponent,
+    SectionForumComponent,
+    SectionPollComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { SectionInfoComponent } from './section-info/section-info.component';
     EduContentComponent,
     ComicsComponent,
     ServicesComponent,
-    SectionInfoComponent
+    SectionInfoComponent,
+    SectionForumComponent,
+    SectionPollComponent
   ]
 })
 export class HomeModule { }

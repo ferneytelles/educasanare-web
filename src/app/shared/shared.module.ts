@@ -4,6 +4,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
+import { CarouselSponsorComponent } from './components/carousel-sponsor/carousel-sponsor.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { BannerTopComponent } from './components/banner-top/banner-top.component';
 
 
 
@@ -11,16 +14,22 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     HeaderComponent,
     CapitalizePipe,
-    FooterComponent
+    FooterComponent,
+    CarouselSponsorComponent,
+    BannerTopComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    SlickCarouselModule,
+    RouterModule,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    CarouselSponsorComponent,
+    BannerTopComponent
   ]
+
 })
 export class SharedModule { }

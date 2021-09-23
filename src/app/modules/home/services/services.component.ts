@@ -19,7 +19,7 @@ export class ServicesComponent implements OnInit {
       text: 'ipsum dolor sit amet, consectetur adipiscing elit. Praesent finibus quam sagittis, interdum nisi vitae, tristique mauris. quasi quia laudantium incidunt facere provident illo in tempore libero soluta enim perspiciatis quidem.'
     },
     {
-      icon: 'laptop_chromebook',
+      icon: 'laptop_mac',
       title: 'Aula Virtual',
       text: 'ipsum dolor sit amet, consectetur adipiscing elit. Praesent finibus quam sagittis, interdum nisi vitae, tristique mauris. quasi quia laudantium incidunt facere provident illo in tempore libero soluta enim perspiciatis quidem.'
     }

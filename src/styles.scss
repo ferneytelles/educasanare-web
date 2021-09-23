@@ -33,5 +33,10 @@ body::-webkit-scrollbar-track {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Roboto', "Helvetica Neue", sans-serif !important;
 }
+
+
+/* Importing Bootstrap SCSS file. */
+
+@import '~bootstrap/scss/bootstrap';

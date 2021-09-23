@@ -30,7 +30,7 @@
             </div>
 
             <div class="options2">
-                <a class="option" *ngFor="let item of options; let i=index" [routerLink]="[item.url]" [ngClass]="{'active': active === i}">
+                <a class="option" *ngFor="let item of options; let i=index" (click)="navigate(item.url)" [ngClass]="{'active': active === i}">
                     <span>{{item.text}}</span>
                 </a>
             </div>
