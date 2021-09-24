@@ -1,1 +1,40 @@
-<p>xp-item works!</p>
+<div class="content">
+    <h4 class="title">Laboratorio LLANO ARTE</h4>
+
+    <div class="carousel-content">
+        <div id="carouselImages" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li *ngFor="let item of images; let i=index" data-target="#carouselImages" attr.data-slide-to="{{i}}" [ngClass]="{'active': i==0}"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item" *ngFor="let item of images; let i=index" [ngClass]="{'active': i==0}" data-interval="10000">
+                    <img [src]="item" class="d-block w-100" alt="...">
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselImages" role="button" data-slide="prev">
+                <span class="material-icons notranslate">
+                    chevron_left
+                </span>
+            </a>
+            <a class="carousel-control-next" href="#carouselImages" role="button" data-slide="next">
+                <span class="material-icons notranslate">
+                    chevron_right
+                </span>
+            </a>
+        </div>
+    </div>
+
+    <div class="info">
+        <span class="date">
+            Fecha de publicación: {{date.toLocaleDateString()}}  {{date.toLocaleTimeString()}}
+        </span>
+        <p class="text">
+            {{text}}
+        </p>
+    </div>
+    <!-- <app-carousel-sponsor></app-carousel-sponsor> -->
+</div>
+<app-carousel-sponsor></app-carousel-sponsor>

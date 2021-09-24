@@ -1,0 +1,34 @@
+<div class="content">
+    <div class="title">
+        <h1 class="text">
+            plataformas, sistemas, software y aplicaciones
+        </h1>
+        <div class="line">
+        </div>
+    </div>
+    <div class="contain">
+
+        <div class="info">
+            <div class="item">
+                <img *ngIf="web.img!==''" [src]="web.img" alt="">
+                <p class="text-content">
+                    <span class="number" *ngIf="web.number!==''">
+                    <span>{{web.number}}</span>
+                    </span> {{web.text}}
+                </p>
+            </div>
+        </div>
+        <div class="info ">
+            <div class="item p2" *ngFor="let item of items">
+                <img *ngIf="item.img!==''" [src]="item.img" alt="">
+                <p class="text-content">
+                    <span class="number" *ngIf="item.number!==''">
+                    <span>{{item.number}}</span>
+                    </span> {{item.text}}
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
