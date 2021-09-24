@@ -19,7 +19,7 @@ export class SectionForumComponent implements OnInit {
     {
       img: 'assets/images/face2.jpg',
       user: 'profile2345',
-      date: new Date(2021,8,15,18,24),
+      date: new Date(2021, 8, 15, 18, 24),
       category: 'producción audiovisual',
       title: 'Titulo del tema del foro',
       text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo voluptas accusamus dolorem, quam numquam minima. Necessitatibus id doloremque, commodi voluptates at sint cumque praesentium molestias. Exercitationem illo reiciendis neque dicta.'

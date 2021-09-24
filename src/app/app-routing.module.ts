@@ -8,7 +8,11 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'inicio',
+        path: 'proyecto',
+        loadChildren: () => import('./pages/project-page/project-page.module').then(m => m.ProjectPageModule)
+      },
+      {
+        path: 'interactivo',
         loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
       },
       {
@@ -16,8 +20,12 @@ const routes: Routes = [
         loadChildren: () => import('./pages/experiences-page/experiences-page.module').then(m => m.ExperiencesPageModule)
       },
       {
+        path: 'calendario',
+        loadChildren: () => import('./pages/calendar-page/calendar-page.module').then(m => m.CalendarPageModule)
+      },
+      {
         path: '**',
-        redirectTo: 'inicio',
+        redirectTo: 'proyecto',
         pathMatch: 'full'
       }
     ]

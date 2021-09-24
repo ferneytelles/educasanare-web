@@ -1,0 +1,49 @@
+.content {
+    padding: 50px;
+    background-image: url(../../../../assets/images/bgpoligon.png);
+    background-size: cover;
+    background-position: center;
+    .title {
+        text-align: center;
+        color: #106738;
+    }
+    .carousel-content {
+        padding: 0 24%;
+        li {
+            border: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 10px;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 10%;
+        }
+        .carousel-control-prev {
+            left: -10%;
+        }
+        .carousel-control-next {
+            right: -10%;
+        }
+        span {
+            color: #0072BC;
+            font-size: 50px;
+        }
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 20px 0;
+        .date {
+            font-size: 16px;
+            color: #555555;
+            margin-bottom: 10px;
+        }
+        .text {
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 0;
+        }
+    }
+}

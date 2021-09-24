@@ -10,7 +10,7 @@ import { element } from 'protractor';
 export class HeaderComponent implements OnInit {
 
   options = [
-    {text: 'inicio', url: '/inicio'},
+    {text: 'proyecto', url: '/proyecto'},
     {text: 'interactivo', url: '/interactivo'},
     {text: 'experiencias', url: '/experiencias'},
     {text: 'calendario', url: '/calendario'},
