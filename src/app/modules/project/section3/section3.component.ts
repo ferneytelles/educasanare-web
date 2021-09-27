@@ -10,7 +10,7 @@ export class Section3Component implements OnInit {
   web = {
     img: 'assets/images/icon9.png',
     number: '',
-    text: 'Diseño e implementación de una Plataforma Educativa "educasanare.casanare.gov.co"'
+    text: 'Diseño e implementación de una Plataforma Educativa "educasanare.casanare.gov.co".'
   };
 
   items = [
@@ -22,7 +22,7 @@ export class Section3Component implements OnInit {
     {
       img: '',
       number: '',
-      text: 'Licenciamiento e implementación de software de simulación de Pruebas Saber y evaluación de competencias para los grados 3°, 5°, 9° y 11°'
+      text: 'Licenciamiento e implementación de software de simulación de Pruebas Saber y evaluación de competencias para los grados 3°, 5°, 9° y 11°.'
     },
     {
       img: 'assets/images/icon11.png',

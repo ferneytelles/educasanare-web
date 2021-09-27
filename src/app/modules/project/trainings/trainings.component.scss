@@ -1,0 +1,90 @@
+.content {
+    padding: 40px;
+    background-image: url(../../../../assets/images/bgpoligondark.png);
+    background-size: cover;
+    background-position: center;
+    .title {
+        width: 100%;
+        h1 {
+            color: #ffffff;
+            text-transform: uppercase;
+            font-size: 2vw;
+        }
+        .line {
+            width: 28%;
+            border-top: 5px solid #009846;
+        }
+    }
+    .content-cards {
+        padding: 20px 0 30px;
+        display: flex;
+        .slide {
+            outline: none;
+            display: flex;
+            justify-content: center;
+            &.slide1 {
+                width: 25%;
+            }
+            &.slide2 {
+                width: 100%;
+            }
+        }
+        .track {
+            width: 92%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            overflow: hidden;
+            .image {
+                width: 100%;
+                padding-bottom: 60%;
+            }
+            .info {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                background: #0000008f;
+                color: #ffffff;
+                height: 100%;
+                padding: 15px 10px;
+                .line {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 80%;
+                    margin: 0 10%;
+                    border-top: 4px solid #009846;
+                }
+                h5 {
+                    font-size: 16px;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+                p {
+                    font-size: 15px;
+                    line-height: 19px;
+                    text-align: center;
+                    margin-bottom: 15px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                }
+                .scope {
+                    display: flex;
+                    justify-content: space-between;
+                    span {
+                        font-size: 13px;
+                        line-height: 17px;
+                        // text-align: center;
+                        strong {
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

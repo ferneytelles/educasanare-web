@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainProjectComponent implements OnInit {
 
-  textBanner = 'Fortalecimiento de capacidades de CTEI para la innovación educativa en educación básica y media, mediante uso de tics en instituciones oficiales del Departamento de Casanare Código BPIN: 2020000100637';
+  textBanner = 'Fortalecimiento de capacidades de CTEI para la innovación educativa en educación básica y media, mediante uso de tics en instituciones oficiales del Departamento de Casanare ';
+  cod = 'Código BPIN: 2020000100637';
 
   constructor() { }
 
