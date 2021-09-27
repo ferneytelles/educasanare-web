@@ -1,0 +1,50 @@
+.content {
+    background-image: url(../../../../assets/images/bgpoligon.png);
+    background-size: cover;
+    background-position: center;
+    padding: 30px 50px;
+    h4 {
+        text-align: center;
+    }
+    .content-events {
+        display: flex;
+        .nav {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            padding: 12px 5px;
+            margin-right: 30px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 6px #00000039;
+            .nav-item {
+                position: relative;
+                display: flex;
+                .link {
+                    font-size: 18px;
+                    text-decoration: none;
+                    padding: 4px 10px;
+                    width: 100%;
+                    color: #222222;
+                    &.active {
+                        color: #0072BC;
+                    }
+                }
+                .line {
+                    display: none;
+                    position: absolute;
+                    top: 10%;
+                    right: -5px;
+                    height: 80%;
+                    border-right: 5px solid #0072BC;
+                }
+                .link.active~.line {
+                    display: block;
+                }
+            }
+        }
+        .tab-content {
+            width: 100%;
+        }
+    }
+}

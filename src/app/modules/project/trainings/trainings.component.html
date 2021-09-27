@@ -1,0 +1,59 @@
+<div class="content">
+    <div class="title">
+        <h1 class="text">
+            capacitaciones y asesorías
+        </h1>
+        <div class="line">
+        </div>
+    </div>
+    <div class="content-cards">
+
+        <div *ngFor="let slide of trainings" class="slide slide1">
+            <div class="track" [ngStyle]="{'background-image': 'url('+slide.img+')'}">
+                <div class="image"></div>
+                <div class="info">
+                    <div class="line"></div>
+                    <!-- <h5>{{slide.title}}</h5> -->
+                    <p>{{slide.text}}</p>
+                    <div class="scope">
+                        <span *ngIf="slide.scope!=''">
+                            <strong>Alcance: </strong>{{slide.scope}}
+                            </span>
+                        <span *ngIf="slide.hours!=0" class="ml-2">
+                            <strong>Horas: </strong>{{slide.hours}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="title">
+        <h1 class="text">
+            seminarios y talleres
+        </h1>
+        <div class="line">
+        </div>
+    </div>
+    <div class="content-cards">
+        <div *ngFor="let slide of seminars" class="slide slide2">
+            <div class="track" [ngStyle]="{'background-image': 'url('+slide.img+')'}">
+                <div class="image"></div>
+                <div class="info">
+                    <div class="line"></div>
+                    <!-- <h5>{{slide.title}}</h5> -->
+                    <p>{{slide.text}}</p>
+                    <div class="scope">
+                        <span *ngIf="slide.scope!=''">
+                            <strong>Alcance: </strong>{{slide.scope}}
+                        </span>
+                        <span *ngIf="slide.hours!=0" class="ml-2">
+                            <strong>Horas: </strong>{{slide.hours}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
