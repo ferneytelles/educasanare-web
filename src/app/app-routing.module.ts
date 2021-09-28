@@ -28,12 +28,21 @@ const routes: Routes = [
         loadChildren: () => import('./pages/about-page/about-page.module').then(m => m.AboutPageModule)
       },
       {
+        path: 'foros',
+        loadChildren: () => import('./pages/forum-page/forum-page.module').then(m => m.ForumPageModule)
+      },
+      {
+        path: 'contacto',
+        loadChildren: () => import('./pages/contact-page/contact-page.module').then(m => m.ContactPageModule)
+      },
+      {
         path: '**',
         redirectTo: 'proyecto',
         pathMatch: 'full'
       }
     ]
   }
+
 ];
 
 @NgModule({

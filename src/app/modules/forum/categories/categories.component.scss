@@ -1,0 +1,52 @@
+.content {
+    padding: 40px 50px;
+    background-image: url(../../../../assets/images/bgpoligon.png);
+    background-size: cover;
+    background-position: center;
+    h4 {
+        margin-bottom: 16px;
+    }
+    .category {
+        display: flex;
+        border-radius: 6px;
+        background: #ffffff;
+        box-shadow: 0 0 10px #00000059;
+        margin-bottom: 30px;
+        overflow: hidden;
+        .image {
+            width: 20%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .text {
+            width: 38%;
+            padding: 0 20px;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-right: 1px solid #d7d7d7;
+            .title {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+            p {
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: 0;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+            }
+        }
+        .info {
+            width: 42%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

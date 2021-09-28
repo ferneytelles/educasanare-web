@@ -1,0 +1,24 @@
+<app-banner-top [text]="'Foros'" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+
+
+<div class="content">
+    <h4>Categorías</h4>
+    <div class="category" *ngFor="let item of categories">
+        <div class="image">
+            <img [src]="item.img" alt="">
+        </div>
+
+        <div class="text">
+            <h5 class="title">
+                {{item.title|capitalize}}
+            </h5>
+            <p>
+                {{item.text}}
+            </p>
+        </div>
+
+        <div class="info">
+
+        </div>
+    </div>
+</div>
