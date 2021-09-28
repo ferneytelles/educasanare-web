@@ -24,6 +24,59 @@ export class MainAboutComponent implements OnInit {
     }
   ];
 
+  inst = [
+    {
+      img: 'assets/images/inst1.png',
+      name: 'I.E. Camilo Torre Restrepo',
+      town: 'Aguazul'
+    },
+    {
+      img: 'assets/images/inst2.png',
+      name: 'I.E. San Agustín',
+      town: 'Aguazul'
+    },
+    {
+      img: 'assets/images/inst3.png',
+      name: 'I.E. Nuestra Señora de los Dolores Manare',
+      town: 'Villanueva'
+    },
+    {
+      img: 'assets/images/inst4.png',
+      name: 'I.E. Ezequiel Moreno Díaz',
+      town: 'Villanueva'
+    },
+    {
+      img: 'assets/images/inst5.png',
+      name: 'I.E. Escuela Normal Superior',
+      town: 'Monterrey'
+    },
+    {
+      img: 'assets/images/inst6.png',
+      name: 'I.E. Jesús Bernal Pinzón',
+      town: 'Maní'
+    },
+    {
+      img: 'assets/images/inst7.png',
+      name: 'I.E. Refael Uribe Uribe',
+      town: 'Pore'
+    },
+    {
+      img: 'assets/images/inst8.png',
+      name: 'I.E. Juan José Rondón',
+      town: 'Paz de Ariporo'
+    },
+    {
+      img: 'assets/images/inst9.png',
+      name: 'I.T.E. Francisco Lucea',
+      town: 'San Luis de Palenque'
+    },
+    {
+      img: 'assets/images/inst10.png',
+      name: 'I.E. José María Córdoba',
+      town: 'Tauramena'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
