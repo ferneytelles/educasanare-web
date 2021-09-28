@@ -1,3 +1,28 @@
 <div class="card">
-
+    <span class="date">
+        {{event?.date.toLocaleDateString()}}  {{event?.date.toLocaleTimeString()}}
+    </span>
+    <h5 class="title">
+        {{event?.title |capitalize}}
+    </h5>
+    <div class="location">
+        <span class="material-icons-outlined icon notranslate">
+            location_on
+        </span>
+        <span class="text">{{event?.location}}</span>
+    </div>
+    <p class="text">
+        {{event?.text}}
+    </p>
+    <div class="bottom">
+        <div class="assistants">
+            <span class="material-icons icon notranslate">
+                groups
+            </span>
+            <span class="text">{{event?.assistants}} Asistentes</span>
+        </div>
+        <button class="btn">
+            Asistiré
+        </button>
+    </div>
 </div>
