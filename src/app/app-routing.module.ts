@@ -24,12 +24,16 @@ const routes: Routes = [
         loadChildren: () => import('./pages/calendar-page/calendar-page.module').then(m => m.CalendarPageModule)
       },
       {
+        path: 'nosotros',
+        loadChildren: () => import('./pages/about-page/about-page.module').then(m => m.AboutPageModule)
+      },
+      {
         path: '**',
         redirectTo: 'proyecto',
         pathMatch: 'full'
       }
     ]
-  },
+  }
 ];
 
 @NgModule({

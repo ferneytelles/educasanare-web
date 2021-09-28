@@ -1,0 +1,58 @@
+<div class="banner">
+    <img src="assets/images/bgwe.png" alt="">
+    <div class="content">
+        <h2>
+            ¿Quiénes Somos?
+        </h2>
+        <div class="line"></div>
+        <p class="text">
+            {{text}}
+        </p>
+        <h4>
+            Objetivo
+        </h4>
+        <p class="text">
+            {{text}}
+        </p>
+    </div>
+</div>
+
+<div class="objectives">
+    <div class="content">
+        <div class="title">
+            <h2>Objetivos del proyecto</h2>
+            <div class="line"></div>
+        </div>
+        <div class="obj" *ngFor="let item of objectives">
+            <span class="material-icons icon notranslate">
+                check_circle_outline
+            </span>
+            <p class="text">
+                <span>
+                    {{item.title}}: 
+                </span> {{item.text}}
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="data">
+    <div class="item c1">
+        <span class="number">10</span>
+        <span class="text">
+            Instituciones beneficiadas
+        </span>
+    </div>
+    <div class="item c2">
+        <span class="number">+9.000</span>
+        <span class="text">
+            Estudiantes beneficiados
+        </span>
+    </div>
+    <div class="item c3">
+        <span class="number">+999</span>
+        <span class="text">
+            Lorem ipsum
+        </span>
+    </div>
+</div>

@@ -17,10 +17,15 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="next" role="tabpanel">
-                pproximos eventos
+                <div class="event" *ngFor="let item of events">
+                    <app-event-card [event]="item"></app-event-card>
+                </div>
+
             </div>
             <div class="tab-pane fade" id="previus" role="tabpanel">
-                anteriores enevtos
+                <div class="event" *ngFor="let item of events.slice(0,2)">
+                    <app-event-card [event]="item"></app-event-card>
+                </div>
             </div>
         </div>
     </div>
