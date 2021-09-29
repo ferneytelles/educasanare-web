@@ -3,7 +3,7 @@
 
 <div class="content">
     <h4>Categorías</h4>
-    <div class="category" *ngFor="let item of categories">
+    <div class="category" *ngFor="let item of categories" (click)="navigate(item.slug)">
         <div class="image">
             <img [src]="item.img" alt="">
         </div>
@@ -18,7 +18,31 @@
         </div>
 
         <div class="info">
-
+            <div class="activity">
+                <div class="item">
+                    <span class="label">Temas</span>
+                    <span class="data">14</span>
+                </div>
+                <div class="item">
+                    <span class="label">Usuarios</span>
+                    <span class="data">
+                        <div class="images">
+                            <img *ngFor="let face of faces" [src]="face" alt="">
+                        </div>                        
+                        +3
+                    </span>
+                </div>
+                <div class="item">
+                    <span class="label">Actividad</span>
+                    <span class="data">Hoy, 12:45</span>
+                </div>
+            </div>
+            <div class="post">
+                <span class="label">Último tema</span>
+                <p class="data">
+                    <img src="assets/images/face3.jpg" alt=""> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </p>
+            </div>
         </div>
     </div>
 </div>
