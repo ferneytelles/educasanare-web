@@ -1,0 +1,71 @@
+<div class="banner">
+    <div class="content">
+        <h2 class="title">Robotica</h2>
+        <p class="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus nisi amet illum nemo architecto animi cumque est tenetur dolorem Quaerat.
+        </p>
+    </div>
+</div>
+
+<div class="forums">
+    <div class="head">
+        <button class="btn">
+            <span class="material-icons-outlined notranslate">
+                add_circle_outline
+            </span>
+            Agregar nuevo tema
+        </button>
+        <select class="input-group-text" id="">
+            <option hidden selected>Ordenar por</option>
+            <option value="1">Más reciente</option>
+            <option value="2">Más antiguo</option>
+        </select>
+    </div>
+
+    <div class="content">
+        <div class="forum" *ngFor="let item of forums" [ngClass]="{'borde': item.own}">
+            <div class="head-forum">
+                <img [src]="item.img" alt="">
+                <div class="info">
+                    <span class="username">
+                        @{{item.user}}
+                    </span>
+                    <span class="date">
+                        {{item.date}}
+                    </span>
+                </div>
+                <div class="bottons">
+                    <button class="btn" *ngIf="item.own" placement="top" ngbTooltip="Editar tema">
+                        <span class="material-icons-outlined notranslate">
+                            edit
+                        </span>
+                    </button>
+                    <button class="btn" *ngIf="item.own" placement="top" ngbTooltip="Eliminar tema">
+                        <span class="material-icons-outlined notranslate">
+                            delete_forever
+                        </span>
+                    </button>
+                    <button class="btn" *ngIf="!item.own" placement="top" ngbTooltip="Denunciar tema">
+                        <span class="material-icons-outlined notranslate">
+                            flag
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="text-forum">
+                <p class="title" (click)="navigate(item.slug)">
+                    {{item.title}}
+                </p>
+                <p class="text">
+                    {{item.text}}
+                </p>
+                <div class="comments">
+                    <span class="material-icons-outlined notranslate icon">
+                        chat_bubble_outline
+                    </span>
+                    <span class="number">15</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

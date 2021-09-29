@@ -1,0 +1,176 @@
+.content {
+    min-height: 60vh;
+    padding: 30px 50px;
+    background-image: url(../../../../assets/images/bgpoligon.png);
+    background-position: center;
+    background-size: cover;
+    .theme {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 230px;
+            margin-left: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #00000059;
+            img {
+                width: 130px;
+                border-radius: 100%;
+            }
+            .username {
+                margin-top: 10px;
+                width: 100%;
+                padding: 5px 0;
+                text-align: center;
+                font-weight: 500;
+                border-top: 1px solid #d7d7d7;
+                border-bottom: 1px solid #d7d7d7;
+            }
+        }
+    }
+    .answers {
+        display: flex;
+        flex-direction: column;
+        .title {
+            text-align: center;
+        }
+        .input-group-text {
+            margin-left: auto;
+            margin-bottom: 10px;
+            text-align: start;
+            font-size: 16px;
+            padding: 5px 30px 5px 5px;
+            background-color: white;
+            width: fit-content;
+            border: 1px solid #c8c8c8;
+            outline: none;
+        }
+        .new {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            background: #ffffff;
+            padding: 25px 25px 10px;
+            box-shadow: 0 2px 8px #00000049;
+            margin-bottom: 30px;
+            .textArea {
+                width: 100%;
+                border: 1px solid #a1a1a1;
+                outline: none;
+                padding: 5px;
+                resize: none;
+                margin-bottom: 10px;
+                // overflow: hidden;
+            }
+            .btn {
+                display: flex;
+                align-items: center;
+                padding: 2px 15px;
+                box-shadow: none;
+            }
+            .cancel {
+                background: #ffffff;
+                border: 1px solid #106738;
+                color: #106738;
+            }
+            .confirm {
+                margin-left: 10px;
+                background: #106738;
+                border: 1px solid #106738;
+                color: #ffffff;
+                span {
+                    font-size: 20px;
+                    margin-right: 8px;
+                }
+            }
+        }
+        .forum {
+            margin-bottom: 20px;
+            min-height: fit-content;
+        }
+    }
+}
+
+.forum {
+    min-height: 216px;
+    background: #ffffff;
+    padding: 20px;
+    padding-left: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00000059;
+    overflow: hidden;
+    &.borde {
+        border-left: 5px solid #106738;
+    }
+    .head-forum {
+        display: flex;
+        margin-bottom: 12px;
+        img {
+            height: 40px;
+            border-radius: 100%;
+        }
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10px;
+            .date {
+                font-size: 13px;
+                line-height: 16px;
+                color: #555555;
+            }
+        }
+        .bottons {
+            display: flex;
+            margin-left: auto;
+            .btn {
+                display: flex;
+                padding: 5px;
+                height: fit-content;
+                box-shadow: none;
+                &:hover {
+                    color: #106738;
+                }
+            }
+        }
+    }
+    .text-forum {
+        display: flex;
+        flex-direction: column;
+        .title {
+            width: fit-content;
+            text-align: start;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 0px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .text {
+            font-size: 15px;
+            line-height: 21px;
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+        .comments {
+            margin-top: 10px;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            color: #555555;
+            .icon {
+                font-size: 18px;
+                margin-right: 4px;
+            }
+            .number {
+                font-size: 14px;
+            }
+        }
+    }
+}

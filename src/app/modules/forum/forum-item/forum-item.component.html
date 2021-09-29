@@ -1,1 +1,119 @@
-<p>forum-item works!</p>
+<app-banner-top [text]="'Foro'" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+
+<div class="content">
+    <div class="theme">
+
+        <div class="forum">
+            <div class="head-forum">
+                <img [src]="forum.img" alt="">
+                <div class="info">
+                    <span class="username">
+                        @{{forum.user}}
+                    </span>
+                    <span class="date">
+                        {{forum.date}}
+                    </span>
+                </div>
+                <div class="bottons">
+                    <button class="btn" *ngIf="forum.own" placement="top" ngbTooltip="Editar tema">
+                        <span class="material-icons-outlined notranslate">
+                            edit
+                        </span>
+                    </button>
+                    <button class="btn" *ngIf="forum.own" placement="top" ngbTooltip="Eliminar tema">
+                        <span class="material-icons-outlined notranslate">
+                            delete_forever
+                        </span>
+                    </button>
+                    <button class="btn" *ngIf="!forum.own" placement="top" ngbTooltip="Denunciar tema">
+                        <span class="material-icons-outlined notranslate">
+                            flag
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="text-forum">
+                <p class="title">
+                    {{forum.title}}
+                </p>
+                <p class="text">
+                    {{forum.text}}
+                </p>
+                <div class="comments">
+                    <span class="material-icons-outlined notranslate icon">
+                        chat_bubble_outline
+                    </span>
+                    <span class="number">15</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img [src]="forum.img" alt="">
+            <span class="username">
+                @{{forum.user}}
+            </span>
+        </div>
+
+    </div>
+
+    <div class="answers">
+        <h4 class="title">Respuestas</h4>
+
+        <select class="input-group-text" id="">
+            <option hidden selected>Ordenar por</option>
+            <option value="1">Más reciente</option>
+            <option value="2">Más antiguo</option>
+        </select>
+
+        <div class="new">
+            <textarea #textArea class="textArea" name="" id="" placeholder="Escriba aquí su respuesta" [ngStyle]="{'height.px': height}" (input)="setHeight()"></textarea>
+            <button class="btn cancel" (click)="cancelText()">
+                Cancelar
+            </button>
+            <button class="btn confirm">
+                <span class="material-icons-outlined notranslate icon">
+                    chat_bubble_outline
+                </span>
+                Responder
+            </button>
+        </div>
+
+        <div class="forum" *ngFor="let item of answers" [ngClass]="{'borde': item.own}">
+            <div class="head-forum">
+                <img [src]="item.img" alt="">
+                <div class="info">
+                    <span class="username">
+                        @{{item.user}}
+                    </span>
+                    <span class="date">
+                        {{item.date}}
+                    </span>
+                </div>
+                <div class="bottons">
+                    <button class="btn" *ngIf="item.own" placement="top" ngbTooltip="Editar tema">
+                        <span class="material-icons-outlined notranslate">
+                            edit
+                        </span>
+                    </button>
+                    <button class="btn" *ngIf="item.own || forum.own" placement="top" ngbTooltip="Eliminar tema">
+                        <span class="material-icons-outlined notranslate">
+                            delete_forever
+                        </span>
+                    </button>
+                    <button class="btn" *ngIf="!item.own && !forum.own" placement="top" ngbTooltip="Denunciar tema">
+                        <span class="material-icons-outlined notranslate">
+                            flag
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="text-forum">
+                <p class="text">
+                    {{item.text}}
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
