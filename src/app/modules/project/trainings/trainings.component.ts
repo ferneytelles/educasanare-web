@@ -35,10 +35,7 @@ export class TrainingsComponent implements OnInit {
       text: 'Asesoría y acompañamiento a docentes de las 10 sedes educativas focalizadas para el diseño y construcción instruccional d recursos, tematicas...',
       scope: 'Lecciones de 150 áreas del núcleo común, tres por área co-creadascon docentes de la I.E.O y montadas en el LMS.',
       hours: 0
-    }
-  ];
-
-  seminars = [
+    },
     {
       img: 'assets/images/seminar1.png',
       title: 'seminario-taller',
@@ -76,10 +73,14 @@ export class TrainingsComponent implements OnInit {
     }
   ];
 
+  // seminars = [
+
+  // ];
+
   slideConfig = {
-    infinite: true,
+    infinite: false,
     speed: 300,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
     focusOnSelect: false,

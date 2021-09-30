@@ -1,0 +1,49 @@
+<app-banner-top [text]="'Foro'" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+
+<div class="content">
+    <h3 class="title">Nuevo tema</h3>
+
+    <div class="form">
+        <p class="category">
+            <span>Categoría:</span>{{category}}
+        </p>
+        <input class="name" type="text" name="" id="" placeholder="Título del tema">
+
+        <textarea #textArea name="" id="" placeholder="Contenido del tema" [ngStyle]="{'height.px': height}" (input)="setHeight()"></textarea>
+
+        <div class="bottons">
+            <div class="file-content">
+                <div class="file">
+                    <button class="btn upload">
+                        <span class="material-icons notranslate icon">
+                            attach_file
+                        </span>
+                        <span  class="label">
+                            Adjuntar archivo
+                        </span>
+                        <input type="file" accept="video/mp4, image/png, image/jpeg, image/jpg" (change)="changeFile($event)">                    
+                    </button>
+                    <span #label class="name-file"></span>
+                </div>
+                <span class="text">
+                    Solo podrá cargar un archivo por tema
+                </span>
+                <span class="text">
+                    Máximo 2MB (imágenes) 20MB (videos)
+                </span>
+            </div>
+
+            <div class="options">
+                <button class="btn cancel">
+                    Cancelar
+                </button>
+                <button class="btn confirm">
+                    <span class="material-icons notranslate">
+                        publish
+                    </span>
+                    Publicar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

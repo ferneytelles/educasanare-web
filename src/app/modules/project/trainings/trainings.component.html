@@ -1,35 +1,38 @@
 <div class="content">
     <div class="title">
         <h1 class="text">
-            capacitaciones y asesorías
+            capacitaciones, asesorías, seminarios y talleres
         </h1>
         <div class="line">
         </div>
     </div>
     <div class="content-cards">
 
-        <div *ngFor="let slide of trainings" class="slide slide1">
-            <div class="track" [ngStyle]="{'background-image': 'url('+slide.img+')'}">
-                <div class="image"></div>
-                <div class="info">
-                    <div class="line"></div>
-                    <!-- <h5>{{slide.title}}</h5> -->
-                    <p>{{slide.text}}</p>
-                    <div class="scope">
-                        <span *ngIf="slide.scope!=''">
+        <ngx-slick-carousel class="carousel-cards" #slickModal="slick-carousel" [config]="slideConfig">
+
+            <div ngxSlickItem *ngFor="let slide of trainings" class="slide slide1">
+                <div class="track" [ngStyle]="{'background-image': 'url('+slide.img+')'}">
+                    <div class="image"></div>
+                    <div class="info">
+                        <div class="line"></div>
+                        <!-- <h5>{{slide.title}}</h5> -->
+                        <p>{{slide.text}}</p>
+                        <div class="scope">
+                            <span *ngIf="slide.scope!=''">
                             <strong>Alcance: </strong>{{slide.scope}}
                             </span>
-                        <span *ngIf="slide.hours!=0" class="ml-2">
+                            <span *ngIf="slide.hours!=0" class="ml-2">
                             <strong>Horas: </strong>{{slide.hours}}
                         </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ngx-slick-carousel>
     </div>
 
 
-    <div class="title">
+    <!-- <div class="title">
         <h1 class="text">
             seminarios y talleres
         </h1>
@@ -42,7 +45,7 @@
                 <div class="image"></div>
                 <div class="info">
                     <div class="line"></div>
-                    <!-- <h5>{{slide.title}}</h5> -->
+                    
                     <p>{{slide.text}}</p>
                     <div class="scope">
                         <span *ngIf="slide.scope!=''">
@@ -55,5 +58,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

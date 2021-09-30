@@ -22,16 +22,17 @@
                     padding: 6px 10px;
                     border: 1px solid #a1a1a1;
                     border-radius: 5px;
+                    outline: none;
                 }
                 textarea {
                     width: 100%;
-                    min-height: 250px;
-                    max-height: 250px;
+                    height: 250px;
                     margin-bottom: 20px;
                     padding: 6px 10px;
                     border: 1px solid #a1a1a1;
                     border-radius: 5px;
                     outline: none;
+                    resize: none;
                 }
                 .btn {
                     border: 1px solid #106738;

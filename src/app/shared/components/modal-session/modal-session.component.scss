@@ -1,0 +1,61 @@
+::ng-deep.modal-session .modal-dialog {
+    max-width: 500px !important;
+    max-height: 300px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // margin: auto 0 0 0 !important;
+}
+
+::ng-deep.modal-session .modal-dialog .modal-content {
+    background: #ffffff;
+    border-radius: 5px;
+    border: none;
+    max-height: 100%;
+    overflow-y: hidden;
+}
+
+.modal-body {
+    padding: 20px 50px;
+    background-image: url(../../../../assets/images/bgxp.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    .title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2px;
+        .text {
+            font-size: 15px;
+        }
+    }
+    input {
+        border: 1px solid #a1a1a1;
+        border-radius: 4px;
+        padding: 4px;
+        outline: none;
+        &.user {
+            margin-bottom: 10px;
+        }
+    }
+    .link {
+        margin-left: auto;
+        color: #555555;
+        font-size: 14px;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-bottom: 25px;
+    }
+    .btn {
+        border: 1px solid #106738;
+        padding: 4px;
+        background: #106738;
+        color: #ffffff;
+        box-shadow: none;
+    }
+}

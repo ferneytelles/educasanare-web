@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   active = 0;
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private session: SessionService) {
     route.events.subscribe((url: any) => {
       this.options.forEach((obj, index) => {
         if (route.url.includes(obj.url)){
@@ -37,6 +38,14 @@ export class HeaderComponent implements OnInit {
   navigate(value: string): void{
     this.route.navigate([value]);
     window.scroll({top: 0, behavior: 'smooth'});
+  }
+
+  goProfile(): void{
+    if (this.session.session){
+      this.route.navigate(['/perfil']);
+    } else {
+      this.session.modalSession.next(true);
+    }
   }
 
 }

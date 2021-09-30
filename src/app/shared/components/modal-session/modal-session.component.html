@@ -1,0 +1,31 @@
+<ng-template #session let-modal class="content">
+    <div class="modal-body" [formGroup]="formUser">
+        <h4 class="title">Iniciar sesión</h4>
+        <div class="label">
+            <span class="material-icons notranslate icon">
+                person
+            </span>
+            <span class="text">
+                Nombre de usuario o correo electrónico
+            </span>
+        </div>
+
+        <input [formControl]="formUser.get('user')" class="user" type="text" name="" id="user">
+
+        <div class="label">
+            <span class="material-icons notranslate icon">
+                lock_open
+            </span>
+            <span class="text">
+                Contraseña
+            </span>
+        </div>
+
+        <input formControlName="password" class="password" type="password" name="" id="pw">
+
+        <a class="link">Olvide mi contraseña</a>
+        <button class="btn" (click)="valid()">
+            Iniciar sesión
+        </button>
+    </div>
+</ng-template>

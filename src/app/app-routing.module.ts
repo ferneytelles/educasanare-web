@@ -36,13 +36,16 @@ const routes: Routes = [
         loadChildren: () => import('./pages/contact-page/contact-page.module').then(m => m.ContactPageModule)
       },
       {
+        path: 'perfil',
+        loadChildren: () => import('./pages/profile-page/profile-page.module').then(m => m.ProfilePageModule)
+      },
+      {
         path: '**',
         redirectTo: 'proyecto',
         pathMatch: 'full'
       }
     ]
-  }
-
+  },
 ];
 
 @NgModule({

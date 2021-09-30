@@ -11,7 +11,7 @@ export class CategoriesComponent implements OnInit {
   categories = [
     {
       img: 'assets/images/category1.png',
-      title: 'robotica',
+      title: 'robótica',
       slug: 'robotica',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam unde cumque assumenda voluptatum, eos, iste aliquam reprehenderit',
     },
