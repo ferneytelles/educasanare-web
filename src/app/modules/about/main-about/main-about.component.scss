@@ -136,3 +136,72 @@
         }
     }
 }
+
+@media screen and (max-width: 720px) {
+    .banner {
+        background-position: left;
+        margin-bottom: 10px;
+        .content {
+            width: 70%;
+            padding: 5% 20px;
+        }
+    }
+    .objectives {
+        margin-bottom: 10px;
+        .content {
+            padding: 20px;
+            .title h2 {
+                font-size: 24px;
+            }
+            .obj {
+                flex-direction: column;
+                .text {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .data {
+        flex-direction: column;
+        .item {
+            padding: 15px;
+            .number {
+                font-size: 40px;
+                line-height: 44px
+            }
+            .text {
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+    }
+    .institutions {
+        padding: 25px 10px;
+        .content {
+            .item {
+                width: 50%;
+                padding-bottom: 18%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .banner .content {
+        width: 100%;
+    }
+    .institutions {
+        .content {
+            .item {
+                padding-bottom: 36%;
+                margin-bottom: 10px;
+                .info {
+                    width: 96%;
+                    .text {
+                        padding: 8px;
+                    }
+                }
+            }
+        }
+    }
+}

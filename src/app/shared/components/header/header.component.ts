@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   ];
 
   active = -1;
+  showMenu = false;
 
   constructor(private route: Router, private session: SessionService) {
     route.events.subscribe((url: any) => {
@@ -40,7 +41,18 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggleMenu(): void{
+    this.showMenu = !this.showMenu;
+    if (this.showMenu){
+      document.querySelector('body').className = 'modal-open';
+    } else {
+      document.querySelector('body').className = '';
+    }
+  }
+
   navigate(value: string): void{
+    this.showMenu = false;
+    document.querySelector('body').className = '';
     this.route.navigate([value]);
     window.scroll({top: 0, behavior: 'smooth'});
   }
@@ -49,6 +61,8 @@ export class HeaderComponent implements OnInit {
     if (this.session.session){
       this.route.navigate(['/perfil']);
     } else {
+      this.showMenu = false;
+      document.querySelector('body').className = '';
       this.session.modalSession.next(true);
     }
   }

@@ -15,3 +15,9 @@
 .main-content {
     padding-top: 80px;
 }
+
+@media screen and (max-width: 970px) {
+    .main-content {
+        padding-top: 60px;
+    }
+}
