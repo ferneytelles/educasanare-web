@@ -60,6 +60,7 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
       window.scroll({top: 0, behavior: 'smooth'});
       this.route.navigate(['/perfil']);
       this.modal.dismissAll();
+      this.formUser.setValue({user: '', password: ''});
     } else {
       alert(
         'el usuario de prueba es: ' + this.sessionService.profile.user + ' y la contraseña es: ' + this.sessionService.profile.password

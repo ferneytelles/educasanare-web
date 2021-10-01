@@ -9,6 +9,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BannerTopComponent } from './components/banner-top/banner-top.component';
 import { ModalSessionComponent } from './components/modal-session/modal-session.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SecureUrlPipe } from './pipes/secure-url.pipe';
 
 
 
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     CarouselSponsorComponent,
     BannerTopComponent,
-    ModalSessionComponent
+    ModalSessionComponent,
+    SecureUrlPipe
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     CapitalizePipe,
     CarouselSponsorComponent,
-    BannerTopComponent
+    BannerTopComponent,
+    SecureUrlPipe
   ]
 
 })

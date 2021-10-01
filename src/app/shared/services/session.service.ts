@@ -19,5 +19,7 @@ export class SessionService {
     password: 'hola123'
   };
 
+  file: any;
+
   constructor() { }
 }

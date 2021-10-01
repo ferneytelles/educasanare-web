@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class CarouselSponsorComponent implements OnInit {
 
   slides = [
-    'assets/images/gob.png',
+    'assets/images/minc.png',
     'assets/images/sgr.png',
+    'assets/images/gob.png',
+    'assets/images/SEC.png',
     'assets/images/tecnalia.png',
     'assets/images/cato.png',
     'assets/images/smart.png',
-    'assets/images/SEC.png',
-    'assets/images/minc.png',
   ];
 
   slideConfig = {

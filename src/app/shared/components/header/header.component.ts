@@ -20,15 +20,20 @@ export class HeaderComponent implements OnInit {
     {text: 'contacto', url: '/contacto'},
   ];
 
-  active = 0;
+  active = -1;
 
   constructor(private route: Router, private session: SessionService) {
     route.events.subscribe((url: any) => {
+      let changeUrl = false;
       this.options.forEach((obj, index) => {
         if (route.url.includes(obj.url)){
           this.active = index;
+          changeUrl = true;
         }
       });
+      if (!changeUrl){
+        this.active = -1;
+      }
     });
    }
 
