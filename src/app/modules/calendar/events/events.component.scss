@@ -53,3 +53,34 @@
         }
     }
 }
+
+@media screen and (max-width: 720px) {
+    .content {
+        padding: 10px;
+        .content-events {
+            flex-direction: column;
+            .nav {
+                flex-direction: row;
+                justify-content: center;
+                width: fit-content;
+                margin: 0 auto 20px;
+                .nav-item {
+                    flex-direction: column;
+                    .link.active {
+                        &~.line {
+                            top: auto;
+                            bottom: -5px;
+                            width: 80%;
+                            left: 10%;
+                            border-right: none;
+                            border-bottom: 5px solid #0072BC;
+                        }
+                    }
+                }
+            }
+            .tab-content .event {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

@@ -27,7 +27,33 @@ export class CarouselSponsorComponent implements OnInit {
     autoplay: true,
     autoplaySpeed: 5000,
     pauseOnHover: true,
-    arrows: true
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 870,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 730,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 510,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+        }
+      },
+    ]
   };
 
   constructor() { }

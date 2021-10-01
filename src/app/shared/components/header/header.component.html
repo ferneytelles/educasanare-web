@@ -4,7 +4,14 @@
         <div class="logo">
             <img class="image" src="assets/images/logo.png" alt="" (click)="navigate('/proyecto')">
         </div>
-        <div class="menu">
+
+        <button class="btn openMenu" (click)="toggleMenu()">
+            <span class="material-icons">
+                menu
+            </span>
+        </button>
+
+        <div class="menu" [ngClass]="{'show': showMenu}">
 
             <div class="options1">
                 <a class="link">

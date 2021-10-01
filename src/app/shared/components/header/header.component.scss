@@ -19,6 +19,17 @@
     }
 }
 
+.openMenu {
+    display: none;
+    align-items: center;
+    margin-left: auto;
+    color: #0072BC;
+    box-shadow: none;
+    span {
+        font-size: 36px;
+    }
+}
+
 .menu {
     width: 72%;
     display: flex;
@@ -86,6 +97,85 @@
                 font-size: 15px;
                 text-transform: uppercase;
                 font-weight: 500;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 970px) {
+    .content .header {
+        height: 60px;
+    }
+    .logo {
+        width: fit-content;
+        padding: 12px 6px;
+    }
+    .openMenu {
+        display: flex;
+    }
+    .menu {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 58px);
+        overflow-y: auto;
+        background: #D8EBF6;
+        border-top: 2px solid #0072BC;
+        transform: translateX(100%);
+        transition: all .3s ease-in-out;
+        &.show {
+            transform: translateX(0%);
+        }
+        .options1 {
+            order: 2;
+        }
+        .options2 {
+            width: 100%;
+        }
+        .options1,
+        .options2 {
+            flex-direction: column;
+        }
+        .options1 {
+            .link {
+                margin: 8px 25px;
+                padding: 3px 8px 3px 4px;
+                justify-content: center;
+                font-size: 18px;
+                span {
+                    font-size: 24px;
+                }
+            }
+            .input-group {
+                margin: 8px 25px;
+                padding: 5px 6px 5px 8px;
+                span {
+                    font-size: 24px;
+                }
+                .select {
+                    font-size: 18px;
+                }
+            }
+        }
+        .options2 {
+            .option {
+                padding: 6px 30px;
+                border: none;
+                display: flex;
+                justify-content: flex-end;
+                &.hover {
+                    background: #ffffff;
+                }
+                &.active {
+                    background: #93D1F4;
+                }
+                span {
+                    font-size: 20px;
+                }
             }
         }
     }

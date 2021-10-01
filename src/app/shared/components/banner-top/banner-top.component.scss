@@ -13,3 +13,16 @@
         margin-bottom: 0;
     }
 }
+
+@media screen and (max-width: 970px) {
+    .content {
+        padding: 15px 20px;
+        span {
+            font-size: 28px;
+            margin-right: 5px;
+        }
+        .text {
+            font-size: 24px;
+        }
+    }
+}
