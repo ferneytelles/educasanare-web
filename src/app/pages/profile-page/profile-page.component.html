@@ -1,0 +1,106 @@
+<app-banner-top [text]="'Cuenta'" [icon]="'person_outline'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+
+<div class="content">
+    <div class="profile">
+        <div class="image">
+            <div class="img">
+                <img *ngIf="user.img===''" src="assets/images/face0.png" alt="">
+                <img #image *ngIf="user.img!==''" [src]="user.img|secureUrl" alt="">
+            </div>
+            <div class="line"></div>
+            <button class="btn photo">
+                Cambiar foto de perfil
+                <input type="file" accept="image/png, image/jpeg, image/jpg" (change)="changeFile($event)" title=""> 
+            </button>
+            <span class="text">Archivos jpg o png de 2MB máximo</span>
+        </div>
+
+        <div class="info" [ngClass]="{'editing': editing}">
+            <div class="item">
+                <span class="material-icons notranslate icon">
+                    person
+                </span>
+                <span class="label">
+                    Nombre de usuario
+                </span>
+                <input type="text" name="" [value]="user.user" [disabled]="!editing">
+            </div>
+            <div class="item">
+                <span class="material-icons-outlined notranslate icon">
+                    email
+                </span>
+                <span class="label">
+                    Correo electrónico
+                </span>
+                <input type="email" name="" [value]="user.email" [disabled]="!editing">
+            </div>
+            <div class="item">
+                <span class="material-icons-outlined notranslate icon">
+                    face
+                </span>
+                <span class="label">
+                    Nombres
+                </span>
+                <input class="name" type="text" name="" [value]="user.name" [disabled]="!editing">
+            </div>
+            <div class="item">
+                <span class="material-icons-outlined notranslate icon">
+                    supervised_user_circle
+                </span>
+                <span class="label">
+                    Apellidos
+                </span>
+                <input class="name" type="text" name="" [value]="user.lastname" [disabled]="!editing">
+            </div>
+
+            <ng-container *ngIf="editing">
+                <h6 class="title">
+                    <span class="material-icons notranslate">
+                        lock_open
+                    </span>Cambiar contraseña
+                </h6>
+                <div class="item">
+                    <span class="label">
+                        Contraseña actual
+                    </span>
+                    <input class="name" type="password" name="">
+                </div>
+                <div class="item">
+                    <span class="label">
+                        Nueva contraseña
+                    </span>
+                    <input class="name" type="password" name="">
+                </div>
+                <div class="item">
+                    <span class="label">
+                        Confirmar nueva contraseña
+                    </span>
+                    <input class="name" type="password" name="">
+                </div>
+            </ng-container>
+
+            <div class="bottons">
+                <ng-container *ngIf="!editing">
+                    <button class="btn edit" (click)="editing=true">
+                        Editar perfil
+                    </button>
+                    <button class="btn off" (click)="offSession()">
+                        <span class="material-icons notranslate">
+                            logout
+                        </span>
+                        Cerrar sesión
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="editing">
+                    <button class="btn cancel" (click)="editing=false">
+                        Cancelar
+                    </button>
+                    <button class="btn confirm">
+                        Guardar cambios
+                    </button>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>

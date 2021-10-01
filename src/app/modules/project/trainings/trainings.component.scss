@@ -18,16 +18,39 @@
     .content-cards {
         padding: 20px 0 30px;
         display: flex;
+        .carousel-cards {
+            width: 100%;
+             ::ng-deep .slick-track {
+                display: flex;
+            }
+             ::ng-deep .slick-prev,
+             ::ng-deep .slick-next {
+                height: 28px;
+                width: 28px;
+            }
+             ::ng-deep .slick-prev {
+                left: -30px;
+            }
+             ::ng-deep .slick-next {
+                right: -30px;
+            }
+             ::ng-deep .slick-prev:before,
+             ::ng-deep .slick-next:before {
+                font-size: 28px;
+                color: #009846;
+            }
+        }
         .slide {
             outline: none;
             display: flex;
             justify-content: center;
-            &.slide1 {
-                width: 25%;
-            }
-            &.slide2 {
-                width: 100%;
-            }
+            height: initial;
+            // &.slide1 {
+            //     width: 25%;
+            // }
+            // &.slide2 {
+            //     width: 100%;
+            // }
         }
         .track {
             width: 92%;

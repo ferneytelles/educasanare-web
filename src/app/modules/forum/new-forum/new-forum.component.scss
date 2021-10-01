@@ -1,0 +1,116 @@
+.content {
+    min-height: 60vh;
+    padding: 40px 50px 70px;
+    background-image: url(../../../../assets/images/bgpoligon.png);
+    background-position: center;
+    background-size: cover;
+    .title {
+        margin-bottom: 16px;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        background: #ffffff;
+        box-shadow: 0 0 10px #00000059;
+        .category {
+            margin-bottom: 12px;
+            span {
+                font-weight: 500;
+                margin-right: 8px;
+            }
+        }
+        .name {
+            padding: 5px;
+            border: 1px solid #a1a1a1;
+            outline: none;
+            margin-bottom: 15px;
+        }
+        textarea {
+            font-size: 16px;
+            line-height: 20px;
+            padding: 5px;
+            border: 1px solid #a1a1a1;
+            outline: none;
+            margin-bottom: 15px;
+            resize: none;
+        }
+        .bottons {
+            display: flex;
+            justify-content: space-between;
+            .file-content {
+                display: flex;
+                flex-direction: column;
+                .file {
+                    display: flex;
+                    margin-bottom: 8px;
+                    .upload {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        padding: 2px 10px;
+                        background: #ffffff;
+                        border: 1px solid #106738;
+                        color: #106738;
+                        box-shadow: none;
+                        overflow: hidden;
+                        .icon {
+                            font-size: 20px;
+                        }
+                        input {
+                            position: absolute;
+                            top: 0;
+                            // left: 0;
+                            right: 0;
+                            bottom: 0;
+                            z-index: 2;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                    }
+                    .name-file {
+                        margin-left: 10px;
+                        padding: 3px 0px;
+                        max-width: 300px;
+                        white-space: nowrap;
+                        overflow-x: scroll;
+                        &::-webkit-scrollbar {
+                            appearance: none;
+                            width: 0;
+                            height: 0;
+                        }
+                    }
+                }
+                .text {
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+            }
+            .options {
+                display: flex;
+                align-items: flex-start;
+                .cancel {
+                    padding: 2px 15px;
+                    background: #ffffff;
+                    border: 1px solid #106738;
+                    color: #106738;
+                    box-shadow: none;
+                }
+                .confirm {
+                    display: flex;
+                    align-items: center;
+                    padding: 2px 15px 2px 10px;
+                    background: #106738;
+                    border: 1px solid #106738;
+                    color: #ffffff;
+                    box-shadow: none;
+                    margin-left: 10px;
+                    span {
+                        font-size: 20px;
+                        margin-right: 4px;
+                    }
+                }
+            }
+        }
+    }
+}

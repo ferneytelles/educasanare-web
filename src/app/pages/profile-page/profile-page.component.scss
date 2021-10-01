@@ -1,0 +1,174 @@
+.content {
+    min-height: 60vh;
+    padding: 40px 50px 70px;
+    background-image: url(../../../assets/images/bgpoligon.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    .profile {
+        display: flex;
+        align-items: flex-start;
+        padding: 30px;
+        width: 90%;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #00000049;
+        .image {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 8px #00000049;
+            .img {
+                position: relative;
+                width: 65%;
+                padding-bottom: 65%;
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 100%;
+                    border: 1px solid #d7d7d7;
+                }
+            }
+            .line {
+                width: 100%;
+                margin: 10px 0;
+                border-top: 1px solid #d7d7d7;
+            }
+            .photo {
+                position: relative;
+                font-size: 14px;
+                border: 1px solid #106738;
+                color: #106738;
+                background: #ffffff;
+                padding: 3px 10px;
+                overflow: hidden;
+                &:hover {
+                    color: #ffffff;
+                    background: #106738;
+                }
+                input {
+                    position: absolute;
+                    top: 0;
+                    // left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 2;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+            }
+            .text {
+                text-align: center;
+                padding: 4px 0 10px;
+                font-size: 13px;
+                color: #555555;
+            }
+        }
+        .info {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            padding: 0 30px;
+            &.editing {
+                .item {
+                    flex-wrap: wrap;
+                    border-bottom: none;
+                    margin-bottom: 15px;
+                    input {
+                        width: 100%;
+                        border: 1px solid #d7d7d7;
+                        text-align: left;
+                    }
+                }
+                .bottons {
+                    justify-content: flex-end;
+                }
+            }
+            .title {
+                display: flex;
+                align-items: center;
+                margin: 10px;
+            }
+            .item {
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #555555;
+                margin-bottom: 20px;
+                .icon {
+                    font-size: 20px;
+                    margin-right: 4px;
+                }
+                .label {
+                    font-size: 14px;
+                }
+                input {
+                    color: #555555;
+                    width: 60%;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    margin-left: auto;
+                    text-align: right;
+                    border: none;
+                    outline: none;
+                    &.name {
+                        text-transform: capitalize;
+                    }
+                }
+            }
+            .bottons {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                .edit,
+                .cancel {
+                    font-size: 14px;
+                    border: 1px solid #106738;
+                    color: #106738;
+                    background: #ffffff;
+                    padding: 3px 20px;
+                    box-shadow: none;
+                    &:hover {
+                        color: #ffffff;
+                        background: #106738;
+                    }
+                }
+                .off {
+                    display: flex;
+                    align-items: center;
+                    color: #ff0000;
+                    font-size: 14px;
+                    padding: 3px 10px;
+                    box-shadow: none;
+                    &:hover {
+                        background: #ff000027;
+                    }
+                    span {
+                        font-size: 22px;
+                        margin-right: 5px;
+                    }
+                }
+                .confirm {
+                    font-size: 14px;
+                    border: 1px solid #106738;
+                    color: #ffffff;
+                    background: #106738;
+                    padding: 3px 20px;
+                    box-shadow: none;
+                    margin-left: 15px;
+                    &:hover {
+                        background: #16884b;
+                    }
+                }
+            }
+        }
+    }
+}

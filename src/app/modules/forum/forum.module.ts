@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { CategoryComponent } from './category/category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NewForumComponent } from './new-forum/new-forum.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
         component: CategoryItemComponent
       },
       {
+        path: 'nuevo-foro',
+        component: NewForumComponent
+      },
+      {
         path: ':forum',
         component: ForumItemComponent
       }
@@ -34,7 +39,8 @@ const routes: Routes = [
     CategoriesComponent,
     ForumItemComponent,
     CategoryItemComponent,
-    CategoryComponent
+    CategoryComponent,
+    NewForumComponent
   ],
   imports: [
     CommonModule,

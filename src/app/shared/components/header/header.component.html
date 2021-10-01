@@ -1,17 +1,18 @@
+<app-modal-session></app-modal-session>
 <div class="content">
     <div class="header">
         <div class="logo">
-            <img class="image" src="assets/images/logo.png" alt="">
+            <img class="image" src="assets/images/logo.png" alt="" (click)="navigate('/proyecto')">
         </div>
         <div class="menu">
 
             <div class="options1">
-                <a class="link" href="">
+                <a class="link">
                     <span class="material-icons notranslate">
                         help_outline
                     </span>Ayuda
                 </a>
-                <a class="link" href="">
+                <a class="link" (click)="goProfile()">
                     <span class="material-icons notranslate">
                         person_outline
                     </span>Cuenta
