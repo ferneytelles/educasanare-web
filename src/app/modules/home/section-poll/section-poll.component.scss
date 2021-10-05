@@ -23,7 +23,7 @@
         justify-content: space-evenly;
         padding: 50px 10px;
         .icon {
-            font-size: 22vh;
+            font-size: 18vw;
             color: #a1a1a1;
         }
         .text {
@@ -43,5 +43,81 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .content {
+        flex-direction: column;
+        .poll {
+            width: 100%;
+            padding-bottom: 82%;
+            iframe {
+                top: 30px;
+            }
+        }
+        .help {
+            width: 92%;
+            margin: 0 4%;
+            padding: 30px 0px;
+            border-bottom: 1px solid #d7d7d7;
+            .icon {
+                margin-bottom: 8px;
+            }
+            h4 {
+                margin-bottom: 20px;
+            }
+            .text {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .content .poll {
+        padding-bottom: 95%;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .content .poll {
+        padding-bottom: 100%;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .content .poll {
+        padding-bottom: 110%;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .content .poll {
+        padding-bottom: 120%;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .content .poll {
+        padding-bottom: 130%;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .content .poll {
+        padding-bottom: 150%;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .content .poll {
+        padding-bottom: 180%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .content .poll {
+        padding-bottom: 200%;
     }
 }

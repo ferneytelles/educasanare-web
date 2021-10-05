@@ -30,6 +30,7 @@
                     border: 1px solid #ffffff;
                     border-radius: 5px;
                     padding: 2px 8px;
+                    margin-bottom: 0;
                 }
                 .content-text {
                     // border: 1px dashed #ffffff;
@@ -93,6 +94,57 @@
                 background-image: url(../../../../assets/images/bgen2.png);
                 background-size: cover;
                 background-position: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .content {
+        .elements {
+            .item1,
+            .item2 {
+                .text {
+                    padding: 15px;
+                    .content-text {
+                        padding: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .content {
+        height: auto;
+        padding-bottom: 0;
+        .elements {
+            position: relative;
+            .item1,
+            .item2 {
+                flex-direction: column;
+                .image {
+                    width: 100%;
+                }
+                .text {
+                    width: 100%;
+                    .content-text {
+                        .box1 {
+                            width: 10%;
+                            padding-bottom: 10%;
+                        }
+                        .box2 {
+                            width: 10%;
+                            padding-top: 10%;
+                        }
+                    }
+                }
+            }
+            .item2 {
+                .text {
+                    order: 2;
+                }
             }
         }
     }

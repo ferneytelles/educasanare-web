@@ -119,3 +119,34 @@
         }
     }
 }
+
+@media screen and (max-width: 780px) {
+    .content {
+        padding: 10px;
+        .top {
+            flex-direction: column;
+            .text {
+                margin: 0;
+            }
+            .input-group-text {
+                margin-top: 10px;
+                margin-left: auto;
+            }
+        }
+        .experiences {
+            .card {
+                width: 45%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .content {
+        .experiences {
+            .card {
+                width: 90%;
+            }
+        }
+    }
+}

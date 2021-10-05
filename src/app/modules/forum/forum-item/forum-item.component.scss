@@ -174,3 +174,30 @@
         }
     }
 }
+
+@media screen and (max-width: 680px) {
+    .content {
+        padding: 15px;
+        .theme {
+            flex-direction: column;
+            align-items: center;
+            .profile {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            .forum {
+                order: 2;
+                width: 100%;
+                padding: 15px;
+            }
+        }
+        .answers {
+            .new {
+                padding: 15px 15px 10px;
+            }
+            .forum {
+                padding: 15px;
+            }
+        }
+    }
+}

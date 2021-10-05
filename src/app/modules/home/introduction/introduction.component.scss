@@ -26,3 +26,20 @@
         }
     }
 }
+
+@media screen and (max-width: 700px) {
+    .content {
+        padding: 25px 15px;
+        .title {
+            margin-bottom: 12px;
+        }
+        .info {
+            flex-direction: column;
+            .text,
+            .video {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    }
+}

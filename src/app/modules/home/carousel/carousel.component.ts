@@ -15,13 +15,21 @@ export class CarouselComponent implements OnInit {
     },
     {
       img: 'assets/images/slide2.png',
-      title: 'Loren Ipsum',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti maiores harum ducimus et sed dolore, exercitationem tempora neque sapiente? Sint beatae quo rerum vitae consequatur fugit veritatis commodi quibusdam.'
+      title: 'Loren Ipsum 2',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam deleniti maiores harum ducimus et sed dolore.'
     }
   ];
+
+  currentSilde = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  changeCarousel(value: any): void{
+    this.currentSilde = parseInt(value.current.split('-').pop(), 10);
+    // console.log(this.currentSilde);
   }
 
 }

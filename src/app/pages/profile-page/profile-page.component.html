@@ -7,12 +7,13 @@
                 <img *ngIf="user.img===''" src="assets/images/face0.png" alt="">
                 <img #image *ngIf="user.img!==''" [src]="user.img|secureUrl" alt="">
             </div>
-            <div class="line"></div>
-            <button class="btn photo">
-                Cambiar foto de perfil
-                <input type="file" accept="image/png, image/jpeg, image/jpg" (change)="changeFile($event)" title=""> 
-            </button>
-            <span class="text">Archivos jpg o png de 2MB máximo</span>
+            <div class="line">
+                <button class="btn photo">
+                    Cambiar foto de perfil
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" (change)="changeFile($event)" title=""> 
+                </button>
+                <span class="text">Archivos jpg o png de 2MB máximo</span>
+            </div>
         </div>
 
         <div class="info" [ngClass]="{'editing': editing}">

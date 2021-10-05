@@ -10,6 +10,7 @@ import { ServicesComponent } from './services/services.component';
 import { SectionInfoComponent } from './section-info/section-info.component';
 import { SectionForumComponent } from './section-forum/section-forum.component';
 import { SectionPollComponent } from './section-poll/section-poll.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -27,7 +28,8 @@ import { SectionPollComponent } from './section-poll/section-poll.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   exports: [
     CarouselComponent,

@@ -58,3 +58,24 @@
         }
     }
 }
+
+@media screen and (max-width: 700px) {
+    .content {
+        padding: 30px 5px;
+        .experiences {
+            flex-wrap: wrap;
+            .card {
+                width: 46%;
+                &:last-child {
+                    display: none;
+                }
+                .card-body {
+                    padding: 8px;
+                }
+            }
+        }
+        .botton {
+            margin-top: 20px;
+        }
+    }
+}
