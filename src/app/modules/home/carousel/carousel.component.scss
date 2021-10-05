@@ -1,9 +1,12 @@
 .carousel {
-    li {
+     ::ng-deep .carousel-indicators li {
         border: none;
         width: 15px;
         height: 15px;
         border-radius: 10px;
+    }
+    img {
+        width: 100%;
     }
     .content {
         position: absolute;
@@ -19,6 +22,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        text-align: left;
         .title {
             overflow: hidden;
             display: -webkit-box;
@@ -35,8 +39,58 @@
             -webkit-box-orient: vertical;
         }
     }
-    .carousel-control-prev,
-    .carousel-control-next {
+     ::ng-deep .carousel-control-prev,
+     ::ng-deep .carousel-control-next {
         width: 5%;
+        z-index: 10;
+    }
+}
+
+.info {
+    display: none;
+    background: #2182c1;
+    .content {
+        padding: 15px;
+        background-image: url(../../../../assets/images/bgfooter.png);
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        transition: all .3s ease-in-out;
+        .title {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            transition: all .3s ease-in-out;
+        }
+        .text {
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 0;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .carousel {
+        outline: none;
+         ::ng-deep .carousel-indicators {
+            margin-bottom: -7px;
+        }
+        .content {
+            display: none;
+        }
+    }
+    .info {
+        display: flex;
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 }

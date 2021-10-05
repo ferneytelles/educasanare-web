@@ -84,3 +84,20 @@
         }
     }
 }
+
+@media screen and (max-width: 700px) {
+    .content {
+        padding: 15px 5px;
+        .pills {
+            .card {
+                width: 45%;
+                img {
+                    width: 60%;
+                }
+                .card-body {
+                    padding: 8px 8px 20px;
+                }
+            }
+        }
+    }
+}

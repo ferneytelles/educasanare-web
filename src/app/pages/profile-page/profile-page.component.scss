@@ -39,38 +39,42 @@
                 }
             }
             .line {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 width: 100%;
-                margin: 10px 0;
+                margin-top: 10px;
+                padding: 10px 0;
                 border-top: 1px solid #d7d7d7;
-            }
-            .photo {
-                position: relative;
-                font-size: 14px;
-                border: 1px solid #106738;
-                color: #106738;
-                background: #ffffff;
-                padding: 3px 10px;
-                overflow: hidden;
-                &:hover {
-                    color: #ffffff;
-                    background: #106738;
+                .photo {
+                    position: relative;
+                    font-size: 14px;
+                    border: 1px solid #106738;
+                    color: #106738;
+                    background: #ffffff;
+                    padding: 3px 10px;
+                    overflow: hidden;
+                    &:hover {
+                        color: #ffffff;
+                        background: #106738;
+                    }
+                    input {
+                        position: absolute;
+                        top: 0;
+                        // left: 0;
+                        right: 0;
+                        bottom: 0;
+                        z-index: 2;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
                 }
-                input {
-                    position: absolute;
-                    top: 0;
-                    // left: 0;
-                    right: 0;
-                    bottom: 0;
-                    z-index: 2;
-                    opacity: 0;
-                    cursor: pointer;
+                .text {
+                    text-align: center;
+                    padding: 4px 0 0;
+                    font-size: 13px;
+                    color: #555555;
                 }
-            }
-            .text {
-                text-align: center;
-                padding: 4px 0 10px;
-                font-size: 13px;
-                color: #555555;
             }
         }
         .info {
@@ -166,6 +170,73 @@
                     margin-left: 15px;
                     &:hover {
                         background: #16884b;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .content {
+        padding: 30px;
+        .profile {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .content {
+        .profile {
+            flex-direction: column;
+            .image {
+                width: 100%;
+                flex-direction: row;
+                .img {
+                    width: 25%;
+                    padding-bottom: 25%;
+                }
+                .line {
+                    width: fit-content;
+                    border-top: none;
+                    margin-left: 20px;
+                    align-items: flex-start;
+                }
+            }
+            .info {
+                width: 100%;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .content {
+        padding: 30px 10px;
+        .profile {
+            padding: 15px;
+            .image {
+                box-shadow: 0 2px 5px #00000049;
+                flex-direction: column;
+                .img {
+                    width: 50%;
+                    padding-bottom: 50%;
+                }
+                .line {
+                    margin-left: 0;
+                    border-top: 1px solid #d7d7d7;
+                    align-items: center;
+                }
+            }
+            .info {
+                padding: 0;
+                .item {
+                    flex-wrap: wrap;
+                    input {
+                        width: 100%;
+                        margin: 0;
                     }
                 }
             }

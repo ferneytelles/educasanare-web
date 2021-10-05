@@ -47,3 +47,31 @@
         }
     }
 }
+
+@media screen and (max-width: 780px) {
+    .content {
+        padding: 15px;
+        .carousel-content {
+            padding: 0 18%;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .content {
+        padding: 15px;
+        .carousel-content {
+            padding: 0 30px;
+        }
+        .info {
+            .date {
+                display: flex;
+                flex-wrap: wrap;
+                span {
+                    white-space: nowrap;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

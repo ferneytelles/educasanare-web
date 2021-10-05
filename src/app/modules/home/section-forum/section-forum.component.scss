@@ -88,3 +88,23 @@
         }
     }
 }
+
+@media screen and (max-width: 700px) {
+    .content {
+        padding: 30px 10px;
+        .forums {
+            h5 {
+                margin-bottom: 12px;
+            }
+            .forum {
+                padding: 15px;
+                margin-bottom: 15px;
+                .head {
+                    .category {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
