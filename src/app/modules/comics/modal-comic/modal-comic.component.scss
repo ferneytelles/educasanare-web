@@ -1,5 +1,5 @@
 ::ng-deep.modal-comic .modal-dialog {
-    max-width: 30% !important;
+    max-width: 53vh !important;
     max-height: 100vh !important;
     min-height: 100vh;
     display: flex;
@@ -113,5 +113,11 @@
          ::ng-deep.progress-bar {
             background-color: #0072BC;
         }
+    }
+}
+
+@media screen and (min-height: 800px) {
+     ::ng-deep.modal-comic .modal-dialog {
+        max-width: 56vh !important;
     }
 }
