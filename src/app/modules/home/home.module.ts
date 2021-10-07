@@ -11,6 +11,7 @@ import { SectionInfoComponent } from './section-info/section-info.component';
 import { SectionForumComponent } from './section-forum/section-forum.component';
 import { SectionPollComponent } from './section-poll/section-poll.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ComicsModule } from '../comics/comics.module';
 
 
 
@@ -29,7 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    ComicsModule
   ],
   exports: [
     CarouselComponent,
