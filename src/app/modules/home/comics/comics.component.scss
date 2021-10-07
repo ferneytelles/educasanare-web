@@ -13,52 +13,57 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
         .comic {
-            position: relative;
+            width: 45%;
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            width: 36%;
-            padding: 10px 46px;
-            border-radius: 100px;
+            // background: #ffffff;
+            overflow: hidden;
             margin-bottom: 40px;
-            img {
-                position: absolute;
-                top: -8%;
-                left: -2%;
-                height: 45%;
-                border-radius: 100%;
+            cursor: pointer;
+            .image {
+                position: relative;
+                // width: 35%;
+                img {
+                    height: 135px;
+                    border-radius: 12px 0 0 12px;
+                    // padding: 8px;
+                    // position: absolute;
+                    // top: 0;
+                    // left: 0;
+                    // width: 100%;
+                    // height: 100%;
+                    // object-fit: contain;
+                }
             }
-            .title {
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
                 width: 100%;
-                margin-bottom: 8px;
+                padding: 12px;
+                // min-height: 130px;
+                text-align: right;
+                border-radius: 0 12px 12px 0;
+                border: 2px solid #ffffff;
+                border-left: none;
                 color: #ffffff;
-                text-align: center;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-            }
-            .text {
-                width: 100%;
-                // text-align: justify;
-                color: #ffffff;
-                font-size: 14px;
-                line-height: 18px;
-                margin-bottom: 5px;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-            }
-            .btn {
-                font-size: 14px;
-                color: #ffffff;
-                border: 1px solid #ffffff;
-                padding: 0px 15px;
-                outline: none;
-                &:hover {
-                    background: #ffffff;
-                    color: #000000;
+                .title {
+                    text-align: right;
+                    font-size: 18px;
+                    line-height: 20px;
+                    margin-bottom: 5px;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+                .text {
+                    margin-bottom: 0;
+                    font-size: 14px;
+                    line-height: 16px;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
                 }
             }
         }
@@ -80,7 +85,7 @@
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 960px) {
     .content {
         padding: 20px 5px;
         .comics {
