@@ -9,6 +9,7 @@
         orphans: 1;
         widows: 1;
         .content-comic {
+            width: 100%;
             display: inline-block;
             margin-bottom: 20px;
             cursor: pointer;
@@ -32,6 +33,9 @@
                     }
                 }
                 .info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
                     width: 65%;
                     padding: 12px;
                     min-height: 130px;

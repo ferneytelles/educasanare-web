@@ -47,8 +47,14 @@ export class ModalComicComponent implements OnInit, OnDestroy {
   }
 
   openModal(): void{
-    this.modal.open(this.modalComic, {windowClass: 'modal-comic', centered: true});
+    this.modal.open(this.modalComic, {windowClass: 'modal-comic', centered: true, beforeDismiss: (): boolean => {
+      this.page = 0;
+      this.setProgress();
+      return true;
+    }});
   }
+
+
 
   movePage(value: boolean): void{
     if (value) {
