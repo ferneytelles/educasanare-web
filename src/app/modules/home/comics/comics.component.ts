@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comics',
@@ -34,9 +35,14 @@ export class ComicsComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+  }
+  
+  goComics(): void{
+    window.scroll({top: 0, behavior: 'smooth'});
+    this.route.navigate(['/comics']);
   }
 
 }
