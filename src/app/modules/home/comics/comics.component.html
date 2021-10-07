@@ -1,15 +1,14 @@
 <div class="content">
     <h4 class="title">Comics</h4>
     <div class="comics">
-        <div class="comic" *ngFor="let item of comics" [ngStyle]="{'background': item.color}">
-            <img [src]="item.img" alt="">
-            <h5 class="title">{{item.title}}</h5>
-            <p class="text">
-                {{item.text}}
-            </p>
-            <button class="btn">
-                Ver más
-            </button>
+        <div class="comic" *ngFor="let item of comics2; let i=index" (click)="openComic(i)">
+            <div class="image">
+                <img [src]="item.miniature" alt="">
+            </div>
+            <div class="info">
+                <h5 class="title">{{item.title}}</h5>
+                <p class="text">{{item.description}}</p>
+            </div>
         </div>
     </div>
     <div class="botton">
