@@ -87,7 +87,27 @@ export class TrainingsComponent implements OnInit {
     // autoplay: true,
     // autoplaySpeed: 5000,
     // pauseOnHover: true,
-    arrows: true
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 970,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 580,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   };
 
   constructor() { }
