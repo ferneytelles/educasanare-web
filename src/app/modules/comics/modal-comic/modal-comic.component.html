@@ -1,0 +1,46 @@
+<ng-template #comic let-modal class="">
+    <div class="modal-body">
+
+        <div class="head">
+            <div class="options">
+                <div class="option" *ngFor="let item of options">
+                    <button class="btn">
+                        <span class="material-icons-outlined notranslate">
+                            {{item.iconName}}
+                        </span>
+                    </button>
+                    <span class="text">
+                        {{item.text}}
+                    </span>
+                </div>
+            </div>
+            <div class="content-close">
+                <button class="btn" (click)="modal.dismiss('Cross click')">
+                    <span class="material-icons-outlined notranslate">
+                        undo
+                    </span>
+                    Regresar
+                </button>
+            </div>
+        </div>
+
+        <div class="content">
+            <app-comic-content class="component" [page]="content[page]"></app-comic-content>
+        </div>
+
+        <div class="arrows">
+            <div class="bottons">
+                <button class="btn" (click)="movePage(false)">
+                    Anterior
+                </button>
+                <button class="btn" (click)="movePage(true)">
+                    Siguiente
+                </button>
+            </div>
+            <ngb-progressbar class="progress" [value]="progress">
+            </ngb-progressbar>
+
+        </div>
+
+    </div>
+</ng-template>

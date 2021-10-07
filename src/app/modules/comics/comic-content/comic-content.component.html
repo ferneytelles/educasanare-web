@@ -1,0 +1,16 @@
+<div class="content" [ngSwitch]="page?.type">
+    <div class="comic type0" *ngSwitchCase="0">
+        <img *ngFor="let item of page?.images" [src]="item" alt="">
+    </div>
+
+    <div class="comic type1" *ngSwitchCase="1">
+        <img *ngFor="let item of page?.images" [src]="item" alt="">
+    </div>
+
+    <div class="comic type2" *ngSwitchCase="2">
+
+    </div>
+    <div *ngSwitchDefault>
+
+    </div>
+</div>
