@@ -20,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ],
   exports: [
-    ComicsListComponent
+    ComicsListComponent,
+    ModalComicComponent
   ]
 })
 export class ComicsModule { }
