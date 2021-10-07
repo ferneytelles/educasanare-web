@@ -31,9 +31,9 @@
                 width: 100%;
                 padding: 70px 90px 0 90px;
                 color: #ffffff;
-                // &.p2 {
-                //     padding: 58px 0 0 120px;
-                // }
+                &.p2:first-child {
+                    display: none;
+                }
                 img {
                     width: 15%;
                     margin-right: 25px;
@@ -64,5 +64,96 @@
         max-width: 56%;
         height: auto;
         max-height: 66%;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    .content {
+        padding: 40px 30px 50px;
+        .title {
+            width: 100%;
+            .text {
+                font-size: 20px;
+            }
+            .line {
+                width: 70%;
+            }
+        }
+        .image {
+            max-width: 53%;
+        }
+        .contain {
+            .info {
+                .item {
+                    padding: 40px 20px 0;
+                    img {
+                        width: 18%;
+                    }
+                    .text-content {
+                        font-size: 14px;
+                        line-height: 18px;
+                        .number {
+                            font-size: 32px;
+                            line-height: 36px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .content {
+        .image {
+            display: none;
+        }
+        .contain {
+            .info {
+                width: 100%;
+                flex-direction: row;
+                &.hidden-mobile {
+                    display: none;
+                }
+                .item {
+                    width: 50%;
+                    &.p2:first-child {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .content {
+        padding: 25px 15px 30px;
+        .contain {
+            .info {
+                .item {
+                    padding: 30px 10px 0;
+                    img {
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .content {
+        .contain {
+            .info {
+                flex-direction: column;
+                .item {
+                    width: 100%;
+                    img {
+                        width: 16%;
+                    }
+                }
+            }
+        }
     }
 }
