@@ -8,10 +8,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ComicContentComponent implements OnInit {
 
   @Input() page: any;
+  imageZoom = '';
+  zoom = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showZoom(img: string): void{
+    this.imageZoom = img;
+    this.zoom = true;
   }
 
 }
