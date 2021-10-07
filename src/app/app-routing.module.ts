@@ -40,6 +40,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/profile-page/profile-page.module').then(m => m.ProfilePageModule)
       },
       {
+        path: 'comics',
+        loadChildren: () => import('./pages/comics-page/comics-page.module').then(m => m.ComicsPageModule)
+      },
+      {
         path: '**',
         redirectTo: 'proyecto',
         pathMatch: 'full'

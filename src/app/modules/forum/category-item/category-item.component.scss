@@ -152,19 +152,11 @@
     .forums {
         padding: 15px;
         .head {
-            flex-wrap: wrap;
-            .btn {
-                margin-left: auto;
-                // flex-direction: column;
-                // padding: 2px;
-                // margin-right: 15px;
-                // span {
-                //     font-size: 28px;
-                // }
-            }
+            flex-direction: column;
+            align-items: flex-end;
+            
             .input-group-text {
                 margin-top: 10px;
-                margin-left: auto;
             }
         }
         .content {

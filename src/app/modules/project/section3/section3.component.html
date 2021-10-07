@@ -8,7 +8,7 @@
     </div>
     <div class="contain">
 
-        <div class="info">
+        <div class="info hidden-mobile">
             <div class="item">
                 <img *ngIf="web.img!==''" [src]="web.img" alt="">
                 <p class="text-content">
@@ -19,6 +19,14 @@
             </div>
         </div>
         <div class="info ">
+            <div class="item p2">
+                <img *ngIf="web.img!==''" [src]="web.img" alt="">
+                <p class="text-content">
+                    <span class="number" *ngIf="web.number!==''">
+                    <span>{{web.number}}</span>
+                    </span> {{web.text}}
+                </p>
+            </div>
             <div class="item p2" *ngFor="let item of items">
                 <img *ngIf="item.img!==''" [src]="item.img" alt="">
                 <p class="text-content">

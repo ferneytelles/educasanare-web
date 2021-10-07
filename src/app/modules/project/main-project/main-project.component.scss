@@ -5,6 +5,7 @@
     }
     .circle {
         position: absolute;
+        z-index: 5;
         right: 2px;
         bottom: 0;
         width: 20%;
@@ -42,4 +43,35 @@
     padding-top: 0;
 }
 
-@media screen and (max-width: 970px) {}
+@media screen and (max-width: 700px) {
+    .banner {
+        background-image: url(../../../../assets/images/banner.png);
+        // background-size: cover;
+        .bg {
+            display: none;
+        }
+        .circle {
+            bottom: -30px;
+            width: 100px;
+        }
+        .text {
+            position: relative;
+            width: 100%;
+            padding: 30px 15px 70px;
+            font-size: 24px;
+            .cod {
+                font-size: 20px;
+            }
+        }
+    }
+    .section1 {
+        margin-top: 0;
+        padding: 10px;
+    }
+    .section2,
+    .section3,
+    .training {
+        padding: 10px;
+        padding-top: 0;
+    }
+}
