@@ -159,6 +159,108 @@ export class ComicsService {
           ]
         }
       ]
+    },
+    {
+      miniature: 'assets/comics/EC4/004.png',
+      title: 'El osito hormiguero super heroe',
+      description: 'Lola, la nutria y sus hijos se ven amenazados cuando llega un grupo de traficantes de animales a la orilla del rio',
+      content: [
+        {
+          type: 0,
+          images: ['assets/comics/EC4/Viñetas/0.jpg']
+        },
+        {
+          type: 3,
+          images: [
+            'assets/comics/EC4/Viñetas/1.jpg',
+            'assets/comics/EC4/Viñetas/2.jpg',
+            'assets/comics/EC4/Viñetas/3.jpg'
+          ]
+        },
+        {
+          type: 1,
+          images: [
+            'assets/comics/EC4/Viñetas/4.jpg',
+            'assets/comics/EC4/Viñetas/5.jpg',
+            'assets/comics/EC4/Viñetas/6.jpg'
+          ]
+        },
+        {
+          type: 2,
+          images: [
+            'assets/comics/EC4/Viñetas/7.jpg',
+            'assets/comics/EC4/Viñetas/8.jpg',
+            'assets/comics/EC4/Viñetas/9.jpg'
+          ]
+        },
+        {
+          type: 2,
+          images: [
+            'assets/comics/EC4/Viñetas/10.jpg',
+            'assets/comics/EC4/Viñetas/11.jpg',
+            'assets/comics/EC4/Viñetas/12.jpg'
+          ]
+        },
+        {
+          type: 1,
+          images: [
+            'assets/comics/EC4/Viñetas/13.jpg',
+            'assets/comics/EC4/Viñetas/14.jpg',
+            'assets/comics/EC4/Viñetas/15.jpg'
+          ]
+        }
+      ]
+    },
+    {
+      miniature: 'assets/comics/EC5/005.png',
+      title: '¿Qué somos mamá?',
+      description: 'Lola, la nutria y sus hijos se ven amenazados cuando llega un grupo de traficantes de animales a la orilla del rio',
+      content: [
+        {
+          type: 0,
+          images: ['assets/comics/EC5/Viñetas/0.jpg']
+        },
+        {
+          type: 3,
+          images: [
+            'assets/comics/EC5/Viñetas/1.jpg',
+            'assets/comics/EC5/Viñetas/2.jpg',
+            'assets/comics/EC5/Viñetas/3.jpg'
+          ]
+        },
+        {
+          type: 2,
+          images: [
+            'assets/comics/EC5/Viñetas/4.jpg',
+            'assets/comics/EC5/Viñetas/5.jpg',
+            'assets/comics/EC5/Viñetas/6.jpg'
+          ]
+        },
+        {
+          type: 2,
+          images: [
+            'assets/comics/EC5/Viñetas/7.jpg',
+            'assets/comics/EC5/Viñetas/8.jpg',
+            'assets/comics/EC5/Viñetas/9.jpg'
+          ]
+        },
+        {
+          type: 1,
+          images: [
+            'assets/comics/EC5/Viñetas/10.jpg',
+            'assets/comics/EC5/Viñetas/11.jpg',
+            'assets/comics/EC5/Viñetas/12.jpg'
+          ]
+        },
+        {
+          type: 1,
+          images: [
+            'assets/comics/EC5/Viñetas/13.jpg',
+            'assets/comics/EC5/Viñetas/14.jpg',
+            'assets/comics/EC5/Viñetas/15.jpg'
+          ]
+        }
+      ]
     }
   ];
 
