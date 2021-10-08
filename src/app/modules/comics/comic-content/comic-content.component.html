@@ -1,0 +1,89 @@
+<div class="content" [ngSwitch]="page?.type">
+    <div class="comic type0" *ngSwitchCase="0">
+        <img *ngFor="let item of page?.images" [src]="item" alt="">
+    </div>
+
+    <div class="comic type1" *ngSwitchCase="1">
+        <div class="image" *ngFor="let item of page?.images">
+            <img [src]="item" alt="">
+            <button class="btn" (click)="showZoom(item)">
+                <span class="material-icons-outlined notranslate">
+                    zoom_in
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="comic type2" *ngSwitchCase="2">
+        <div class="top">
+            <div class="image">
+                <img [src]="page?.images[0]" alt="">
+                <button class="btn" (click)="showZoom(page?.images[0])">
+                    <span class="material-icons-outlined notranslate">
+                        zoom_in
+                    </span>
+                </button>
+            </div>
+            <div class="image">
+                <img [src]="page?.images[1]" alt="">
+                <button class="btn" (click)="showZoom(page?.images[1])">
+                    <span class="material-icons-outlined notranslate">
+                        zoom_in
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="image">
+                <img [src]="page?.images[2]" alt="">
+                <button class="btn" (click)="showZoom(page?.images[2])">
+                    <span class="material-icons-outlined notranslate">
+                        zoom_in
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="comic type3" *ngSwitchCase="3">
+        <div class="top">
+            <div class="image">
+                <img [src]="page?.images[0]" alt="">
+                <button class="btn" (click)="showZoom(page?.images[0])">
+                    <span class="material-icons-outlined notranslate">
+                        zoom_in
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="image">
+                <img [src]="page?.images[1]" alt="">
+                <button class="btn" (click)="showZoom(page?.images[1])">
+                    <span class="material-icons-outlined notranslate">
+                        zoom_in
+                    </span>
+                </button>
+            </div>
+            <div class="image">
+                <img [src]="page?.images[2]" alt="">
+                <button class="btn" (click)="showZoom(page?.images[2])">
+                    <span class="material-icons-outlined notranslate">
+                        zoom_in
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngSwitchDefault>
+
+    </div>
+</div>
+
+<div class="zoom" [ngClass]="{'show': zoom}" (click)="zoom=false">
+    <div class="image">
+        <img [src]="imageZoom" alt="">
+    </div>
+</div>

@@ -1,0 +1,71 @@
+.content {
+    padding: 40px 50px;
+    background-image: url(../../../../assets/images/bgpoligon.png);
+    background-size: cover;
+    background-position: center;
+    .comics {
+        column-count: 2;
+        column-gap: 20px;
+        orphans: 1;
+        widows: 1;
+        .content-comic {
+            width: 100%;
+            display: inline-block;
+            margin-bottom: 20px;
+            cursor: pointer;
+            // padding: 10px;
+            .comic {
+                width: 100%;
+                display: flex;
+//                 background: #ffffff;
+              overflow: hidden;
+                .image {
+                    position: relative;
+//                     width: 35%;
+//                     border-radius: 12px 0 0 12px;
+//                     overflow: hidden;
+                    img {
+//                         position: absolute;
+//                         top: 0;
+//                         left: 0;
+//                         width: 100%;
+//                         height: 100%;
+//                         object-fit: cover;
+                      height: 135px;
+                        border-radius: 12px 0 0 12px;
+                    }
+                }
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    padding: 12px;
+//                     min-height: 130px;
+                    text-align: right;
+                    border-radius: 0 12px 12px 0;
+                    border: 2px solid #0072BC;
+                    border-left: none;
+                    .title {
+                      font-size: 18px;
+                        line-height: 20px;
+                        margin-bottom: 5px;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                    }
+                    .text {
+                        margin-bottom: 0;
+                        font-size: 14px;
+                        line-height: 16px;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+            }
+        }
+    }
+}

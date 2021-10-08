@@ -1,0 +1,19 @@
+<app-banner-top [text]="'Comics'" [icon]="'auto_stories'" [bgColor]="'0072BC39'" [textColor]="'0072BC'"></app-banner-top>
+
+<div class="content">
+    <div class="comics">
+        <div class="content-comic" *ngFor="let item of comics; let i=index" (click)="openComic(i)">
+            <div class="comic">
+                <div class="image">
+                    <img [src]="item.miniature" alt="">
+                </div>
+                <div class="info">
+                    <h5 class="title">{{item.title}}</h5>
+                    <p class="text">{{item.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal-comic [content]="comics[selectComic].content"></app-modal-comic>

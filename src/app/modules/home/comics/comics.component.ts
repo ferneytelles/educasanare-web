@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ComicsService } from 'src/app/shared/services/comics.service';
 
 @Component({
   selector: 'app-comics',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ComicsComponent implements OnInit {
 
+  comics2: Array<any>;
   comics = [
     {
       color: '#92B65B',
@@ -35,14 +37,21 @@ export class ComicsComponent implements OnInit {
     }
   ];
 
-  constructor(private route: Router) { }
+  selectComic = 0;
+
+  constructor(private route: Router, private comicService: ComicsService) { }
 
   ngOnInit(): void {
+    this.comics2 = this.comicService.comics.slice(0, 4);
   }
-  
+
   goComics(): void{
     window.scroll({top: 0, behavior: 'smooth'});
     this.route.navigate(['/comics']);
   }
 
+  openComic(index: number): void{
+    this.selectComic = index;
+    this.comicService.modalComic.next(true);
+  }
 }
