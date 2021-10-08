@@ -32,6 +32,7 @@ export class ModalComicComponent implements OnInit, OnDestroy {
   page = 0;
   progress = 0;
   @Input() content: Array<any>;
+  @Input() audio: string;
   unsubscribe = new Subject();
   @ViewChild('comic') modalComic: any;
 

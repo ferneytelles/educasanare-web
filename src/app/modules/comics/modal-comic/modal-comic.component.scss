@@ -95,6 +95,10 @@
     flex-direction: column;
     background: #004123;
     padding: 10px 30px;
+    .audio {
+        width: 0;
+        height: 0;
+    }
     .bottons {
         display: flex;
         justify-content: space-between;
