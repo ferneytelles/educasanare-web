@@ -743,7 +743,7 @@ export class ComicsService {
       content: [
         {
           type: 0,
-          images: ['https://educasanare.gumlet.io/pruebas/comics/EC15/0.jpg']
+          images: ['https://educasanare.gumlet.io/pruebas/comics/EC15/00.jpg']
         },
         {
           type: 1,
