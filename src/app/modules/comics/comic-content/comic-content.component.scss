@@ -80,11 +80,70 @@
                 }
             }
         }
+        &.type4 {
+            flex-direction: row;
+            .left {
+                width: 100%;
+                padding-right: 6px;
+                .image {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .right {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                .image {
+                    height: 100%;
+                    width: 100%;
+                    &:first-child {
+                        padding-bottom: 6px;
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        &.type5 {
+            flex-direction: row;
+            .left {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                .image {
+                    height: 100%;
+                    width: 100%;
+                    &:first-child {
+                        padding-bottom: 6px;
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            .right {
+                width: 100%;
+                padding-left: 6px;
+                .image {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
     }
 }
 
 .image {
     position: relative;
+    cursor: zoom-in;
     .btn {
         position: absolute;
         left: 8px;
@@ -105,13 +164,14 @@
     height: 100vh;
     background: #00000099;
     display: none;
-    padding: 4% 12%;
+    padding: 4% 15%;
     animation: amin1 .5s;
+    cursor: zoom-out;
     &.show {
         display: flex;
         opacity: 1;
     }
-    .image {
+    .img {
         width: 100%;
         height: 100%;
         img {
