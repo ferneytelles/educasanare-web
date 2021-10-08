@@ -2,8 +2,8 @@
 
 <div class="content">
     <div class="comics">
-        <div class="content-comic" *ngFor="let item of comics; let i=index" (click)="openComic(i)">
-            <div class="comic">
+        <div class="content-comic" *ngFor="let item of comics; let i=index">
+            <div class="comic" (click)="openComic(i)">
                 <div class="image">
                     <img [src]="item.miniature" alt="">
                 </div>
@@ -16,4 +16,4 @@
     </div>
 </div>
 
-<app-modal-comic [content]="comics[selectComic].content"></app-modal-comic>
+<app-modal-comic [content]="comics[selectComic].content" [audio]="comics[selectComic].audio"></app-modal-comic>
