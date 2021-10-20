@@ -49,6 +49,6 @@ export class ProfilePageComponent implements OnInit {
   offSession(): void{
     this.sessionService.session = false;
     window.scroll({top: 0, behavior: 'smooth'});
-    this.route.navigate(['/proyecto']);
+    this.route.navigate(['/inicio']);
   }
 }

@@ -8,12 +8,12 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'proyecto',
-        loadChildren: () => import('./pages/project-page/project-page.module').then(m => m.ProjectPageModule)
+        path: 'inicio',
+        loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
       },
       {
-        path: 'interactivo',
-        loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
+        path: 'proyecto',
+        loadChildren: () => import('./pages/project-page/project-page.module').then(m => m.ProjectPageModule)
       },
       {
         path: 'experiencias',
@@ -45,7 +45,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'proyecto',
+        redirectTo: 'inicio',
         pathMatch: 'full'
       }
     ]
