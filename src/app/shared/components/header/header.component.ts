@@ -11,8 +11,8 @@ import { SessionService } from '../../services/session.service';
 export class HeaderComponent implements OnInit {
 
   options = [
+    {text: 'inicio', url: '/inicio'},
     {text: 'proyecto', url: '/proyecto'},
-    {text: 'interactivo', url: '/interactivo'},
     {text: 'experiencias', url: '/experiencias'},
     {text: 'calendario', url: '/calendario'},
     {text: 'nosotros', url: '/nosotros'},
