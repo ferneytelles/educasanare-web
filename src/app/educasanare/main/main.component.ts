@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-main',
@@ -10,9 +11,12 @@ export class MainComponent implements OnInit {
   lastScroll = 0;
   showHeader = true;
 
-  constructor() { }
+  constructor(
+    private pageService: PageService
+  ) { }
 
   ngOnInit(): void {
+    this.prueba();
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
       if (currentScroll === 0) {
@@ -26,6 +30,11 @@ export class MainComponent implements OnInit {
       }
       this.lastScroll = currentScroll;
     });
+  }
+
+  async prueba(): Promise<void> {
+    const pages = await this.pageService.pages();
+    console.log(pages);
   }
 
 }

@@ -7,6 +7,8 @@
     }
     img {
         width: 100%;
+        height: 370px;
+        object-fit: cover;
     }
     .content {
         position: absolute;
@@ -17,7 +19,8 @@
         // transform: translateY(-50%);
         color: #ffffff;
         background-image: url(../../../../assets/images/bgblue.png);
-        background-size: 100% 100%;
+        background-size: cover;
+        background-position: right;
         padding: 2% 5% 2% 5%;
         display: flex;
         flex-direction: column;
@@ -80,6 +83,9 @@
         outline: none;
          ::ng-deep .carousel-indicators {
             margin-bottom: -7px;
+        }
+        img {
+            height: 200px;
         }
         .content {
             display: none;

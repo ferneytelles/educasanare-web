@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-comic-content',
@@ -8,8 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ComicContentComponent implements OnInit {
 
   @Input() page: any;
+  @ViewChild('imageZoom') imageHtml: ElementRef;
   imageZoom = '';
   zoom = false;
+  spinner = false;
 
   constructor() { }
 
@@ -17,8 +19,16 @@ export class ComicContentComponent implements OnInit {
   }
 
   showZoom(img: string): void{
-    this.imageZoom = img;
+    // this.imageZoom = img;
     this.zoom = true;
+    this.spinner = true;
+    this.imageHtml.nativeElement.src = img;
+    this.imageHtml.nativeElement.onload = () => {
+      this.spinner = false;
+    };
+    this.imageHtml.nativeElement.onerror = () => {
+      this.spinner = false;
+    };
   }
 
 }

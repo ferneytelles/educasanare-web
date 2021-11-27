@@ -10,6 +10,7 @@ import { BannerTopComponent } from './components/banner-top/banner-top.component
 import { ModalSessionComponent } from './components/modal-session/modal-session.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SecureUrlPipe } from './pipes/secure-url.pipe';
+import { CdnUrlPipe } from './pipes/cdn-url.pipe';
 
 
 
@@ -21,7 +22,8 @@ import { SecureUrlPipe } from './pipes/secure-url.pipe';
     CarouselSponsorComponent,
     BannerTopComponent,
     ModalSessionComponent,
-    SecureUrlPipe
+    SecureUrlPipe,
+    CdnUrlPipe
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { SecureUrlPipe } from './pipes/secure-url.pipe';
     CapitalizePipe,
     CarouselSponsorComponent,
     BannerTopComponent,
-    SecureUrlPipe
+    SecureUrlPipe,
+    CdnUrlPipe
   ]
 
 })
