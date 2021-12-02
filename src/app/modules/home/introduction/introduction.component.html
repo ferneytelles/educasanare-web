@@ -1,13 +1,15 @@
 <div class="content">
-    <h4 class="title">Conoce EduCasanare</h4>
+    <h4 class="title">{{section?.posts[0].title}}</h4>
     <div class="info">
         <div class="text">
-            <p class="text-content">
+            <!-- <p class="text-content">
                 {{text}}
-            </p>
+            </p> -->
+            <div class="text-content" [innerHTML]="section?.posts[0].description">
+            </div>
         </div>
         <div class="video">
-            <iframe #video [ngStyle]="{'height.px': height}" src="https://www.youtube.com/embed/aE4atBJnvaA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe #video [ngStyle]="{'height.px': height}" [src]="section?.posts[0].gallery[0].video_url |youtubeUrl" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </div>

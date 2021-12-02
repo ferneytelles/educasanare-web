@@ -11,6 +11,8 @@ import { ModalSessionComponent } from './components/modal-session/modal-session.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SecureUrlPipe } from './pipes/secure-url.pipe';
 import { CdnUrlPipe } from './pipes/cdn-url.pipe';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { YoutubeUrlPipe } from './pipes/youtube-url.pipe';
 
 
 
@@ -23,7 +25,9 @@ import { CdnUrlPipe } from './pipes/cdn-url.pipe';
     BannerTopComponent,
     ModalSessionComponent,
     SecureUrlPipe,
-    CdnUrlPipe
+    CdnUrlPipe,
+    SpinnerComponent,
+    YoutubeUrlPipe
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,9 @@ import { CdnUrlPipe } from './pipes/cdn-url.pipe';
     CarouselSponsorComponent,
     BannerTopComponent,
     SecureUrlPipe,
-    CdnUrlPipe
+    CdnUrlPipe,
+    SpinnerComponent,
+    YoutubeUrlPipe
   ]
 
 })

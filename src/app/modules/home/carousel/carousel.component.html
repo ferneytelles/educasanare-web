@@ -13,7 +13,7 @@
 <div class="info">
     <div class="content">
         <h5 class="title">{{slides[currentSilde]?.title}}</h5>
-        <p class="text" [innerText]="slides[currentSilde]?.description"></p>
+        <div class="text" [innerHTML]="slides[currentSilde]?.description"></div>
         <!-- {{slides[currentSilde].text}} -->
     </div>
 </div>

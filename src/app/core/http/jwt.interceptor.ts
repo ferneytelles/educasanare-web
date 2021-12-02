@@ -9,11 +9,14 @@ import {
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '@shared/services/authentication.service';
 import { tap } from 'rxjs/operators';
+import { PageService } from '@shared/services/page.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(
+    private pageService: PageService
+  ) {}
 
   static headerAuthorization(token: string): string {
     // return `${NAME_TOKEN_HEADER} ${token}`;
@@ -51,10 +54,16 @@ export class JwtInterceptor implements HttpInterceptor {
         (event: HttpEvent<any>) => event,
         (error) => {
           if (error instanceof HttpErrorResponse) {
-            if (error.status === 401 || error.status === 403) {
-              alert('No autorizado');
-              //   this.authService.logout();
+            // if (error.status === 401 || error.status === 403) {
+            //   alert('No autorizado');
+            //   //   this.authService.logout();
+            // } else if (error.status === 0 || error.status >= 500){
+            //   this.pageService.serverError.next(error);
+            // }
+            if (error.status === 0 || error.status >= 400){
+              this.pageService.serverError.next(error);
             }
+            // console.log(error);
           }
         }
       )

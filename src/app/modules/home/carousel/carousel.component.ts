@@ -5,7 +5,7 @@ import { asNativeElements, Component, Input, OnChanges, OnInit, SimpleChanges } 
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit, OnChanges {
+export class CarouselComponent implements OnInit {
 
   @Input() section: any;
   slides = [];
@@ -26,17 +26,18 @@ export class CarouselComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('inició el carrusel', this.slides);
+    // console.log('inició el carrusel', this.slides);
+    this.slides = this.section?.posts;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    // Add '${implements OnChanges}' to the class.
-    if (changes.section && this.section){
-      console.log(this.section);
-      this.slides = this.section?.posts;
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+  //   // Add '${implements OnChanges}' to the class.
+  //   if (changes.section && this.section){
+  //     // console.log(this.section);
+  //     this.slides = this.section?.posts;
+  //   }
+  // }
 
   changeCarousel(value: any): void{
     this.currentSilde = parseInt(value.current, 10);

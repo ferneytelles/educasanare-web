@@ -2,16 +2,16 @@
     <img class="bg" src="assets/images/banner.png" alt="">
     <img class="circle" src="assets/images/circleBanner.png" alt="">
     <h1 class="text">
-        <span>{{textBanner}}</span>
-        <span class="cod">{{cod}}</span>
+        <span>{{banner?.title}}</span>
+        <span class="cod">{{banner?.subtitle}}</span>
     </h1>
-
 </div>
+
 <div class="section1">
-    <app-section1></app-section1>
+    <app-section1 [section]="content?.sections[1]"></app-section1>
 </div>
 <div class="section2">
-    <app-section2></app-section2>
+    <app-section2 [section]="content?.sections[2]"></app-section2>
 </div>
 <div class="section3">
     <app-section3></app-section3>

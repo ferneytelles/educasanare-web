@@ -1,7 +1,18 @@
 <div class="container-ec">
     <app-header class="header" [ngClass]="{'hidden': !showHeader}"></app-header>
 
-    <div class="main-content">
+    <div class="error" *ngIf="server">
+        <img src="assets/images/server.png" alt="">
+        <!-- <h4>El servidor está en mantenimiento, por favor intenta en otro momento</h4> -->
+        <h1>Error {{server.status}} </h1>
+        <h4>{{server.message}}</h4>
+    </div>
+
+    <div class="content-loading" *ngIf="!pages && !server">
+        <app-spinner></app-spinner>
+    </div>
+
+    <div class="main-content" *ngIf="pages && !server">
         <router-outlet></router-outlet>
     </div>
 

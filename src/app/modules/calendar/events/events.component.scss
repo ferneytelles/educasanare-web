@@ -18,7 +18,7 @@
             margin-right: 30px;
             background: #ffffff;
             border-radius: 6px;
-            box-shadow: 0 0 3px #00000039;
+            box-shadow: 0 0 5px #00000039;
             .nav-item {
                 position: relative;
                 display: flex;
@@ -50,6 +50,41 @@
             .event {
                 margin-bottom: 30px;
             }
+        }
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        span.notranslate {
+            font-size: 17px;
+        }
+         ::ng-deep .pagination {
+            margin-bottom: 0px;
+        }
+         ::ng-deep .page-item:first-child .page-link,
+         ::ng-deep .page-item:last-child .page-link {
+            display: flex;
+            align-items: center;
+        }
+         ::ng-deep .page-item.active .page-link {
+            background-color: #0072BC;
+            border-color: #0072BC;
+            color: #ffffff;
+        }
+         ::ng-deep .page-link {
+            // background: transparent;
+            box-shadow: 0 0 5px #00000039;
+            color: #555555;
+            border-color: #d7d7d7;
+            font-size: 16px;
+            line-height: 18px;
+            padding: 3px 7px;
+            border-radius: 4px;
+            border: none;
+            margin: 0px 2px;
+        }
+         ::ng-deep .page-link:focus {
+            box-shadow: none;
         }
     }
 }
