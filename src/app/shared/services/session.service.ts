@@ -37,4 +37,15 @@ export class SessionService {
       tap((response: any) => response)
     );
   }
+
+
+  confirmPassword(password: string, token: string): Observable<any>{
+    this.formUser = new FormData();
+    this.formUser.append('password', password);
+    this.formUser.append('token', token);
+    return this.http.post(SessionEndPoint.confirmPassword, this.formUser)
+    .pipe(
+      tap((response: any) => response)
+    );
+  }
 }

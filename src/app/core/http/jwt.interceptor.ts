@@ -35,7 +35,7 @@ export class JwtInterceptor implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           // 'Accept-Language': LanguageUtil.getStorageLanguage('es'),
-          'accept-Language': 'es',
+          'accept-Language': 'en',
           authorization: JwtInterceptor.headerAuthorization(
             token
           ),

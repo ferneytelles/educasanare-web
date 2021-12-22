@@ -29,7 +29,7 @@ export class ServicesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.section);
+    // console.log(this.section);
   }
 
 }
