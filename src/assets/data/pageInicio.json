@@ -1,0 +1,256 @@
+[{
+    "page_metadata": {
+        "title": "inicio",
+        "description": "",
+        "slug": "inicio",
+        "sections": [{
+                "title": "carrusel de información o noticias",
+                "description": "",
+                "background_image": null,
+                "format_image": null,
+                "color": "#FFFFFF",
+                "slug": "carrusel",
+                "component": null,
+                "align": "RIGHT",
+                "lines_to_show": "1",
+                "title_visibility": true,
+                "subtitle_visibility": false,
+                "logo_visibility": "3",
+                "tag_visibility": false,
+                "description_visibility": true,
+                "gallery_visibility": false,
+                "posts": [{
+                        "title": "Bienvenido a Educasanare",
+                        "subtitle": null,
+                        "description": "<p>Ambientes de aprendizaje con mediaci&oacute;n tic y enfoques STEM+A para el fomento de la innovaci&oacute;n educativa en diez instituciones del departamento de Casanare.</p>",
+                        "external_url": null,
+                        "slug": "post-1-banner",
+                        "image": "contents/banners/animated_logos/Educasanare.png",
+                        "audio": null,
+                        "tags": [],
+                        "creation_date": "26/11/2021 12:04",
+                        "pill_size": 2381682
+                    },
+                    {
+                        "title": "Conectividad",
+                        "subtitle": null,
+                        "description": "<p>Suministro de internet y servicios de acceso en cada una de las diez instituciones educativas beneficiadas.</p>",
+                        "external_url": null,
+                        "slug": "post-2-banner",
+                        "image": "contents/banners/animated_logos/conectividad.png",
+                        "audio": null,
+                        "tags": [],
+                        "creation_date": "26/11/2021 12:20",
+                        "pill_size": 2496743
+                    },
+                    {
+                        "title": "Laboratorios STEM",
+                        "subtitle": null,
+                        "description": "<p>&Aacute;reas de aprendizaje enfocadas en las &aacute;reas de f&iacute;sica, biolog&iacute;a y rob&oacute;tica para cada una de las diez instituciones educativas beneficiadas.</p>",
+                        "external_url": null,
+                        "slug": "post-3-banner",
+                        "image": "contents/banners/animated_logos/2Laboratorios_steam.png",
+                        "audio": null,
+                        "tags": [],
+                        "creation_date": "08/12/2021 08:44",
+                        "pill_size": 1624201
+                    },
+                    {
+                        "title": "Contenido educativo",
+                        "subtitle": null,
+                        "description": "<p>Encuentra en nuestro portal y en nuestra aplicaci&oacute;n m&oacute;vil, contenido educativo enfocado a la cultura llanera y temas relacionados con la salud, seguridad y riesgos.</p>",
+                        "external_url": null,
+                        "slug": "post-4-banner",
+                        "image": "contents/banners/animated_logos/contenido_educativo.png",
+                        "audio": null,
+                        "tags": [],
+                        "creation_date": "08/12/2021 08:46",
+                        "pill_size": 2036097
+                    }
+                ]
+            },
+            {
+                "title": "Experiencias STEAM",
+                "description": "",
+                "background_image": null,
+                "format_image": null,
+                "color": "#FFFFFF",
+                "slug": "experiencias",
+                "component": null,
+                "align": "RIGHT",
+                "lines_to_show": "1",
+                "title_visibility": true,
+                "subtitle_visibility": false,
+                "logo_visibility": "3",
+                "tag_visibility": false,
+                "description_visibility": true,
+                "gallery_visibility": false,
+                "posts": [{
+                        "title": "Microscopio biológico",
+                        "subtitle": null,
+                        "description": null,
+                        "external_url": null,
+                        "slug": "xp2",
+                        "image": "contents/banners/animated_logos/DSC_0231.JPG",
+                        "audio": null,
+                        "tags": [],
+                        "creation_date": "30/11/2021 11:16",
+                        "pill_size": 5027504
+                    },
+                    {
+                        "title": "Modelo torso humano",
+                        "subtitle": null,
+                        "description": null,
+                        "external_url": null,
+                        "slug": "xp3",
+                        "image": "contents/banners/animated_logos/DSC_0272.JPG",
+                        "audio": null,
+                        "tags": [{
+                                "name": "Joropo"
+                            },
+                            {
+                                "name": "Educación"
+                            }
+                        ],
+                        "creation_date": "30/11/2021 11:18",
+                        "pill_size": 7398021
+                    },
+                    {
+                        "title": "Kit cubeta de ondas",
+                        "subtitle": null,
+                        "description": null,
+                        "external_url": null,
+                        "slug": "xp1",
+                        "image": "contents/banners/animated_logos/DSC_0223.JPG",
+                        "audio": null,
+                        "tags": [],
+                        "creation_date": "30/11/2021 11:02",
+                        "pill_size": 5422957
+                    },
+                    {
+                        "title": "Kit de electricidad y magnetismo",
+                        "subtitle": null,
+                        "description": null,
+                        "external_url": null,
+                        "slug": "xp4",
+                        "image": "contents/banners/animated_logos/DSC_0269.JPG",
+                        "audio": null,
+                        "tags": [],
+                        "creation_date": "11/12/2021 09:38",
+                        "pill_size": 8659305
+                    }
+                ]
+            },
+            {
+                "title": "Conoce EduCasanare",
+                "description": "",
+                "background_image": null,
+                "format_image": null,
+                "color": "#FFFFFF",
+                "slug": "introduccion",
+                "component": null,
+                "align": "RIGHT",
+                "lines_to_show": "1",
+                "title_visibility": true,
+                "subtitle_visibility": false,
+                "logo_visibility": "3",
+                "tag_visibility": false,
+                "description_visibility": true,
+                "gallery_visibility": false,
+                "posts": [{
+                    "title": "Conoce EduCasanare",
+                    "subtitle": null,
+                    "description": "<p>EduCasanare Web&nbsp;es el sitio web&nbsp;oficial del proyecto Fortalecimiento de capacidades de CTeI para la innovaci&oacute;n educativa en educaci&oacute;n b&aacute;sica y media, mediante uso de TIC&#39;s en instituciones oficiales del departamento de Casanare, una iniciativa del Departamento de Casanare, el Minciencias, el Sistema&nbsp;General de Regal&iacute;as y de una alianza de organizaciones privadas&nbsp;del sector CTeI, la cual propende por&nbsp;generar ambientes de aprendizaje con mediaci&oacute;n TIC y enfoque STEM+A para el fomento de la innovaci&oacute;n educativa.</p>\r\n\r\n<p>Si deseas conocer m&aacute;s sobre esta iniciativa educativa o tienes alguna pregunta o inquietud&nbsp;no dudes en visitar nuestra secci&oacute;n de AYUDA, FORO o CONTACTO para que puedas conectarte con nosotros en&nbsp;edu.casanare.gov.co.</p>",
+                    "external_url": null,
+                    "slug": "conoce-educasanare",
+                    "image": null,
+                    "audio": null,
+                    "tags": [],
+                    "creation_date": "01/12/2021 14:47",
+                    "gallery": [{
+                        "id": 34,
+                        "id_pill": "57",
+                        "slug": "video-de-introduccion",
+                        "title": null,
+                        "type": "VIDEO",
+                        "online_url": null,
+                        "offline_url": null,
+                        "video_url": "https://www.youtube.com/watch?v=aE4atBJnvaA"
+                    }],
+                    "pill_size": 0
+                }]
+            }
+        ],
+        "menu": [{
+                "name": "Inicio",
+                "icon": null,
+                "url": "/inicio"
+            },
+            {
+                "name": "Proyecto",
+                "icon": null,
+                "url": "/proyecto"
+            },
+            {
+                "name": "Experiencias",
+                "icon": null,
+                "url": "experiencias"
+            },
+            {
+                "name": "Calendario",
+                "icon": null,
+                "url": "calendario"
+            },
+            {
+                "name": "Nosotros",
+                "icon": null,
+                "url": "nosotros",
+                "children": [{
+                        "name": "Acerca de",
+                        "icon": null,
+                        "url": "nosotros"
+                    },
+                    {
+                        "name": "Informacion del Proyecto",
+                        "icon": null,
+                        "url": "nosotros"
+                    },
+                    {
+                        "name": "Patrocinadores",
+                        "icon": null,
+                        "url": "nosotros"
+                    }
+                ]
+            },
+            {
+                "name": "Foros",
+                "icon": null,
+                "url": "foros"
+            },
+            {
+                "name": "Contacto",
+                "icon": null,
+                "url": "contacto",
+                "children": [{
+                        "name": "Cuenta correo",
+                        "icon": null,
+                        "url": "http://www.cuenta-correo.com",
+                        "external_url": true
+                    },
+                    {
+                        "name": "Numero de telefono",
+                        "icon": null,
+                        "url": "http://www.numero-telefono.com",
+                        "external_url": true
+                    },
+                    {
+                        "name": "Numero de celular",
+                        "icon": null,
+                        "url": "http://web.whatsapp.com",
+                        "external_url": true
+                    }
+                ]
+            }
+        ]
+    }
+}]

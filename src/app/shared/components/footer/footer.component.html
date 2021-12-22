@@ -1,13 +1,13 @@
 <div class="content">
     <div class="main">
-        <div class="info">
-            <div class="options">
-                <h5>Nosotros</h5>
-                <a>Acerca de</a>
-                <a>Información del proyecto</a>
-                <a>Patrocinadores</a>
+        <div class="info" *ngIf="menu">
+            <div class="options" *ngFor="let item of menu">
+                <h5>{{item.name}}</h5>
+                <a *ngFor="let option of item.children">{{option.name}}</a>
+                <!-- <a>Información del proyecto</a>
+                <a>Patrocinadores</a> -->
             </div>
-            <div class="options">
+            <!-- <div class="options">
                 <h5>Contacto</h5>
                 <a>
                     <span class="material-icons-outlined notranslate">
@@ -30,7 +30,7 @@
                 <a>Preguntas frecuentes</a>
                 <a>Manual instruccional</a>
                 <a>Buzón de sugerencias</a>
-            </div>
+            </div> -->
         </div>
         <div class="services">
             <img src="assets/images/vectorFooter.png" alt="">

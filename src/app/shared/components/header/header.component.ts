@@ -1,44 +1,108 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { element } from 'protractor';
-import { SessionService } from '../../services/session.service';
+import { SessionService } from '@shared/services/session.service';
+import { SearchService } from '@shared/services/search.service';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  options = [
-    {text: 'inicio', url: '/inicio'},
-    {text: 'proyecto', url: '/proyecto'},
-    {text: 'experiencias', url: '/experiencias'},
-    {text: 'calendario', url: '/calendario'},
-    {text: 'nosotros', url: '/nosotros'},
-    {text: 'foros', url: '/foros'},
-    {text: 'contacto', url: '/contacto'},
+  @ViewChild('tag') tag: ElementRef;
+  optionss = [
+    {name: 'inicio', url: '/inicio'},
+    {name: 'proyecto', url: '/proyecto'},
+    {name: 'experiencias', url: '/experiencias'},
+    {name: 'calendario', url: '/calendario'},
+    {name: 'nosotros', url: '/nosotros'},
+    {name: 'foros', url: '/foros'},
+    {name: 'contacto', url: '/contacto'},
   ];
+
+  options: Array<any>;
 
   active = -1;
   showMenu = false;
+  login = false;
+  profile: any;
+  unsubscribe = new Subject<unknown>();
+  language: string;
+  languages: Array<any>;
+  header: any;
 
-  constructor(private route: Router, private session: SessionService) {
-    route.events.subscribe((url: any) => {
-      let changeUrl = false;
-      this.options.forEach((obj, index) => {
-        if (route.url.includes(obj.url)){
-          this.active = index;
-          changeUrl = true;
-        }
-      });
-      if (!changeUrl){
-        this.active = -1;
-      }
-    });
-   }
+  constructor(
+    private route: Router,
+    private session: SessionService,
+    private search: SearchService,
+    private storage: SessionStorageService,
+    private pageService: PageService
+  ) {
+    // console.log(route.url);
+
+  }
 
   ngOnInit(): void {
+    this.language = PageService.language;
+    this.getHeaderInfo();
+    this.profile = this.session.profile;
+    this.session.login.pipe(takeUntil(this.unsubscribe))
+    .subscribe((data: boolean) => {
+      // console.log(data);
+      this.login = data;
+    });
+    this.itemUrl(this.route.url);
+    this.route.events.subscribe((url: any) => {
+      this.itemUrl(this.route.url);
+    });
+  }
+
+  getHeaderInfo(): void{
+    const project = this.storage.getStorage(SessionStorageService.keyProject);
+    this.languages = project.language;
+    this.header = project.header;
+    this.options = project.header.find(x => x.language === this.language).menu;
+  }
+
+  changeLanguage(value: any): void{
+    // console.log(value.target.value);
+    this.pageService.changeLanguage.next(value.target.value);
+  }
+
+  itemUrl(url: string): void{
+    let changeUrl = false;
+    this.options.forEach((obj, index) => {
+      if (url.includes(obj.url)){
+        this.active = index;
+        changeUrl = true;
+      }
+    });
+    if (!changeUrl){
+      this.active = -1;
+    }
+  }
+
+  onSubmit(): void{
+    // console.log('busqueda');
+    if (this.tag.nativeElement.value.length > 0){
+      this.storage.setStorage(
+        SessionStorageService.keySearch,
+        this.tag.nativeElement.value
+      );
+      this.search.tagSearch.next();
+      this.route.navigate(['/buscador']);
+      window.scroll({top: 0});
+      this.tag.nativeElement.value = '';
+      if (window.innerWidth < 971){
+        this.showMenu = false;
+        document.querySelector('body').className = '';
+      }
+    }
   }
 
   toggleMenu(): void{
@@ -67,4 +131,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    //  Called once, before the instance is destroyed.
+    //  Add 'implements OnDestroy' to the class.
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionStorageService } from '@shared/services/session-storage.service';
 
 @Component({
   selector: 'app-xp-main',
@@ -8,9 +9,10 @@ import { Router } from '@angular/router';
 })
 export class XpMainComponent implements OnInit {
 
+  content: any;
   xp = [
     {
-      slug: 'xp-1', 
+      slug: 'xp-1',
       img: 'assets/images/xp1.png',
       date: new Date(2021, 7, 23),
       title: 'Loren Impsum',
@@ -53,9 +55,16 @@ export class XpMainComponent implements OnInit {
     }
   ];
 
-  constructor(private route: Router) { }
+  constructor(
+    private route: Router,
+    private storage: SessionStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.content = this.storage.getStorage(
+      SessionStorageService.keyPages
+    ).find(obj => obj.slug === 'experiencias');
+    // console.log(this.content);
   }
 
   navigate(value: string): void{

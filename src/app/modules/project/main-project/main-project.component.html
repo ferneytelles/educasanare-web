@@ -1,6 +1,6 @@
-<div class="banner">
-    <img class="bg" src="assets/images/banner.png" alt="">
-    <img class="circle" src="assets/images/circleBanner.png" alt="">
+<div class="banner" [ngStyle]="{'background-image': imgBanner}">
+    <!-- <img class="bg" src="assets/images/banner.png" alt=""> -->
+    <!-- <img class="circle" src="assets/images/circleBanner.png" alt=""> -->
     <h1 class="text">
         <span>{{banner?.title}}</span>
         <span class="cod">{{banner?.subtitle}}</span>
@@ -8,14 +8,19 @@
 </div>
 
 <div class="section1">
+    <div class="element" *ngFor="let item of content?.sections.slice(1, 4)">
+        <app-section1 [section]="item"></app-section1>
+    </div>
+</div>
+<!-- <div class="section1">
     <app-section1 [section]="content?.sections[1]"></app-section1>
 </div>
 <div class="section2">
     <app-section2 [section]="content?.sections[2]"></app-section2>
 </div>
 <div class="section3">
-    <app-section3></app-section3>
-</div>
+    <app-section3 [section]="content?.sections[3]"></app-section3>
+</div> -->
 <div class="training">
-    <app-trainings></app-trainings>
+    <app-trainings [section]="content?.sections[4]"></app-trainings>
 </div>

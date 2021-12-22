@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-events',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
+  @Input() section: any;
   events = [
     {
       date: new Date(2021, 8, 15, 18, 24),
@@ -48,6 +49,7 @@ export class EventsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // console.log(this.section);
   }
 
 }

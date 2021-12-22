@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  language: string;
+  content: any;
+  menu: Array<any>;
+
+  constructor(
+    private storage: SessionStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.language = PageService.language;
+    const project = this.storage.getStorage(SessionStorageService.keyProject);
+    this.menu = project.footer.find(x => x.language === this.language).menu;
+    // console.log(this.menu);
   }
 
 }

@@ -8,6 +8,7 @@ export class SessionStorageService {
   static keyLanguage = 'language';
   static keyPages = 'pages';
   static keyProject = 'project';
+  static keySearch = 'tag';
 
   constructor() { }
 

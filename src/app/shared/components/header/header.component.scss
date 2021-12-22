@@ -39,6 +39,29 @@
         display: flex;
         justify-content: flex-end;
         padding: 8px 0;
+        .search {
+            background: transparent !important;
+            border: 1px solid #0072BC;
+            padding: 0 !important;
+            .input-text {
+                width: 220px;
+                font-size: 15px;
+                padding: 1px 5px;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
+            .btn {
+                padding: 1px 5px;
+                display: flex;
+                background: #0072BC;
+                color: #ffffff;
+                box-shadow: none;
+                span {
+                    font-size: 21px;
+                }
+            }
+        }
         .link {
             display: flex;
             align-items: center;
@@ -52,7 +75,14 @@
             box-shadow: 0 2px 4px #00000049;
             cursor: pointer;
             span {
-                font-size: 20px;
+                font-size: 21px;
+            }
+            img {
+                height: 21px;
+                width: 21px;
+                border-radius: 100%;
+                object-fit: cover;
+                margin-right: 2px;
             }
         }
         .input-group {
@@ -67,7 +97,7 @@
             padding: 1px 6px;
             box-shadow: 0 2px 4px #00000049;
             span {
-                font-size: 20px;
+                font-size: 21px;
             }
             .select {
                 background: transparent;
@@ -132,6 +162,7 @@
         }
         .options1 {
             order: 2;
+            padding-right: 15px;
         }
         .options2 {
             width: 100%;
@@ -141,8 +172,16 @@
             flex-direction: column;
         }
         .options1 {
+            .search {
+                .input-text {
+                    font-size: 18px;
+                }
+                .btn span {
+                    font-size: 25px;
+                }
+            }
             .link {
-                margin: 8px 25px;
+                margin: 8px 0px;
                 padding: 3px 8px 3px 4px;
                 justify-content: center;
                 font-size: 18px;
@@ -151,7 +190,9 @@
                 }
             }
             .input-group {
-                margin: 8px 25px;
+                width: 100%;
+                justify-content: center;
+                margin: 8px 0px;
                 padding: 5px 6px 5px 8px;
                 span {
                     font-size: 24px;

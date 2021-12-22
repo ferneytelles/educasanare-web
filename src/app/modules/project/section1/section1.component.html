@@ -10,9 +10,9 @@
 
     <div class="info">
         <div class="item" *ngFor="let item of section?.posts">
-            <img *ngIf="item.image!==null" [src]="item.image|cdnUrl:200" alt="">
-            <p class="text-content" *ngIf="item.subtitle!==null">
-                <span class="number" *ngIf="item.title!==null">
+            <img *ngIf="item.image" [src]="item.image|cdnUrl:200" alt="">
+            <p class="text-content" *ngIf="item.subtitle">
+                <span class="number" *ngIf="item.title">
                 <span >{{item.title}}</span>
                 </span> {{item.subtitle}}
             </p>

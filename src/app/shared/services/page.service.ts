@@ -14,6 +14,7 @@ import { to } from 'await-to-js';
 export class PageService {
 
   static language = 'ES';
+  changeLanguage = new Subject<string>();
   serverError = new Subject<any>();
 
   constructor(
@@ -25,14 +26,14 @@ export class PageService {
   getPages(idProject: number): Observable<any> {
     return this.http.get(PageEndPoint.pages.format(idProject))
                 .pipe(
-                  map((response: any) => response)
+                  map((response: any) => response.results)
                 );
   }
 
   getPage(idPage: number, language: string): Observable<any> {
     return this.http.get(PageEndPoint.page.format(idPage, language))
                 .pipe(
-                  map((response: any) => response[0].page_metadata)
+                  map((response: any) => response.results[0].page_metadata)
                 );
   }
 
@@ -43,19 +44,47 @@ export class PageService {
         );
   }
 
+  getPageInicio(): Observable<any> {
+    return this.http.get('assets/data/pageInicio.json')
+                .pipe(
+                  map((response: any) => response[0].page_metadata)
+                );
+  }
+  getPageProject(): Observable<any> {
+    return this.http.get('assets/data/pageProject.json')
+                .pipe(
+                  map((response: any) => response[0].page_metadata)
+                );
+  }
 
-  async setPagesStorage(language: string): Promise<any>{
-    // await this.authentication.getToken().toPromise();
-    // console.log('error: ', err, '\nData: ', data);
+
+  async setPagesStorage(): Promise<any>{
     // const p = await this.getPages(3);
     // const pages = await from(p).toPromise<any>();
-    const pages = await this.getPages(3).toPromise();
-    // console.log(pages);
+    ////////////////////////////////////////////////////////
+    // if (!await this.getAuthentication()) {
+    //   await this.setPagesStorage();
+    //   return;
+    // }
+    // await this.getGeneralInformation();
+    const [error, pages] = await to(this.getPages(3).toPromise());
+    // @ts-ignore
+    if (error && error.status === 403){
+      await this.getAuthentication();
+      await this.setPagesStorage();
+      return;
+    }
+    console.log(pages);
     const arrayPages = [];
     for (const item of pages) {
-      const page = await this.getPage(item.id, language).toPromise();
+      const page = await this.getPage(item.id, PageService.language).toPromise();
       arrayPages.push(page);
     }
+    /////////////////////////////////////////////////////
+    // arrayPages[0] = await this.getPageInicio().toPromise();
+    // arrayPages[1] = await this.getPageProject().toPromise();
+    // const pages = arrayPages;
+    /////////////////////////////////////////////////////
 
     this.session.setStorage(
       SessionStorageService.keyPages,
@@ -64,14 +93,32 @@ export class PageService {
     return pages;
   }
 
-  async getGeneralInformation(): Promise<any> {
+  async getAuthentication(): Promise<boolean>{
     const [err, data] = await to(this.authentication.getToken().toPromise());
-    const projectInfo = await this.getProject().toPromise();
-    this.session.setStorage(
-      SessionStorageService.keyProject,
-      projectInfo
-    );
-    return projectInfo;
+    if (err){
+      console.log(err);
+      this.serverError.next(err);
+      return false;
+    }
+    return true;
+  }
+
+  async getGeneralInformation(): Promise<any> {
+    if (!await this.getAuthentication()) {
+      await this.setPagesStorage();
+      return;
+    }
+    const [err2, projectInfo] = await to(this.getProject().toPromise());
+    if (projectInfo){
+      this.session.setStorage(
+        SessionStorageService.keyProject,
+        projectInfo
+      );
+    }else {
+      console.log(err2);
+      return false;
+    }
+    return true;
   }
 
 

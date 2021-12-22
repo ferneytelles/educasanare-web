@@ -1,5 +1,5 @@
-<ng-template #session let-modal class="content">
-    <div class="modal-body" [formGroup]="formUser">
+<ng-template #session let-modal class="content" [formGroup]="formUser">
+    <div class="modal-body" *ngIf="view===0">
         <h4 class="title">Iniciar sesión</h4>
         <div class="label">
             <span class="material-icons notranslate icon">
@@ -23,9 +23,44 @@
 
         <input formControlName="password" class="password" type="password" name="" id="pw">
 
-        <a class="link">Olvide mi contraseña</a>
+        <a class="link" (click)="view=1">Olvide mi contraseña</a>
         <button class="btn" (click)="valid()">
             Iniciar sesión
+        </button>
+    </div>
+
+    <div class="modal-body" *ngIf="view===1">
+        <h4 class="title">¿Olvidó su contraseña?</h4>
+
+        <p class="text-reset">Restablecer su contraseña es fácil: solo díganos con qué dirección de e-mail se registró</p>
+
+        <div class="label">
+            <span class="material-icons notranslate icon">
+                person
+            </span>
+            <span class="text">
+                Correo electrónico
+            </span>
+        </div>
+        <input formControlName="restorePw" class="user" type="text" name="" id="user">
+
+        <div class="bottons">
+            <p class="text" *ngIf="message">{{message}}</p>
+            <button class="btn back" (click)="goBack()">
+                Regresar
+            </button>
+            <button class="btn confirm" (click)="getRestore()">
+                Confirmar
+            </button>
+        </div>
+    </div>
+
+    <div class="modal-body" *ngIf="view===2">
+        <p class="message">
+            Enviamos un correo electrónico para restablecer la contraseña a <strong>{{email}}</strong>.
+        </p>
+        <button class="btn acept" (click)="modal.dismiss('Cross click')">
+            Aceptar
         </button>
     </div>
 </ng-template>

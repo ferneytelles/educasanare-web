@@ -60,9 +60,11 @@ export class JwtInterceptor implements HttpInterceptor {
             // } else if (error.status === 0 || error.status >= 500){
             //   this.pageService.serverError.next(error);
             // }
-            if (error.status === 0 || error.status >= 400){
-              this.pageService.serverError.next(error);
-            }
+            /////////////////////////////////////
+            // if (error.status === 0 || error.status >= 400){
+            //   this.pageService.serverError.next(error);
+            // }
+            ////////////////////////////
             // console.log(error);
           }
         }

@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
     private pageService: PageService,
     private storage: SessionStorageService
   ) {
-    this.prueba();
+    this.dataInit();
    }
 
   ngOnInit(): void {
@@ -36,23 +36,43 @@ export class MainComponent implements OnInit {
       }
       this.lastScroll = currentScroll;
     });
+    this.languageInit();
     this.pageService.serverError.subscribe((data) => {
-      if (data) {
         this.server = data;
-      }
+        console.log(data);
+    });
+    this.pageService.changeLanguage.subscribe((data) => {
+      PageService.language = data;
+      this.pages = false;
+      this.languageInit();
+      this.getPages();
     });
   }
 
-  async prueba(): Promise<void> {
+  languageInit(): void{
+    localStorage.setItem('language', PageService.language);
+  }
+
+  async dataInit(): Promise<void> {
+    // LENGUAJE INICIAL
+    if (!!localStorage.getItem('language')){
+      PageService.language = localStorage.getItem('language');
+    }
+    // DATA INICIAL
     if (this.storage.isStorage(SessionStorageService.keyPages)){
-      //
       this.pages = this.storage.getStorage(SessionStorageService.keyPages);
       console.log('storage');
     } else {
-      this.pages = await this.pageService.setPagesStorage('ES');
+      await this.pageService.getGeneralInformation();
+      await this.getPages();
       console.log('api');
     }
     console.log(this.pages);
+  }
+
+  async getPages(): Promise<void> {
+    await this.pageService.setPagesStorage();
+    this.pages = true;
   }
 
 }

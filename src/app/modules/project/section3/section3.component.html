@@ -1,7 +1,7 @@
-<div class="content">
+<div class="content" *ngIf="section.posts.length > 0" [ngStyle]="{'background-image': background}">
     <div class="title">
         <h1 class="text">
-            plataformas, sistemas, software y aplicaciones
+            {{section?.title}}
         </h1>
         <div class="line">
         </div>
@@ -10,29 +10,29 @@
 
         <div class="info hidden-mobile">
             <div class="item">
-                <img *ngIf="web.img!==''" [src]="web.img" alt="">
-                <p class="text-content">
-                    <span class="number" *ngIf="web.number!==''">
-                    <span>{{web.number}}</span>
-                    </span> {{web.text}}
+                <img *ngIf="post1.image" [src]="post1.image |cdnUrl:200" alt="">
+                <p class="text-content" *ngIf="post1.subtitle">
+                    <span class="number" *ngIf="post1.title">
+                    <span>{{post1.title}}</span>
+                    </span> {{post1.subtitle}}
                 </p>
             </div>
         </div>
         <div class="info ">
             <div class="item p2">
-                <img *ngIf="web.img!==''" [src]="web.img" alt="">
-                <p class="text-content">
-                    <span class="number" *ngIf="web.number!==''">
-                    <span>{{web.number}}</span>
-                    </span> {{web.text}}
+                <img *ngIf="post1.image" [src]="post1.image |cdnUrl:200" alt="">
+                <p class="text-content" *ngIf="post1.subtitle">
+                    <span class="number" *ngIf="post1.title">
+                    <span>{{post1.title}}</span>
+                    </span> {{post1.subtitle}}
                 </p>
             </div>
-            <div class="item p2" *ngFor="let item of items">
-                <img *ngIf="item.img!==''" [src]="item.img" alt="">
-                <p class="text-content">
-                    <span class="number" *ngIf="item.number!==''">
-                    <span>{{item.number}}</span>
-                    </span> {{item.text}}
+            <div class="item p2" *ngFor="let item of posts">
+                <img *ngIf="item.image" [src]="item.image |cdnUrl:200" alt="">
+                <p class="text-content" *ngIf="item.subtitle">
+                    <span class="number" *ngIf="item.title">
+                    <span>{{item.title}}</span>
+                    </span> {{item.subtitle}}
                 </p>
             </div>
         </div>

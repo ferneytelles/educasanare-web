@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from '@shared/services/session-storage.service';
 
 @Component({
   selector: 'app-calendar-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarPageComponent implements OnInit {
 
-  constructor() { }
+  content: any;
+
+  constructor(
+    private storage: SessionStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.content = this.storage.getStorage(
+      SessionStorageService.keyPages
+    ).find(obj => obj.slug === 'calendario');
+    // console.log(this.content);
   }
 
 }

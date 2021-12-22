@@ -36,7 +36,7 @@ export class SectionXpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.xp2 = this.section?.posts;
+    this.xp2 = this.section?.posts.slice(0, 3);
     // console.log(this.xp2);
   }
 
