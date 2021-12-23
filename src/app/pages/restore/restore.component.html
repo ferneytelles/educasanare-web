@@ -35,7 +35,7 @@
                 <span class="sug red">Las contraseñas no coinciden.</span>
             </div>
 
-            <button class="btn" type="submit" (click)="sendPassword()">
+            <button class="btn" type="submit" (click)="sendPassword()" [disabled]="8>pw2.value.length || pw1.value !== pw2.value">
                 Cambiar contraseña
             </button>
 
