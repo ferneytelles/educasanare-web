@@ -44,6 +44,7 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
 
   onDismiss = async (): Promise<boolean> => {
     this.formUser.reset();
+    this.message = null;
     return true;
   }
 

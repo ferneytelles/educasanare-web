@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'educasanare-web';
+
+  constructor(){
+    // LENGUAJE INICIAL
+    if (!!localStorage.getItem('language')){
+      PageService.language = localStorage.getItem('language');
+    }
+  }
 }
