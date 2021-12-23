@@ -1,18 +1,19 @@
-<ngb-carousel *ngIf="slides" class="carousel" (slide)="changeCarousel($event)">
-    <ng-template ngbSlide *ngFor="let item of slides">
+<ngb-carousel *ngIf="slides.length>0" class="carousel" [activeId]="0" (slide)="changeCarousel($event)">
+    <ng-template ngbSlide [id]="i.toString()" *ngFor="let item of slides; let i=index">
         <div class="picsum-img-wrapper">
-            <img [src]="item.img" alt="">
+            <img [src]="item?.image |cdnUrl:900" alt="">
         </div>
         <div class="carousel-caption content">
-            <h5 class="title">{{item.title}}</h5>
-            <p class="text">{{item.text}}</p>
+            <h5 class="title">{{item?.title}}</h5>
+            <div class="text" [innerHTML]="item?.description"></div>
         </div>
     </ng-template>
 </ngb-carousel>
 
 <div class="info">
     <div class="content">
-        <h5 class="title">{{slides[currentSilde].title}}</h5>
-        <p class="text">{{slides[currentSilde].text}}</p>
+        <h5 class="title">{{slides[currentSilde]?.title}}</h5>
+        <div class="text" [innerHTML]="slides[currentSilde]?.description"></div>
+        <!-- {{slides[currentSilde].text}} -->
     </div>
 </div>

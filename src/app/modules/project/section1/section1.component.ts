@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { URL_MEDIA } from '@env/environment';
 
 @Component({
   selector: 'app-section1',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Section1Component implements OnInit {
 
+  @Input() section: any;
+  background: string;
   items = [
     {
       img: 'assets/images/icon1.png',
@@ -33,6 +36,12 @@ export class Section1Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (this.section.background_image !== null){
+      this.background =  `url(${URL_MEDIA}${this.section?.background_image})`;
+    } else {
+      this.background = 'url(../../../../assets/images/bgpoligonblue.png)';
+    }
+    // console.log(this.section);
   }
 
 }

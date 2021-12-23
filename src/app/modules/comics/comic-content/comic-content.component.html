@@ -146,8 +146,10 @@
     </div>
 </div>
 
-<div class="zoom" [ngClass]="{'show': zoom}" (click)="zoom=false">
+<div class="zoom" [ngClass]="{'show': zoom}" (click)="zoom=false; spinner=false">
     <div class="img">
-        <img [src]="imageZoom" alt="">
+        <div *ngIf="spinner" class="spinner-border" role="status">
+        </div>
+        <img #imageZoom [src]="imageZoom" alt="imagen ampliada">
     </div>
 </div>

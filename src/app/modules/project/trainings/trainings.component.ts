@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { URL_MEDIA } from '@env/environment';
 
 @Component({
   selector: 'app-trainings',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainingsComponent implements OnInit {
 
+  @Input() section: any;
+  background: string;
   trainings = [
     {
       img: 'assets/images/training1.png',
@@ -113,6 +116,19 @@ export class TrainingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // console.log(this.section);
+    if (this.section.background_image !== null){
+      this.background =  `url(${URL_MEDIA}${this.section?.background_image})`;
+    } else {
+      this.background = 'url(../../../../assets/images/bgpoligondark.png)';
+    }
+    this.section?.posts.forEach(element => {
+      if (element.image){
+        element.image = URL_MEDIA + element.image;
+      } else {
+        element.image = '../../../../assets/images/capacitaciones.jpg';
+      }
+    });
   }
 
 }

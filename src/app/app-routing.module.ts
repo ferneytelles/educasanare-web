@@ -4,6 +4,10 @@ import { MainComponent } from './educasanare/main/main.component';
 
 const routes: Routes = [
   {
+    path: 'restablecer/:token',
+    loadChildren: () => import('./pages/restore/restore.module').then(m => m.RestoreModule)
+  },
+  {
     path: '',
     component: MainComponent,
     children: [
@@ -44,12 +48,16 @@ const routes: Routes = [
         loadChildren: () => import('./pages/comics-page/comics-page.module').then(m => m.ComicsPageModule)
       },
       {
+        path: 'buscador',
+        loadChildren: () => import('./pages/search-page/search-page.module').then(m => m.SearchPageModule)
+      },
+      {
         path: '**',
         redirectTo: 'inicio',
         pathMatch: 'full'
       }
     ]
-  },
+  }
 ];
 
 @NgModule({

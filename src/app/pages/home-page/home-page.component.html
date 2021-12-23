@@ -1,10 +1,11 @@
-<app-carousel></app-carousel>
-<app-section-xp></app-section-xp>
-<app-introduction></app-introduction>
+<app-carousel [section]="content?.sections[0]">
+</app-carousel>
+<app-section-xp [section]="content?.sections[1]"></app-section-xp>
+<app-introduction [section]="content?.sections[2]"></app-introduction>
 <app-edu-content></app-edu-content>
 <app-comics></app-comics>
 <app-section-forum></app-section-forum>
-<app-services></app-services>
-<app-section-info></app-section-info>
+<app-services [section]="content?.sections[3]"></app-services>
+<app-section-info [section]="content?.sections[4]"></app-section-info>
 <app-section-poll></app-section-poll>
 <app-carousel-sponsor></app-carousel-sponsor>

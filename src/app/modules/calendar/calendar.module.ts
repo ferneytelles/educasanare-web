@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EventsComponent } from './events/events.component';
 import { EventCardComponent } from './events/event-card/event-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   exports: [
     EventsComponent

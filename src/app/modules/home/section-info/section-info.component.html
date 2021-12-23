@@ -1,34 +1,36 @@
-<div class="content">
+<div class="content" *ngIf="section">
     <div class="elements">
-        <div class="item1">
+        <div class="item1" *ngIf="section?.posts[0]">
             <div class="image">
                 <h4 class="title">
-                    Realidad Virtual
+                    {{section.posts[0]?.title}}
                 </h4>
             </div>
             <div class="text">
                 <div class="content-text">
-                    <p>
+                    <div class="description" [innerHTML]="section.posts[0]?.description|secureHtml"></div>
+                    <!-- <p>
                         {{text}}
-                    </p>
+                    </p> -->
                     <div class="box1"></div>
                     <div class="box2"></div>
                 </div>
             </div>
         </div>
-        <div class="item2">
+        <div class="item2" *ngIf="section?.posts[1]">
             <div class="text">
                 <div class="content-text">
-                    <p>
+                    <div class="description" [innerHTML]="section.posts[1]?.description|secureHtml"></div>
+                    <!-- <p>
                         {{text}}
-                    </p>
+                    </p> -->
                     <div class="box1"></div>
                     <div class="box2"></div>
                 </div>
             </div>
             <div class="image">
                 <h4 class="title">
-                    Economía Naranja
+                    {{section.posts[1]?.title}}
                 </h4>
             </div>
         </div>

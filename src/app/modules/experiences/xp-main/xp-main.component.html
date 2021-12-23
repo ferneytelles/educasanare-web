@@ -1,10 +1,11 @@
-<app-banner-top [text]="'Experiencias STEAM'" [icon]="'star_half'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+<app-banner-top [text]="content?.title" [icon]="'star_half'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
 <div class="content">
     <div class="top">
-        <p class="text">
+        <div class="text" [innerHTML]="content.sections[0]?.description|secureHtml"></div>
+        <!-- <p class="text">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nobis dolor accusantium perspiciatis. Accusamus, possimus facere! Voluptatem magni vel sequi voluptatum molestias? Porro hic atque natus labore accusantium esse eveniet. Lorem ipsum dolor
             sit amet consectetur adipisicing elit.
-        </p>
+        </p> -->
         <select class="input-group-text" id="">
             <option hidden selected>Ordenar por...</option>
             <option value="1">Más reciente</option>
@@ -13,33 +14,40 @@
     </div>
 
     <div class="experiences">
-        <div class="card" *ngFor="let item of xp">
-            <img [src]="item.img" alt="">
-            <div class="card-body">
-                <h6 class="title">
-                    {{item.title |capitalize}}
-                </h6>
-                <span class="date">
-                    {{item.date.toLocaleDateString()}}
+        <div class="content-card" *ngFor="let item of content.sections[0]?.posts">
+            <div class="card">
+                <div class="image">
+                    <img [src]="item?.image|cdnUrl:300" alt="">
+                </div>
+                <div class="card-body">
+                    <h6 class="title">
+                        {{item?.title |capitalize}}
+                    </h6>
+                    <span class="date">
+                    {{item.creation_date.split(' ').shift()}}
                 </span>
-                <p class="text">
+                    <div class="text" *ngIf="item.description" [innerHTML]="item?.description|secureHtml">
+                    </div>
+                    <!-- <p class="text">
                     {{item.text}}
-                </p>
-                <div class="botton">
-                    <button class="btn" (click)="navigate('/experiencias/'+item.slug)">
+                </p> -->
+                    <div class="botton">
+                        <button class="btn" (click)="navigate('/experiencias/'+item.slug)">
                         + Información
                     </button>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
     <div class="pagination">
-        <ngb-pagination [collectionSize]="1000" [pageSize]="40" [maxSize]="5" [rotate]="false">
+        <ngb-pagination [collectionSize]="content.sections[0].posts.length" [pageSize]="12" [maxSize]="3" [rotate]="true">
 
             <ng-template ngbPaginationPrevious>
                 <span class="material-icons-outlined notranslate">
                     arrow_back_ios
-                    </span>
+                </span>
                 <span class="d-none d-md-block">Anterior</span>
             </ng-template>
 
@@ -47,7 +55,8 @@
                 <span class="d-none d-md-block">Siguiente</span>
                 <span class="material-icons-outlined notranslate">
                     arrow_forward_ios
-                    </span></ng-template>
+                </span>
+            </ng-template>
         </ngb-pagination>
     </div>
 </div>

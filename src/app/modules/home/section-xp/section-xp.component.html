@@ -1,17 +1,26 @@
 <div class="content">
-    <div class="experiences">
-        <div class="card" *ngFor="let item of xp">
-            <img [src]="item.img" alt="">
+    <h4 class="title-section">{{section?.title}}</h4>
+    <div class="experiences" *ngIf="xp2">
+        <div class="card" *ngFor="let item of xp2">
+            <div class="image">
+                <img [src]="item?.image |cdnUrl:300" alt="">
+            </div>
+
             <div class="card-body">
                 <h6 class="title">
-                    {{item.title |capitalize}}
+                    {{item?.title |capitalize}}
                 </h6>
                 <span class="date">
-                    {{item.date.toLocaleDateString()}}
+                    {{item?.creation_date.split(' ')[0]}}
                 </span>
-                <p class="text">
+                <!-- <span class="date">
+                    {{item?.date.toLocaleDateString()}}
+                </span> -->
+                <!-- <p class="text">
                     {{item.text}}
-                </p>
+                </p> -->
+                <div class="text" [innerHTML]="item?.description">
+                </div>
             </div>
         </div>
     </div>

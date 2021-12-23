@@ -10,6 +10,10 @@ import { BannerTopComponent } from './components/banner-top/banner-top.component
 import { ModalSessionComponent } from './components/modal-session/modal-session.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SecureUrlPipe } from './pipes/secure-url.pipe';
+import { CdnUrlPipe } from './pipes/cdn-url.pipe';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { YoutubeUrlPipe } from './pipes/youtube-url.pipe';
+import { SecureHtmlPipe } from './pipes/secure-html.pipe';
 
 
 
@@ -21,7 +25,11 @@ import { SecureUrlPipe } from './pipes/secure-url.pipe';
     CarouselSponsorComponent,
     BannerTopComponent,
     ModalSessionComponent,
-    SecureUrlPipe
+    SecureUrlPipe,
+    CdnUrlPipe,
+    SpinnerComponent,
+    YoutubeUrlPipe,
+    SecureHtmlPipe
   ],
   imports: [
     CommonModule,
@@ -36,7 +44,11 @@ import { SecureUrlPipe } from './pipes/secure-url.pipe';
     CapitalizePipe,
     CarouselSponsorComponent,
     BannerTopComponent,
-    SecureUrlPipe
+    SecureUrlPipe,
+    CdnUrlPipe,
+    SpinnerComponent,
+    YoutubeUrlPipe,
+    SecureHtmlPipe
   ]
 
 })

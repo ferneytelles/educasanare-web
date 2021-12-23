@@ -1,7 +1,7 @@
-<div class="content">
+<div class="content" *ngIf="section?.posts.length > 0" [ngStyle]="{'background-image': background}">
     <div class="title">
         <h1 class="text">
-            capacitaciones, asesorías, seminarios y talleres
+            {{section?.title}}
         </h1>
         <div class="line">
         </div>
@@ -10,12 +10,28 @@
 
         <ngx-slick-carousel class="carousel-cards" #slickModal="slick-carousel" [config]="slideConfig">
 
+            <div ngxSlickItem *ngFor="let slide of section?.posts" class="slide slide1">
+                <div class="track" [ngStyle]="{'background-image': 'url('+slide?.image+')'}">
+                    <div class="image"></div>
+                    <div class="info">
+                        <div class="line"></div>
+                        <!-- <h5>{{slide.title}}</h5> -->
+                        <div class="text" [innerHTML]="slide?.description|secureHtml"></div>
+                    </div>
+                </div>
+            </div>
+        </ngx-slick-carousel>
+
+    </div>
+
+    <!-- <ngx-slick-carousel class="carousel-cards" #slickModal="slick-carousel" [config]="slideConfig">
+
             <div ngxSlickItem *ngFor="let slide of trainings" class="slide slide1">
                 <div class="track" [ngStyle]="{'background-image': 'url('+slide.img+')'}">
                     <div class="image"></div>
                     <div class="info">
                         <div class="line"></div>
-                        <!-- <h5>{{slide.title}}</h5> -->
+                        <h5>{{slide.title}}</h5> 
                         <p>{{slide.text}}</p>
                         <div class="scope">
                             <span *ngIf="slide.scope!=''">
@@ -28,8 +44,9 @@
                     </div>
                 </div>
             </div>
-        </ngx-slick-carousel>
-    </div>
+        </ngx-slick-carousel> -->
+
+
 
 
     <!-- <div class="title">

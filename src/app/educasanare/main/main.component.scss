@@ -12,6 +12,24 @@
     }
 }
 
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 30px 10px;
+    min-height: 100vh;
+    img {
+        width: 300px;
+    }
+}
+
+.content-loading {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 200px;
+}
+
 .main-content {
     padding-top: 80px;
 }

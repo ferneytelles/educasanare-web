@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-introduction',
@@ -7,6 +7,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class IntroductionComponent implements OnInit {
 
+  @Input() section: any;
   @ViewChild('video') video: ElementRef;
 
   height = 300;

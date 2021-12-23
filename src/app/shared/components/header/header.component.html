@@ -2,7 +2,7 @@
 <div class="content">
     <div class="header">
         <div class="logo">
-            <img class="image" src="assets/images/logo.png" alt="" (click)="navigate('/proyecto')">
+            <img class="image" src="assets/images/logo.png" alt="" (click)="navigate('/inicio')">
         </div>
 
         <button class="btn openMenu" (click)="toggleMenu()">
@@ -14,15 +14,40 @@
         <div class="menu" [ngClass]="{'show': showMenu}">
 
             <div class="options1">
+                <form class="search input-group" (ngSubmit)="onSubmit()">
+                    <input #tag class="input-text" type="text" name="" [placeholder]="language==='ES'? 'Buscar...': 'Search...'">
+                    <div class="input-group-append">
+                        <button class="btn" type="submit">
+                            <span class="material-icons notranslate">search</span>
+                        </button>
+                    </div>
+                </form>
                 <a class="link">
                     <span class="material-icons notranslate">
                         help_outline
-                    </span>Ayuda
+                    </span>
+                    <ng-container *ngIf="language==='ES'">
+                        Ayuda
+                    </ng-container>
+                    <ng-container *ngIf="language==='EN'">
+                        Help
+                    </ng-container>
                 </a>
                 <a class="link" (click)="goProfile()">
-                    <span class="material-icons notranslate">
-                        person_outline
-                    </span>Cuenta
+                    <ng-container *ngIf="!login">
+                        <span class="material-icons notranslate">
+                            person_outline
+                        </span>
+                        <ng-container *ngIf="language==='ES'">
+                            Cuenta
+                        </ng-container>
+                        <ng-container *ngIf="language==='EN'">
+                            Account
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="login">
+                        <img [src]="profile.img" alt=""> {{profile.user}}
+                    </ng-container>
                 </a>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -30,16 +55,18 @@
                             language
                         </span>
                     </div>
-                    <select class="select" id="inputGroupSelect01">
-                      <option value="0" selected>Español</option>
-                      <option value="1">Inglés</option>
+                    <select *ngIf="languages" class="select" id="inputGroupSelect01" (change)="changeLanguage($event)">
+                      <option *ngFor="let item of languages" [value]="item?.abbreviation" [selected]="item.abbreviation===language">
+                          {{item?.name}}
+                      </option>
+                      <!-- <option value="EN">Inglés</option> -->
                     </select>
                 </div>
             </div>
 
-            <div class="options2">
+            <div class="options2" *ngIf="options">
                 <a class="option" *ngFor="let item of options; let i=index" (click)="navigate(item.url)" [ngClass]="{'active': active === i}">
-                    <span>{{item.text}}</span>
+                    <span>{{item.name}}</span>
                 </a>
             </div>
         </div>

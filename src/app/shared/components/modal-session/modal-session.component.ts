@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import to from 'await-to-js';
 
 @Component({
   selector: 'app-modal-session',
@@ -13,31 +14,44 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ModalSessionComponent implements OnInit, OnDestroy {
 
+  view = 0;
   formUser: FormGroup;
   unsubscribe = new Subject();
   @ViewChild('session') modalSession: any;
+  email: string;
+  message: string;
 
   constructor(
     private modal: NgbModal,
     private sessionService: SessionService,
     private route: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.sessionService.modalSession.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+      this.view = 0;
       this.openModal();
     });
     this.createFrom();
+
   }
 
+
   openModal(): void{
-    this.modal.open(this.modalSession, {windowClass: 'modal-session', centered: true});
+    this.modal.open(this.modalSession, {windowClass: 'modal-session', centered: true, beforeDismiss: this.onDismiss});
+  }
+
+  onDismiss = async (): Promise<boolean> => {
+    this.formUser.reset();
+    return true;
   }
 
   createFrom(): void{
     this.formUser = this.fb.group({
       user: ['', Validators.maxLength(5)],
-      password: ['']
+      password: [''],
+      restorePw: ['']
     });
     this.readChanges();
   }
@@ -57,6 +71,7 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
     // tslint:disable-next-line: max-line-length
     if ((data.user === this.sessionService.profile.user || data.user === this.sessionService.profile.email) && (data.password === this.sessionService.profile.password)){
       this.sessionService.session = true;
+      this.sessionService.login.next(true);
       window.scroll({top: 0, behavior: 'smooth'});
       this.route.navigate(['/perfil']);
       this.modal.dismissAll();
@@ -66,6 +81,35 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
         'el usuario de prueba es: ' + this.sessionService.profile.user + ' y la contraseña es: ' + this.sessionService.profile.password
         );
     }
+  }
+
+  // inputEmail(event: any): void{
+  //   // console.log(event);
+  //   this.email = event.target.value;
+  // }
+
+  async getRestore(): Promise<void> {
+    const data = this.formUser.getRawValue();
+    const [error, response] = await to(
+      this.sessionService.restorePassword(data.restorePw).toPromise()
+    );
+    if (response){
+      this.message = 'Enviamos un correo electrónico para restablecer la contraseña a';
+      this.email = data.restorePw;
+      this.view = 2;
+      console.log(response);
+    } else {
+      // @ts-ignore
+      // console.log(error.error.email);
+      // @ts-ignore
+      this.message = error.error.email[0];
+      console.log(error);
+    }
+  }
+
+  goBack(): void{
+    this.view = 0;
+    this.formUser.reset();
   }
 
 
