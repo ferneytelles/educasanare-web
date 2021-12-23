@@ -9,31 +9,30 @@
         <h4 class="title">Restablecer contraseña</h4>
 
         <div class="form" [formGroup]="formPassword">
-            <span class="label">Nueva contraseña</span>
+
+            <span class="label">Nueva contraseña *</span>
             <div class="input-group">
                 <input #pw1 formControlName="password" class="password" type="password" name="" id="newPassword">
-                <span *ngIf="pw1.value.length>0" class="material-icons-outlined notranslate" (click)="pw1.type === 'text' ? pw1.type = 'password' : pw1.type = 'text'">visibility</span>
+                <span class="material-icons-outlined notranslate correct" *ngIf="pw1.value.length>7">done</span>
+                <span class="material-icons notranslate bad" *ngIf="pw1.value.length>0 && 8>pw1.value.length">close</span>
             </div>
-            <!-- &#8226; -->
+
             <div class="text">
+                <span class="material-icons notranslate icon-info">info</span>
                 <p class="sug">
-                    &#9679; Su contraseña no puede asemejarse tanto a su otra información personal.
-                </p>
-                <p class="sug">
-                    &#9679; Su contraseña debe contener por lo menos 8 caracteres.
-                </p>
-                <p class="sug">
-                    &#9679; Su contraseña no puede ser completamente numérica.
+                    La contraseña debe contener por lo menos una letra mayúscula, un número o un carácter especial [*!%$], para no ser conciderada común.
                 </p>
             </div>
 
-
-
-            <span class="label">Confirmar contraseña</span>
+            <span class="label">Confirmar contraseña *</span>
             <div class="input-group ">
                 <input #pw2 formControlName="pwConfirm" class="password" type="password" name="" id="confirmPassword">
                 <span class="material-icons-outlined notranslate correct" *ngIf="pw1.value.length>7 && pw1.value === pw2.value">done</span>
-                <!-- <span class="material-icons-outlined notranslate" (click)="pw2.type === 'text' ? pw2.type = 'password' : pw2.type = 'text'">visibility</span> -->
+                <span class="material-icons notranslate bad" *ngIf="(pw2.value.length>0) && (8>pw2.value.length || pw1.value !== pw2.value)">close</span>
+            </div>
+
+            <div class="text" *ngIf="pw2.value.length>0 && pw1.value !== pw2.value">
+                <span class="sug red">Las contraseñas no coinciden.</span>
             </div>
 
             <button class="btn" type="submit" (click)="sendPassword()">

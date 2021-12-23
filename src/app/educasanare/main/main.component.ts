@@ -54,10 +54,6 @@ export class MainComponent implements OnInit {
   }
 
   async dataInit(): Promise<void> {
-    // LENGUAJE INICIAL
-    if (!!localStorage.getItem('language')){
-      PageService.language = localStorage.getItem('language');
-    }
     // DATA INICIAL
     if (this.storage.isStorage(SessionStorageService.keyPages)){
       this.pages = this.storage.getStorage(SessionStorageService.keyPages);
