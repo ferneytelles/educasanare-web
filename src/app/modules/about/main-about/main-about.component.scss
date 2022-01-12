@@ -1,6 +1,6 @@
 .banner {
     // position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     background-image: url(../../../../assets/images/bgwe.png);
     background-size: cover;
     background-position: center;
@@ -11,7 +11,7 @@
         // position: absolute;
         // top: 0;
         // left: 0;
-        width: 54%;
+        width: 52%;
         // height: 100%;
         color: #ffffff;
         display: flex;
@@ -20,11 +20,11 @@
         padding: 8% 50px;
         .line {
             border-top: 4px solid #ffffff;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .text {
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
     }
 }
@@ -33,7 +33,7 @@
     background-image: url(../../../../assets/images/bgobj.png);
     background-position: center;
     background-size: cover;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     .content {
         width: 100%;
         display: flex;
@@ -155,9 +155,9 @@
             }
             .obj {
                 flex-direction: column;
-              .icon{
-                margin-right: 0;
-              }
+                .icon {
+                    margin-right: 0;
+                }
                 .text {
                     font-size: 18px;
                 }

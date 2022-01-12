@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main-about',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-about.component.scss']
 })
 export class MainAboutComponent implements OnInit {
+
+  @Input() content: any;
 
   text = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo molestiae saepe odit deleniti. Fugit delectus totam, recusandae officiis soluta possimus voluptatum dignissimos obcaecati exercitationem ipsa dolor corporis cupiditate sed! Animi.';
 
@@ -77,9 +79,15 @@ export class MainAboutComponent implements OnInit {
     }
   ];
 
+  banner: any;
+  objetives: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.content);
+    this.banner = this.content.sections[0]?.posts;
+    this.objetives = this.content?.sections[1];
   }
 
 }

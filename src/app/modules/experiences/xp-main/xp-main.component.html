@@ -13,26 +13,26 @@
         </select>
     </div>
 
-    <div class="experiences">
-        <div class="content-card" *ngFor="let item of content.sections[0]?.posts">
+    <div class="experiences" *ngIf="experiences">
+        <div class="content-card" *ngFor="let item of experiences">
             <div class="card">
                 <div class="image">
-                    <img [src]="item?.image|cdnUrl:300" alt="">
+                    <img [src]="item?.post_metadata.image|cdnUrl:300" alt="">
                 </div>
                 <div class="card-body">
                     <h6 class="title">
-                        {{item?.title |capitalize}}
+                        {{item?.post_metadata.title |capitalize}}
                     </h6>
                     <span class="date">
-                    {{item.creation_date.split(' ').shift()}}
+                    {{item.post_metadata.creation_date?.split(' ').shift()}}
                 </span>
-                    <div class="text" *ngIf="item.description" [innerHTML]="item?.description|secureHtml">
+                    <div class="text" *ngIf="item.post_metadata.description" [innerHTML]="item?.post_metadata.description|secureHtml">
                     </div>
                     <!-- <p class="text">
-                    {{item.text}}
-                </p> -->
+                        {{item.text}}
+                    </p> -->
                     <div class="botton">
-                        <button class="btn" (click)="navigate('/experiencias/'+item.slug)">
+                        <button class="btn" (click)="navigate('/experiencias/'+item.post_metadata.slug)">
                         + Información
                     </button>
                     </div>
@@ -41,8 +41,8 @@
         </div>
 
     </div>
-    <div class="pagination">
-        <ngb-pagination [collectionSize]="content.sections[0].posts.length" [pageSize]="12" [maxSize]="3" [rotate]="true">
+    <div class="pagination" *ngIf="count>12">
+        <ngb-pagination [collectionSize]="count" [pageSize]="12" [maxSize]="3" [rotate]="true" (pageChange)="pageChange($event)">
 
             <ng-template ngbPaginationPrevious>
                 <span class="material-icons-outlined notranslate">

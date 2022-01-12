@@ -50,6 +50,7 @@ export class PageService {
                   map((response: any) => response[0].page_metadata)
                 );
   }
+
   getPageProject(): Observable<any> {
     return this.http.get('assets/data/pageProject.json')
                 .pipe(
