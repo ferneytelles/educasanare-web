@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import to from 'await-to-js';
 import { AuthenticationService } from '@shared/services/authentication.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-main-search',
@@ -21,6 +22,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
   realized = false;
   pagination: any;
   page = 1;
+  language: string;
 
   constructor(
     private search: SearchService,
@@ -30,6 +32,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.language = PageService.language;
     this.getTagSearch();
     this.search.tagSearch.pipe(takeUntil(this.unsubscribe))
     .subscribe(() => {
@@ -54,7 +57,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
   }
 
   async getResults(): Promise<void> {
-    const [error, result] = await to(this.search.searchPosts(this.tag, 'ES', this.page).toPromise());
+    const [error, result] = await to(this.search.searchPosts(this.tag, this.language, this.page).toPromise());
     // @ts-ignore
     if (error && error.status === 403){
       await this.authentication.getToken().toPromise();

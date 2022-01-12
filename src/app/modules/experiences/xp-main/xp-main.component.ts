@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '@shared/services/session-storage.service';
+import to from 'await-to-js';
+import { SearchService } from '@shared/services/search.service';
+import { PageService } from '@shared/services/page.service';
+import { AuthenticationService } from '@shared/services/authentication.service';
 
 @Component({
   selector: 'app-xp-main',
@@ -54,18 +58,50 @@ export class XpMainComponent implements OnInit {
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eum rerum excepturi unde ipsam voluptatem, suscipit ipsa perspiciatis reiciendis. reiciendis expedita architecto, assumenda voluptate.'
     }
   ];
+  page = 1;
+  slugSection: string;
+  experiences: Array<any>;
+  language: string;
+  count: 0;
 
   constructor(
+    private search: SearchService,
     private route: Router,
-    private storage: SessionStorageService
+    private storage: SessionStorageService,
+    private authentication: AuthenticationService
   ) { }
 
   ngOnInit(): void {
+    this.language = PageService.language;
     this.content = this.storage.getStorage(
       SessionStorageService.keyPages
     ).find(obj => obj.slug === 'experiencias');
     // console.log(this.content);
+    this.slugSection = this.content.sections[0]?.slug;
+    // console.log(this.slugSection);
+    this.getPostsByPage();
   }
+
+  async getPostsByPage(): Promise<void> {
+    const [err, result] = await to(
+      this.search.getPostsBySection(this.slugSection, this.language, this.page).toPromise()
+    );
+    // @ts-ignore
+    if (err && err.status === 403){
+      await this.authentication.getToken().toPromise();
+      await this.getPostsByPage();
+      return;
+    }
+    this.count = result.count;
+    this.experiences = result.results;
+  }
+
+  pageChange(currentPage: number): void{
+    this.page = currentPage;
+    this.getPostsByPage();
+    window.scroll({top: 0});
+  }
+
 
   navigate(value: string): void{
     window.scroll({top: 0, behavior: 'smooth'});

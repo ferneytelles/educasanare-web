@@ -18,7 +18,7 @@ export class AboutPageComponent implements OnInit {
     this.content = this.storage.getStorage(
       SessionStorageService.keyPages
     ).find(obj => obj.slug === 'nosotros');
-    console.log(this.content);
+    // console.log(this.content);
   }
 
 }

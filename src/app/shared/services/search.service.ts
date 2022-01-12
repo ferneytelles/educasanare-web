@@ -27,4 +27,10 @@ export class SearchService {
       map((response: any) => response)
     );
   }
+
+  getPostsBySection(slug: string, language: string, page: number): Observable<any> {
+    return this.http.get(PostEndPoint.postsOfSection.format(slug, language, page)).pipe(
+      map((response: any) => response)
+    );
+  }
 }

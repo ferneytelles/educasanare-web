@@ -1,26 +1,24 @@
-<div class="banner">
+<div class="banner" *ngIf="banner">
     <!-- <img src="assets/images/bgwe.png" alt=""> -->
     <div class="content">
         <h2>
-            ¿Quiénes Somos?
+            {{banner[0]?.title}}
         </h2>
         <div class="line"></div>
-        <p class="text">
-            {{text}}
-        </p>
+        <div class="text" [innerHTML]="banner[0].description|secureHtml">
+        </div>
         <h4>
-            Objetivo
+            {{banner[1]?.title}}
         </h4>
-        <p class="text">
-            {{text}}
-        </p>
+        <div class="text" [innerHTML]="banner[1].description|secureHtml">
+        </div>
     </div>
 </div>
 
-<div class="objectives">
+<div class="objectives" *ngIf="objetives">
     <div class="content">
         <div class="title">
-            <h2>Objetivos del proyecto</h2>
+            <h2></h2>
             <div class="line"></div>
         </div>
         <div class="obj" *ngFor="let item of objectives">

@@ -1,3 +1,4 @@
+@use 'sass:math';
 $duration: 0.5s;
 $size: 32px;
 .main {
@@ -38,37 +39,37 @@ $size: 32px;
         &:nth-of-type(2) {
             top: -$size;
             left: 0;
-            animation-delay: -$duration / 8;
+            animation-delay: math.div(-$duration, 8);
         }
         &:nth-of-type(3) {
             top: -$size;
             left: $size;
-            animation-delay: -2 * $duration / 8;
+            animation-delay: math.div(-2 * $duration, 8);
         }
         &:nth-of-type(4) {
             top: 0;
             left: $size;
-            animation-delay: -3 * $duration / 8;
+            animation-delay: math.div(-3 * $duration, 8);
         }
         &:nth-of-type(5) {
             top: $size;
             left: $size;
-            animation-delay: -4 * $duration / 8;
+            animation-delay: math.div(-4 * $duration, 8);
         }
         &:nth-of-type(6) {
             top: $size;
             left: 0;
-            animation-delay: -5 * $duration / 8;
+            animation-delay: math.div(-5 * $duration, 8);
         }
         &:nth-of-type(7) {
             top: $size;
             left: -$size;
-            animation-delay: -6 * $duration / 8;
+            animation-delay: math.div(-6 * $duration, 8);
         }
         &:nth-of-type(8) {
             top: 0;
             left: -$size;
-            animation-delay: -7 * $duration / 8;
+            animation-delay: math.div(-7 * $duration, 8);
         }
     }
 }
