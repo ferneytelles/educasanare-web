@@ -62,7 +62,9 @@ export class XpMainComponent implements OnInit {
   slugSection: string;
   experiences: Array<any>;
   language: string;
-  count: 0;
+  error: boolean;
+  count = 0;
+  message: any;
 
   constructor(
     private search: SearchService,
@@ -79,17 +81,25 @@ export class XpMainComponent implements OnInit {
     // console.log(this.content);
     this.slugSection = this.content.sections[0]?.slug;
     // console.log(this.slugSection);
+    this.error = false;
     this.getPostsByPage();
   }
 
   async getPostsByPage(): Promise<void> {
+    this.experiences = null;
     const [err, result] = await to(
       this.search.getPostsBySection(this.slugSection, this.language, this.page).toPromise()
     );
     // @ts-ignore
-    if (err && err.status === 403){
-      await this.authentication.getToken().toPromise();
+    if (err ){
+      const [errToken, token] = await to(this.authentication.getToken());
+      if (errToken){
+        console.log(errToken);
+        this.error = true;
+        return;
+      }
       await this.getPostsByPage();
+      this.error = true;
       return;
     }
     this.count = result.count;

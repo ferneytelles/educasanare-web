@@ -6,6 +6,7 @@ import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import to from 'await-to-js';
+import { AuthenticationService } from '@shared/services/authentication.service';
 
 @Component({
   selector: 'app-modal-session',
@@ -16,16 +17,19 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
 
   view = 0;
   formUser: FormGroup;
+  formRestore: FormGroup;
   unsubscribe = new Subject();
   @ViewChild('session') modalSession: any;
   email: string;
   message: string;
+  loginError: string;
 
   constructor(
     private modal: NgbModal,
     private sessionService: SessionService,
     private route: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authentication: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +38,6 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
       this.openModal();
     });
     this.createFrom();
-
   }
 
 
@@ -44,17 +47,20 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
 
   onDismiss = async (): Promise<boolean> => {
     this.formUser.reset();
+    this.formRestore.reset();
     this.message = null;
     return true;
   }
 
   createFrom(): void{
     this.formUser = this.fb.group({
-      user: ['', Validators.maxLength(5)],
-      password: [''],
-      restorePw: ['']
+      email: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
-    this.readChanges();
+    this.formRestore = this.fb.group({
+      emailRestore: ['']
+    });
+    // this.readChanges();
   }
 
   readChanges(): void{
@@ -66,22 +72,38 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
     });
   }
 
-  valid(): void{
+  async valid(): Promise<void>{
     // const data = this.formUser.getRawValue();
     const data = this.formUser.getRawValue();
-    // tslint:disable-next-line: max-line-length
-    if ((data.user === this.sessionService.profile.user || data.user === this.sessionService.profile.email) && (data.password === this.sessionService.profile.password)){
+    const [err, response] = await to(this.authentication.tokenAccess(data).toPromise());
+    // console.log(response, err);
+    if (response){
+      this.loginError = null;
       this.sessionService.session = true;
       this.sessionService.login.next(true);
       window.scroll({top: 0, behavior: 'smooth'});
       this.route.navigate(['/perfil']);
       this.modal.dismissAll();
-      this.formUser.setValue({user: '', password: ''});
     } else {
-      alert(
-        'el usuario de prueba es: ' + this.sessionService.profile.user + ' y la contraseña es: ' + this.sessionService.profile.password
-        );
+      // @ts-ignore
+      this.loginError = err.error.detail;
     }
+
+
+
+    // tslint:disable-next-line: max-line-length
+    // if ((data.user === this.sessionService.profile.user || data.user === this.sessionService.profile.email) && (data.password === this.sessionService.profile.password)){
+    //   this.sessionService.session = true;
+    //   this.sessionService.login.next(true);
+    //   window.scroll({top: 0, behavior: 'smooth'});
+    //   this.route.navigate(['/perfil']);
+    //   this.modal.dismissAll();
+    //   this.formUser.setValue({user: '', password: ''});
+    // } else {
+    //   alert(
+    //     'el usuario de prueba es: ' + this.sessionService.profile.user + ' y la contraseña es: ' + this.sessionService.profile.password
+    //     );
+    // }
   }
 
   // inputEmail(event: any): void{
@@ -90,13 +112,13 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
   // }
 
   async getRestore(): Promise<void> {
-    const data = this.formUser.getRawValue();
+    const data = this.formRestore.getRawValue();
     const [error, response] = await to(
-      this.sessionService.restorePassword(data.restorePw).toPromise()
+      this.sessionService.restorePassword(data.emailRestore).toPromise()
     );
     if (response){
       this.message = 'Enviamos un correo electrónico para restablecer la contraseña a';
-      this.email = data.restorePw;
+      this.email = data.emailRestore;
       this.view = 2;
       console.log(response);
     } else {
@@ -111,6 +133,7 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
   goBack(): void{
     this.view = 0;
     this.formUser.reset();
+    this.formRestore.reset();
   }
 
 

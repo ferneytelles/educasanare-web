@@ -27,7 +27,11 @@ export class SessionService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.login.subscribe((data: boolean) => {
+      console.log('session alterno');
+    });
+  }
 
   restorePassword(email: string): Observable<any>{
     this.formUser = new FormData();
@@ -48,4 +52,5 @@ export class SessionService {
       tap((response: any) => response)
     );
   }
+
 }

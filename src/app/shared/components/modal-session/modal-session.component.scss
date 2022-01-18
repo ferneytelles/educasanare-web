@@ -26,6 +26,10 @@
         text-align: center;
         margin-bottom: 20px;
     }
+    .errorLogin {
+        color: #ff0000;
+        font-size: 14px;
+    }
     .label {
         display: flex;
         align-items: center;
@@ -74,6 +78,7 @@
             color: #ff0000;
         }
         .back {
+            order: -1;
             background: #ffffff;
             color: #106738;
         }

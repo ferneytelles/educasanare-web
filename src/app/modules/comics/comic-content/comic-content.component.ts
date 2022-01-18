@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { URL_CDN } from '@env/environment';
 
 @Component({
   selector: 'app-comic-content',
@@ -22,7 +23,7 @@ export class ComicContentComponent implements OnInit {
     // this.imageZoom = img;
     this.zoom = true;
     this.spinner = true;
-    this.imageHtml.nativeElement.src = img;
+    this.imageHtml.nativeElement.src = URL_CDN + img;
     this.imageHtml.nativeElement.onload = () => {
       this.spinner = false;
     };

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SessionStorageService } from '@shared/services/session-storage.service';
 
 @Component({
   selector: 'app-comics-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComicsPageComponent implements OnInit {
 
-  constructor() { }
+  @Input() content: any;
+
+  constructor(
+    private storage: SessionStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.content = this.storage.getStorage(
+      SessionStorageService.keyPages
+    ).find(obj => obj.slug === 'inicio').sections.find(ob => ob.slug === 'e-comics');
+    // console.log(this.content);
   }
 
 }

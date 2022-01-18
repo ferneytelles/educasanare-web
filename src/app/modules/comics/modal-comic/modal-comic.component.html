@@ -29,7 +29,7 @@
         </div>
 
         <div class="arrows">
-            <audio *ngIf="audio && (page===0 || page===content.length-1)" class="audio" [src]="audio" autoplay="true"></audio>
+            <audio *ngIf="audio && (page===0 || page===content.length-1)" class="audio" [src]="audio|cdnUrl" autoplay="true"></audio>
             <div class="bottons">
                 <button class="btn" (click)="movePage(false)">
                     Anterior

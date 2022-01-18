@@ -69,6 +69,7 @@ export class PageService {
     // }
     // await this.getGeneralInformation();
     const [error, pages] = await to(this.getPages(3).toPromise());
+    console.log(pages);
     // @ts-ignore
     if (error && error.status === 403){
       await this.getAuthentication();
@@ -95,7 +96,8 @@ export class PageService {
   }
 
   async getAuthentication(): Promise<boolean>{
-    const [err, data] = await to(this.authentication.getToken().toPromise());
+    const [err, data] = await to(this.authentication.getToken());
+    // @ts-ignore
     if (err){
       console.log(err);
       this.serverError.next(err);
@@ -105,10 +107,7 @@ export class PageService {
   }
 
   async getGeneralInformation(): Promise<any> {
-    if (!await this.getAuthentication()) {
-      await this.setPagesStorage();
-      return;
-    }
+    await this.getAuthentication();
     const [err2, projectInfo] = await to(this.getProject().toPromise());
     if (projectInfo){
       this.session.setStorage(
