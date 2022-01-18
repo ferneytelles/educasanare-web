@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { SessionStorageService } from '@shared/services/session-storage.service';
 import to from 'await-to-js';
+import { SessionService } from '@shared/services/session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
+    private sessionService: SessionService
   ) {
     this.userData();
   }
@@ -46,7 +48,7 @@ export class AuthenticationService {
   }
 
   tokenAccess(credentials: any): Observable<any> {
-    console.log(credentials);
+    // console.log(credentials);
     return this.http.post(AuthenticateEndpoint.authenticate, credentials)
     .pipe(tap((result: any) => {
       AuthenticationService.token = result.access;

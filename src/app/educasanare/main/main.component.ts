@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
       this.languageInit();
       this.getPages();
     });
+    this.pageService.getAuthentication();
   }
 
   languageInit(): void{
