@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SessionEndPoint } from '@shared/endpoints/session.endpoint';
 import { map, tap } from 'rxjs/operators';
+import to from 'await-to-js';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,15 @@ export class SessionService {
   login: Subject<boolean> = new Subject<boolean>();
   session = false;
 
-  profile = {
-    img: 'assets/images/face3.jpg',
-    user: 'oscar_21',
-    name: 'oscar',
-    lastname: 'perez',
-    email: 'oscar_perez21@gmail.com',
-    password: 'hola123'
-  };
+  profile: any;
+  // profile = {
+  //   img: 'assets/images/face3.jpg',
+  //   user: 'oscar_21',
+  //   name: 'oscar',
+  //   lastname: 'perez',
+  //   email: 'oscar_perez21@gmail.com',
+  //   password: 'hola123'
+  // };
 
   file: any;
   formUser: FormData;
@@ -29,8 +31,24 @@ export class SessionService {
     private http: HttpClient
   ) {
     this.login.subscribe((data: boolean) => {
-      console.log('session alterno');
+      this.session = data;
+      if (!data) {
+        this.profile = null;
+      }
     });
+  }
+
+  // async getInformationUser(): Promise<void>{
+  //   const [error, information] = await to(
+  //   this.dataUser().toPromise()
+  //   );
+  //   this.profile = information[0];
+  // }
+
+  dataUser(): Observable<any> {
+    return this.http.get(SessionEndPoint.dataUser).pipe(
+      tap((response: any) => response)
+    );
   }
 
   restorePassword(email: string): Observable<any>{

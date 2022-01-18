@@ -46,7 +46,8 @@
                         </ng-container>
                     </ng-container>
                     <ng-container *ngIf="login">
-                        <img [src]="profile.img" alt=""> {{profile.user}}
+                        <img *ngIf="!profile.avatar" src="assets/images/face0.png" alt="">
+                        <img *ngIf="profile.avatar" [src]="profile.avatar|cdnUrl" alt=""> {{profile?.username}}
                     </ng-container>
                 </a>
                 <div class="input-group">

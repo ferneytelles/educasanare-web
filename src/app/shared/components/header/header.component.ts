@@ -50,10 +50,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.language = PageService.language;
     this.getHeaderInfo();
-    this.profile = this.session.profile;
     this.session.login.pipe(takeUntil(this.unsubscribe))
     .subscribe((data: boolean) => {
       // console.log(data);
+      this.profile = this.session.profile;
       this.login = data;
     });
     this.itemUrl(this.route.url);
@@ -122,7 +122,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goProfile(): void{
-    if (this.session.session){
+    if (this.login){
       this.route.navigate(['/perfil']);
     } else {
       this.showMenu = false;

@@ -48,6 +48,7 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
   onDismiss = async (): Promise<boolean> => {
     this.formUser.reset();
     this.formRestore.reset();
+    this.loginError = null;
     this.message = null;
     return true;
   }
@@ -75,15 +76,24 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
   async valid(): Promise<void>{
     // const data = this.formUser.getRawValue();
     const data = this.formUser.getRawValue();
-    const [err, response] = await to(this.authentication.tokenAccess(data).toPromise());
+    const [err, response] = await to(
+      this.authentication.tokenAccess(data).toPromise()
+    );
     // console.log(response, err);
     if (response){
-      this.loginError = null;
-      this.sessionService.session = true;
-      this.sessionService.login.next(true);
-      window.scroll({top: 0, behavior: 'smooth'});
-      this.route.navigate(['/perfil']);
-      this.modal.dismissAll();
+      const [error, information] = await to(
+        this.sessionService.dataUser().toPromise()
+      );
+      if (!information[0].is_staff){
+        this.sessionService.profile = information[0];
+        this.loginError = null;
+        this.sessionService.login.next(true);
+        window.scroll({top: 0, behavior: 'smooth'});
+        this.route.navigate(['/perfil']);
+        this.modal.dismissAll();
+      } else {
+        this.loginError = 'usuario no permitido';
+      }
     } else {
       // @ts-ignore
       this.loginError = err.error.detail;

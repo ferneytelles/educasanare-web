@@ -7,6 +7,7 @@ import { AuthenticationService } from './authentication.service';
 import '@shared/utils/string';
 import { SessionStorageService } from './session-storage.service';
 import { to } from 'await-to-js';
+import { SessionService } from '@shared/services/session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class PageService {
   constructor(
     private http: HttpClient,
     private authentication: AuthenticationService,
-    private session: SessionStorageService
+    private session: SessionStorageService,
+    private sessionService: SessionService
   ) { }
 
   getPages(idProject: number): Observable<any> {
@@ -102,6 +104,13 @@ export class PageService {
       console.log(err);
       this.serverError.next(err);
       return false;
+    }
+    const [error, information] = await to(
+      this.sessionService.dataUser().toPromise()
+    );
+    if (!information[0].is_staff){
+      this.sessionService.profile = information[0];
+      this.sessionService.login.next(true);
     }
     return true;
   }
