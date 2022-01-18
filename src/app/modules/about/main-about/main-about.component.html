@@ -15,57 +15,60 @@
     </div>
 </div>
 
-<div class="objectives" *ngIf="objetives">
+<div class="objectives" *ngIf="objectives">
     <div class="content">
         <div class="title">
-            <h2>{{objetives?.title}}</h2>
+            <h2>{{objectives?.title}}</h2>
             <div class="line"></div>
         </div>
-        <div class="obj" *ngFor="let item of objectives">
+        <div class="obj" *ngFor="let item of objectives.posts">
             <span class="material-icons icon notranslate">
                 check_circle_outline
             </span>
-            <p class="text">
+            <div class="text">
                 <span>
-                    {{item.title}}: 
-                </span> {{item.text}}
-            </p>
+                    {{item?.title}}: 
+                </span>
+                <div class="desc" [innerHTML]="item?.description|secureHtml">
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="data">
-    <div class="item c1">
-        <span class="number">10</span>
+<div class="data" *ngIf="dataInterest">
+    <div class="item" *ngFor="let item of dataInterest.slice(0,3)">
+        <span class="number">{{item?.title}}</span>
         <span class="text">
-            Instituciones beneficiadas
+            {{item?.subtitle}}
         </span>
     </div>
-    <div class="item c2">
+    <!-- <div class="item">
         <span class="number">+9.000</span>
         <span class="text">
             Estudiantes beneficiados
         </span>
     </div>
-    <div class="item c3">
+    <div class="item">
         <span class="number">+999</span>
         <span class="text">
             Lorem ipsum
         </span>
-    </div>
+    </div> -->
 </div>
 
-<div class="institutions">
-    <h4 class="title">Instituciones beneficiadas</h4>
+<div class="institutions" *ngIf="institutions">
+    <h4 class="title">{{institutions?.title}}</h4>
     <div class="content">
-        <div class="item" *ngFor="let item of inst">
-            <div class="info" [ngStyle]="{'background-image': 'url('+item.img+')'}">
+        <div class="item" *ngFor="let item of institutions?.posts">
+            <!-- <div class="info" [ngStyle]="{'background-image': 'url('+item.img+')'}"> -->
+            <div class="info" [ngStyle]="{'background-image': 'url('+urlCdn+item?.image+'?w=200)'}">
                 <div class="text">
                     <span class="name">
-                        {{item.name}}
+                        {{item?.title}}
                     </span>
                     <span>
-                        {{item.town}}
+                        {{item?.subtitle}}
                     </span>
                 </div>
             </div>

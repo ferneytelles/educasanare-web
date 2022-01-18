@@ -4,6 +4,7 @@ import { SessionStorageService } from '@shared/services/session-storage.service'
 import to from 'await-to-js';
 import { SearchService } from '@shared/services/search.service';
 import { AuthenticationService } from '@shared/services/authentication.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-post',
@@ -19,6 +20,7 @@ export class PostComponent implements OnInit {
   tags: string;
   height: number;
   slug: string;
+  language: string;
 
   constructor(
     private route: Router,
@@ -29,6 +31,7 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.language = PageService.language;
     this.slug = this.activeRoute.snapshot.params.slug;
     console.log(this.activeRoute.snapshot.params.slug);
     // this.post = this.storage.getStorage(SessionStorageService.keyPages)
@@ -37,10 +40,12 @@ export class PostComponent implements OnInit {
   }
 
   async getPost(): Promise<void>{
-    const [error, post] = await to(this.search.getPost(this.slug, 'ES').toPromise());
+    const [error, post] = await to(
+      this.search.getPost(this.slug, this.language).toPromise()
+    );
     // @ts-ignore
     if (error && error.status === 403){
-      await this.authentication.getToken().toPromise();
+      await this.authentication.getToken();
       await this.getPost();
       return;
     }

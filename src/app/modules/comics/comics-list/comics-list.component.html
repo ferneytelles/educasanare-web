@@ -1,19 +1,20 @@
-<app-banner-top [text]="'Comics'" [icon]="'auto_stories'" [bgColor]="'0072BC39'" [textColor]="'0072BC'"></app-banner-top>
+<app-banner-top [text]="content?.title" [icon]="'auto_stories'" [bgColor]="'0072BC39'" [textColor]="'0072BC'"></app-banner-top>
 
 <div class="content">
     <div class="comics">
         <div class="content-comic" *ngFor="let item of comics; let i=index">
             <div class="comic" (click)="openComic(i)">
                 <div class="image">
-                    <img [src]="item.miniature" alt="">
+                    <img [src]="item?.image|cdnUrl:200" alt="">
                 </div>
                 <div class="info">
-                    <h5 class="title">{{item.title}}</h5>
-                    <p class="text">{{item.description}}</p>
+                    <h5 class="title">{{item?.title}}</h5>
+                    <!-- <p class="text">{{item.description}}</p> -->
+                    <div *ngIf="item?.description" class="text" [innerHTML]="item?.description|secureHtml"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<app-modal-comic [content]="comics[selectComic].content" [audio]="comics[selectComic].audio"></app-modal-comic>
+<app-modal-comic [content]="comics[selectComic].pill" [audio]="comics[selectComic].audio"></app-modal-comic>

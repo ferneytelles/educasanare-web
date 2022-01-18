@@ -3,11 +3,12 @@
     <div class="comics">
         <div class="comic" *ngFor="let item of comics2; let i=index" (click)="openComic(i)">
             <div class="image">
-                <img [src]="item.miniature" alt="">
+                <img [src]="item?.image|cdnUrl:200" alt="">
             </div>
             <div class="info">
-                <h5 class="title">{{item.title}}</h5>
-                <p class="text">{{item.description}}</p>
+                <h5 class="title">{{item?.title}}</h5>
+                <!-- <p class="text">{{item.description}}</p> -->
+                <div class="text" [innerHTML]="item?.description|secureHtml"></div>
             </div>
         </div>
     </div>
@@ -18,4 +19,4 @@
     </div>
 </div>
 
-<app-modal-comic [content]="comics2[selectComic].content" [audio]="comics2[selectComic].audio"></app-modal-comic>
+<app-modal-comic [content]="comics2[selectComic].pill" [audio]="comics2[selectComic].audio"></app-modal-comic>

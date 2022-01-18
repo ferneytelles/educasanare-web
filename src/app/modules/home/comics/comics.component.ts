@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ComicsService } from 'src/app/shared/services/comics.service';
 
@@ -9,6 +9,7 @@ import { ComicsService } from 'src/app/shared/services/comics.service';
 })
 export class ComicsComponent implements OnInit {
 
+  @Input() section: any;
   comics2: Array<any>;
   comics = [
     {
@@ -39,10 +40,15 @@ export class ComicsComponent implements OnInit {
 
   selectComic = 0;
 
-  constructor(private route: Router, private comicService: ComicsService) { }
+  constructor(
+    private route: Router,
+    private comicService: ComicsService
+  ) { }
 
   ngOnInit(): void {
-    this.comics2 = this.comicService.comics.slice(0, 4);
+    // this.comics2 = this.comicService.comics.slice(0, 4);
+    console.log(this.section);
+    this.comics2 = this.section?.posts.slice(0, 4);
   }
 
   goComics(): void{

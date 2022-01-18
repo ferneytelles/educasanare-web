@@ -57,11 +57,11 @@ export class MainComponent implements OnInit {
     // DATA INICIAL
     if (this.storage.isStorage(SessionStorageService.keyPages)){
       this.pages = this.storage.getStorage(SessionStorageService.keyPages);
-      console.log('storage');
+      // console.log('storage');
     } else {
       await this.pageService.getGeneralInformation();
       await this.getPages();
-      console.log('api');
+      // console.log('api');
     }
     console.log(this.pages);
   }

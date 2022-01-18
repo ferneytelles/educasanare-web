@@ -1,16 +1,17 @@
-<ng-template #session let-modal class="content" [formGroup]="formUser">
-    <div class="modal-body" *ngIf="view===0">
+<ng-template #session let-modal class="content">
+    <form class="modal-body" *ngIf="view===0" [formGroup]="formUser">
         <h4 class="title">Iniciar sesión</h4>
+        <p class="errorLogin" *ngIf="loginError">{{loginError}}</p>
         <div class="label">
             <span class="material-icons notranslate icon">
                 person
             </span>
             <span class="text">
-                Nombre de usuario o correo electrónico
+                Correo electrónico
             </span>
         </div>
 
-        <input [formControl]="formUser.get('user')" class="user" type="text" name="" id="user">
+        <input [formControl]="formUser.get('email')" class="user" type="text" name="" id="user">
 
         <div class="label">
             <span class="material-icons notranslate icon">
@@ -24,12 +25,12 @@
         <input formControlName="password" class="password" type="password" name="" id="pw">
 
         <a class="link" (click)="view=1">Olvide mi contraseña</a>
-        <button class="btn" (click)="valid()">
+        <button class="btn" type="submit" (click)="valid()" [disabled]="formUser.invalid">
             Iniciar sesión
         </button>
-    </div>
+    </form>
 
-    <div class="modal-body" *ngIf="view===1">
+    <form class="modal-body" *ngIf="view===1" [formGroup]="formRestore">
         <h4 class="title">¿Olvidó su contraseña?</h4>
 
         <p class="text-reset">Restablecer su contraseña es fácil: solo díganos con qué dirección de e-mail se registró</p>
@@ -42,18 +43,19 @@
                 Correo electrónico
             </span>
         </div>
-        <input formControlName="restorePw" class="user" type="text" name="" id="user">
+        <input formControlName="emailRestore" class="user" type="text" name="" id="user">
 
         <div class="bottons">
             <p class="text" *ngIf="message">{{message}}</p>
+            <button class="btn confirm" type="submit" (click)="getRestore()">
+                Confirmar
+            </button>
             <button class="btn back" (click)="goBack()">
                 Regresar
             </button>
-            <button class="btn confirm" (click)="getRestore()">
-                Confirmar
-            </button>
+
         </div>
-    </div>
+    </form>
 
     <div class="modal-body" *ngIf="view===2">
         <p class="message">

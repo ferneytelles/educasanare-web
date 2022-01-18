@@ -1,7 +1,7 @@
 <app-banner-top [text]="'Contacto'" [icon]="'perm_contact_calendar'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
 <div class="bg">
     <div class="content">
-        <h4 class="title">Contacta con nosotros</h4>
+        <h4 class="title">{{content.sections[0]?.title}}</h4>
         <div class="contact">
             <div class="form">
                 <input type="email" name="" placeholder="Correo electrónico">
@@ -17,7 +17,8 @@
                 </button>
             </div>
             <div class="info">
-                <p class="location">
+                <div class="information" [innerHTML]="information|secureHtml"></div>
+                <!-- <p class="location">
                     <span class="material-icons-outlined notranslate">
                         location_on
                     </span> Carrera 01 #00-00 Barrio / Municipio / Departamento
@@ -29,14 +30,14 @@
                 <span class="label">E-mail:</span>
                 <p class="blue">
                     contacto@gmail.com
-                </p>
-                <span class="label">Redes sociales:</span>
+                </p> -->
+                <!-- <span class="label">Redes sociales:</span>
                 <div class="images">
                     <img src="assets/images/icon-fb.png" alt="">
                     <img src="assets/images/icon-yt.png" alt="">
                     <img src="assets/images/icon-tw.png" alt="">
                     <img src="assets/images/icon-ig.png" alt="">
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

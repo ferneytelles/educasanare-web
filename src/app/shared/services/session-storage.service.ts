@@ -9,6 +9,7 @@ export class SessionStorageService {
   static keyPages = 'pages';
   static keyProject = 'project';
   static keySearch = 'tag';
+  static keyRefresh = 'token_refresh';
 
   constructor() { }
 

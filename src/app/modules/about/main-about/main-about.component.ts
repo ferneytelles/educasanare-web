@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { URL_CDN } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'app-main-about',
@@ -11,7 +12,7 @@ export class MainAboutComponent implements OnInit {
 
   text = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo molestiae saepe odit deleniti. Fugit delectus totam, recusandae officiis soluta possimus voluptatum dignissimos obcaecati exercitationem ipsa dolor corporis cupiditate sed! Animi.';
 
-  objectives = [
+  objetives = [
     {
       title: 'Objetivo específico 1 (OE1)',
       text: 'Ambiente de aprendizaje con meditación tic y enfoque STEM + a para el fomento de la innovación educativa.'
@@ -80,14 +81,20 @@ export class MainAboutComponent implements OnInit {
   ];
 
   banner: any;
-  objetives: any;
+  objectives: any;
+  dataInterest: Array<any>;
+  institutions: any;
+  urlCdn: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.urlCdn = URL_CDN;
     console.log(this.content);
     this.banner = this.content.sections[0]?.posts;
-    this.objetives = this.content?.sections[1];
+    this.objectives = this.content?.sections[1];
+    this.dataInterest = this.content.sections[2]?.posts;
+    this.institutions = this.content?.sections[3];
   }
 
 }

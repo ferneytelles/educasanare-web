@@ -1,16 +1,16 @@
 <div class="content">
-    <h4 class="title">Laboratorio LLANO ARTE</h4>
+    <h4 class="title">{{post?.title}}</h4>
 
-    <div class="carousel-content">
+    <div class="carousel-content" *ngIf="images.length>0">
         <div id="carouselImages" class="carousel slide" data-ride="carousel">
 
             <ol class="carousel-indicators">
                 <li *ngFor="let item of images; let i=index" data-target="#carouselImages" attr.data-slide-to="{{i}}" [ngClass]="{'active': i==0}"></li>
             </ol>
-
+            <!-- data-interval="10000" -->
             <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let item of images; let i=index" [ngClass]="{'active': i==0}" data-interval="10000">
-                    <img [src]="item" class="d-block w-100" alt="...">
+                <div class="carousel-item" *ngFor="let item of images; let i=index" [ngClass]="{'active': i==0}" data-interval="false">
+                    <img [src]="item|cdnUrl:600" class="d-block w-100" alt="...">
                 </div>
             </div>
 
@@ -33,12 +33,14 @@
                 Fecha de publicación:
             </span>
             <span>
-                {{date.toLocaleDateString()}}  {{date.toLocaleTimeString()}}
+                {{post?.creation_date}}
             </span>
         </div>
-        <p class="text">
+        <!-- <p class="text">
             {{text}}
-        </p>
+        </p> -->
+        <h5 class="subtitle">{{post?.subtitle}}</h5>
+        <div class="text" *ngIf="post?.description" [innerHTML]="post?.description|secureHtml"></div>
     </div>
     <!-- <app-carousel-sponsor></app-carousel-sponsor> -->
 </div>

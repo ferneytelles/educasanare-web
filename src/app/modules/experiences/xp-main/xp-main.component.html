@@ -13,6 +13,11 @@
         </select>
     </div>
 
+    <div class="error" *ngIf="!experiences && error">
+        <img src="assets/images/errorRequest.png" alt="">
+        <h5>Error al cargar el contenido, por favor intente más tarde!</h5>
+    </div>
+
     <div class="experiences" *ngIf="experiences">
         <div class="content-card" *ngFor="let item of experiences">
             <div class="card">

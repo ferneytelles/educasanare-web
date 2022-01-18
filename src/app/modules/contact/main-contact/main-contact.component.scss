@@ -60,6 +60,11 @@
             .info {
                 width: 50%;
                 padding: 0 30px;
+                .information {
+                     ::ng-deep p {
+                        margin-bottom: 0;
+                    }
+                }
                 .location {
                     display: flex;
                 }

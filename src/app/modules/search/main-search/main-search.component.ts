@@ -60,7 +60,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
     const [error, result] = await to(this.search.searchPosts(this.tag, this.language, this.page).toPromise());
     // @ts-ignore
     if (error && error.status === 403){
-      await this.authentication.getToken().toPromise();
+      await this.authentication.getToken();
       await this.getResults();
       return;
     }
