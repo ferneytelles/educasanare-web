@@ -47,7 +47,7 @@
                     </ng-container>
                     <ng-container *ngIf="login">
                         <img *ngIf="!profile.avatar" src="assets/images/face0.png" alt="">
-                        <img *ngIf="profile.avatar" [src]="profile.avatar|cdnUrl" alt=""> {{profile?.username}}
+                        <img *ngIf="profile.avatar" [src]="profile.avatar" alt=""> {{profile?.username}}
                     </ng-container>
                 </a>
                 <div class="input-group">

@@ -25,8 +25,8 @@
             box-shadow: 0 0 8px #00000049;
             .img {
                 position: relative;
-                width: 65%;
-                padding-bottom: 65%;
+                width: 80%;
+                padding-bottom: 80%;
                 img {
                     position: absolute;
                     top: 0;
@@ -82,7 +82,11 @@
             flex-direction: column;
             width: 70%;
             padding: 0 30px;
-            &.editing {
+            .error {
+                color: #ff0000;
+                font-size: 14px;
+            }
+            &.userEditing {
                 .item {
                     flex-wrap: wrap;
                     border-bottom: none;
@@ -93,8 +97,20 @@
                         text-align: left;
                     }
                 }
-                .bottons {
-                    justify-content: flex-end;
+                // .bottons {
+                //     justify-content: flex-end;
+                // }
+            }
+            .changePassword {
+                .item {
+                    flex-wrap: wrap;
+                    border-bottom: none;
+                    margin-bottom: 15px;
+                    input {
+                        width: 100%;
+                        border: 1px solid #d7d7d7;
+                        text-align: left;
+                    }
                 }
             }
             .title {
@@ -138,7 +154,7 @@
                     border: 1px solid #106738;
                     color: #106738;
                     background: #ffffff;
-                    padding: 3px 20px;
+                    padding: 3px 10px;
                     box-shadow: none;
                     &:hover {
                         color: #ffffff;
@@ -167,7 +183,7 @@
                     background: #106738;
                     padding: 3px 20px;
                     box-shadow: none;
-                    margin-left: 15px;
+                    margin-right: 15px;
                     &:hover {
                         background: #16884b;
                     }
@@ -193,6 +209,7 @@
             .image {
                 width: 100%;
                 flex-direction: row;
+                justify-content: center;
                 .img {
                     width: 25%;
                     padding-bottom: 25%;
@@ -212,7 +229,7 @@
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 590px) {
     .content {
         padding: 30px 10px;
         .profile {
@@ -237,6 +254,24 @@
                     input {
                         width: 100%;
                         margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .content {
+        .profile {
+            .info {
+                .bottons {
+                    flex-direction: column;
+                    .btn {
+                        margin-bottom: 8px;
+                    }
+                    .off {
+                        justify-content: center;
                     }
                 }
             }

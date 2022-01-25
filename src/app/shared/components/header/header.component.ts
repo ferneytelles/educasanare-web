@@ -6,6 +6,7 @@ import { SessionStorageService } from '@shared/services/session-storage.service'
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PageService } from '@shared/services/page.service';
+import to from 'await-to-js';
 
 @Component({
   selector: 'app-header',
@@ -60,6 +61,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.route.events.subscribe((url: any) => {
       this.itemUrl(this.route.url);
     });
+    // verifica si existe session iniciada
+    this.session.getInformationUser();
   }
 
   getHeaderInfo(): void{

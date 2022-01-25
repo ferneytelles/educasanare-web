@@ -3,19 +3,20 @@
     <div class="content">
         <h4 class="title">{{content.sections[0]?.title}}</h4>
         <div class="contact">
-            <div class="form">
-                <input type="email" name="" placeholder="Correo electrónico">
-                <input type="text" name="" placeholder="Nombre y apellido">
-                <select class="input-group-text">
-                    <option hidden selected>Selecciona el asunto</option>
-                    <option value="1">Sugerencia</option>
-                    <option value="2">Solicitud registro docente</option>
+            <form class="form" [formGroup]="formContact">
+                <span class="error" *ngIf="errorEmail">{{errorEmail}}</span>
+                <input type="email" name="" formControlName="email" placeholder="Correo electrónico*">
+                <input type="text" name="" formControlName="name" placeholder="Nombre y apellido*">
+                <select class="input-group-text" formControlName="subject">
+                    <option value="PQRS" selected>PQRS</option>
+                    <option value="Solicitud registro docente">Solicitud registro docente</option>
                 </select>
-                <textarea name="" placeholder="Cuentanos tu sugerencia"></textarea>
-                <button class="btn">
+                <span class="error" *ngIf="errorBody">{{errorBody}}</span>
+                <textarea name="" formControlName="body" placeholder="Cuentanos tu sugerencia"></textarea>
+                <button class="btn" (click)="sendRequest()" [disabled]="formContact.invalid">
                     Enviar
                 </button>
-            </div>
+            </form>
             <div class="info">
                 <div class="information" [innerHTML]="information|secureHtml"></div>
                 <!-- <p class="location">

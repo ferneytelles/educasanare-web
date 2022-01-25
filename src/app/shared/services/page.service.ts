@@ -60,6 +60,13 @@ export class PageService {
                 );
   }
 
+  getWebLabels(): Observable<any> {
+    return this.http.get(PageEndPoint.webLabels)
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
 
   async setPagesStorage(): Promise<any>{
     // const p = await this.getPages(3);
@@ -72,11 +79,16 @@ export class PageService {
     // await this.getGeneralInformation();
     const [error, pages] = await to(this.getPages(3).toPromise());
     console.log(pages);
-    // @ts-ignore
-    if (error && error.status === 403){
-      await this.getAuthentication();
-      await this.setPagesStorage();
-      return;
+    if (error){
+      // @ts-ignore
+      if (error.status === 403){
+        await this.getAuthentication();
+        await this.setPagesStorage();
+        return;
+      } else {
+        this.serverError.next(error);
+        return false;
+      }
     }
     console.log(pages);
     const arrayPages = [];
@@ -105,20 +117,22 @@ export class PageService {
       this.serverError.next(err);
       return false;
     }
-    const [error, information] = await to(
-      this.sessionService.dataUser().toPromise()
-    );
-    if (!information[0].is_staff){
-      this.sessionService.profile = information[0];
-      this.sessionService.login.next(true);
-    }
     return true;
   }
 
-  async getGeneralInformation(): Promise<any> {
-    await this.getAuthentication();
+  async getGeneralInformation(): Promise<boolean> {
+    if (!await this.getAuthentication()){
+      return false;
+    }
     const [err2, projectInfo] = await to(this.getProject().toPromise());
     if (projectInfo){
+      const [error2, labels] = await to(
+        this.getWebLabels().toPromise()
+      );
+      this.session.setStorage(
+        SessionStorageService.keyLabels,
+        labels
+      );
       this.session.setStorage(
         SessionStorageService.keyProject,
         projectInfo

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { SessionEndPoint } from '@shared/endpoints/session.endpoint';
 import { map, tap } from 'rxjs/operators';
 import to from 'await-to-js';
+import { AuthenticationService } from '@shared/services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,26 +25,39 @@ export class SessionService {
   //   password: 'hola123'
   // };
 
-  file: any;
+  // file: any;
   formUser: FormData;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authentication: AuthenticationService
   ) {
     this.login.subscribe((data: boolean) => {
       this.session = data;
-      if (!data) {
-        this.profile = null;
-      }
     });
   }
 
-  // async getInformationUser(): Promise<void>{
-  //   const [error, information] = await to(
-  //   this.dataUser().toPromise()
-  //   );
-  //   this.profile = information[0];
-  // }
+  async getInformationUser(): Promise<boolean>{
+    const [error, information] = await to(
+    this.dataUser().toPromise()
+    );
+    // @ts-ignore
+    if (error && error.status === 403) {
+      await this.authentication.getToken();
+      return await this.getInformationUser();
+    }
+    // console.log(information[0]);
+    if (!information[0].is_staff){
+      this.profile = information[0];
+      this.login.next(true);
+      return true;
+    } else {
+      await this.authentication.tokenAccess(this.authentication.formData).toPromise();
+      this.profile = null;
+      this.login.next(false);
+      return false;
+    }
+  }
 
   dataUser(): Observable<any> {
     return this.http.get(SessionEndPoint.dataUser).pipe(
@@ -66,6 +80,13 @@ export class SessionService {
     this.formUser.append('password', password);
     this.formUser.append('token', token);
     return this.http.post(SessionEndPoint.confirmPassword, this.formUser)
+    .pipe(
+      tap((response: any) => response)
+    );
+  }
+
+  updateUser(data: any): Observable<any> {
+    return this.http.put(SessionEndPoint.updateUser, data)
     .pipe(
       tap((response: any) => response)
     );
