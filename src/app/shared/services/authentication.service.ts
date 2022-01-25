@@ -18,8 +18,7 @@ export class AuthenticationService {
   formData: FormData;
 
   constructor(
-    private http: HttpClient,
-    private sessionService: SessionService
+    private http: HttpClient
   ) {
     this.userData();
   }

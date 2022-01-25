@@ -81,26 +81,24 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
     );
     // console.log(response, err);
     if (response){
-      const [error, information] = await to(
-        this.sessionService.dataUser().toPromise()
-      );
-      if (!information[0].is_staff){
-        this.sessionService.profile = information[0];
+      // const [error, information] = await to(
+      //   this.sessionService.dataUser().toPromise()
+      // );
+      if (await this.sessionService.getInformationUser()){
+        // this.sessionService.profile = information[0];
         this.loginError = null;
-        this.sessionService.login.next(true);
+        // this.sessionService.login.next(true);
         window.scroll({top: 0, behavior: 'smooth'});
         this.route.navigate(['/perfil']);
         this.modal.dismissAll();
       } else {
+        // await this.authentication.tokenAccess(this.authentication.formData).toPromise();
         this.loginError = 'usuario no permitido';
       }
     } else {
       // @ts-ignore
       this.loginError = err.error.detail;
     }
-
-
-
     // tslint:disable-next-line: max-line-length
     // if ((data.user === this.sessionService.profile.user || data.user === this.sessionService.profile.email) && (data.password === this.sessionService.profile.password)){
     //   this.sessionService.session = true;
@@ -115,11 +113,6 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
     //     );
     // }
   }
-
-  // inputEmail(event: any): void{
-  //   // console.log(event);
-  //   this.email = event.target.value;
-  // }
 
   async getRestore(): Promise<void> {
     const data = this.formRestore.getRawValue();

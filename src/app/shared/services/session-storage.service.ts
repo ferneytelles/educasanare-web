@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class SessionStorageService {
 
   static keyLanguage = 'language';
+  static keyLabels = 'webLabels';
   static keyPages = 'pages';
   static keyProject = 'project';
   static keySearch = 'tag';
