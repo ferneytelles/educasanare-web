@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   language: string;
   languages: Array<any>;
   header: any;
+  labels: any;
 
   constructor(
     private route: Router,
@@ -66,6 +67,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getHeaderInfo(): void{
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
+    console.log(this.labels);
     const project = this.storage.getStorage(SessionStorageService.keyProject);
     this.languages = project.language;
     this.header = project.header;
@@ -127,6 +130,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   goProfile(): void{
     if (this.login){
       this.route.navigate(['/perfil']);
+      this.showMenu = false;
     } else {
       this.showMenu = false;
       document.querySelector('body').className = '';

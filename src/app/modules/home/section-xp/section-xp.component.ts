@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '../../../shared/services/session-storage.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-section-xp',
@@ -31,13 +32,17 @@ export class SectionXpComponent implements OnInit {
     },
   ];
 
+  labels: any;
+
   constructor(
-    private route: Router
+    private route: Router,
+    private storage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
     this.xp2 = this.section?.posts.slice(0, 3);
     // console.log(this.xp2);
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
   }
 
   navigate(value: string): void{

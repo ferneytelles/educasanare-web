@@ -46,7 +46,7 @@ export class SessionService {
       await this.authentication.getToken();
       return await this.getInformationUser();
     }
-    // console.log(information[0]);
+    console.log(information[0]);
     if (!information[0].is_staff){
       this.profile = information[0];
       this.login.next(true);

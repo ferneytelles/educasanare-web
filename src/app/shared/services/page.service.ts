@@ -90,6 +90,8 @@ export class PageService {
         return false;
       }
     }
+    
+
     console.log(pages);
     const arrayPages = [];
     for (const item of pages) {
@@ -102,6 +104,7 @@ export class PageService {
     // const pages = arrayPages;
     /////////////////////////////////////////////////////
 
+    
     this.session.setStorage(
       SessionStorageService.keyPages,
       arrayPages

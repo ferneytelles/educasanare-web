@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionStorageService } from '@shared/services/session-storage.service';
 import { ComicsService } from 'src/app/shared/services/comics.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-comics',
@@ -40,15 +42,19 @@ export class ComicsComponent implements OnInit {
 
   selectComic = 0;
 
+  labels: any;
+
   constructor(
     private route: Router,
-    private comicService: ComicsService
+    private comicService: ComicsService,
+    private storage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
     // this.comics2 = this.comicService.comics.slice(0, 4);
     console.log(this.section);
     this.comics2 = this.section?.posts.slice(0, 4);
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
   }
 
   goComics(): void{

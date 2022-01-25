@@ -12,6 +12,7 @@ export class FooterComponent implements OnInit {
   language: string;
   content: any;
   menu: Array<any>;
+  labels: any;
 
   constructor(
     private storage: SessionStorageService
@@ -20,6 +21,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.language = PageService.language;
     const project = this.storage.getStorage(SessionStorageService.keyProject);
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.menu = project.footer.find(x => x.language === this.language).menu;
     // console.log(this.menu);
   }

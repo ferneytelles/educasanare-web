@@ -15,7 +15,7 @@
 
             <div class="options1">
                 <form class="search input-group" (ngSubmit)="onSubmit()">
-                    <input #tag class="input-text" type="text" name="" [placeholder]="language==='ES'? 'Buscar...': 'Search...'">
+                    <input #tag class="input-text" type="text" name="" [placeholder]="labels?.placeholder_search">
                     <div class="input-group-append">
                         <button class="btn" type="submit">
                             <span class="material-icons notranslate">search</span>
@@ -25,25 +25,25 @@
                 <a class="link">
                     <span class="material-icons notranslate">
                         help_outline
-                    </span>
-                    <ng-container *ngIf="language==='ES'">
+                    </span> {{labels?.btn_help}}
+                    <!-- <ng-container *ngIf="language==='ES'">
                         Ayuda
                     </ng-container>
                     <ng-container *ngIf="language==='EN'">
                         Help
-                    </ng-container>
+                    </ng-container> -->
                 </a>
                 <a class="link" (click)="goProfile()">
                     <ng-container *ngIf="!login">
                         <span class="material-icons notranslate">
                             person_outline
-                        </span>
-                        <ng-container *ngIf="language==='ES'">
+                        </span> {{labels?.btn_account}}
+                        <!-- <ng-container *ngIf="language==='ES'">
                             Cuenta
                         </ng-container>
                         <ng-container *ngIf="language==='EN'">
                             Account
-                        </ng-container>
+                        </ng-container> -->
                     </ng-container>
                     <ng-container *ngIf="login">
                         <img *ngIf="!profile.avatar" src="assets/images/face0.png" alt="">
