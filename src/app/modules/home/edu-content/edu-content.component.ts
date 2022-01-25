@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-edu-content',
@@ -35,9 +37,14 @@ export class EduContentComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  labels: any;
+
+  constructor(
+    private storage: SessionStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
   }
 
 }

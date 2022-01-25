@@ -1,5 +1,5 @@
 <div class="content">
-    <h4 class="title">Comics</h4>
+    <h4 class="title">{{section?.title}}</h4>
     <div class="comics">
         <div class="comic" *ngFor="let item of comics2; let i=index" (click)="openComic(i)">
             <div class="image">
@@ -14,7 +14,7 @@
     </div>
     <div class="botton">
         <button class="btn" (click)="goComics()">
-            Ver comics
+            {{labels?.btn_comics}}
         </button>
     </div>
 </div>

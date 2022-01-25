@@ -19,7 +19,7 @@
                     <span class="material-icons-outlined notranslate">
                         undo
                     </span>
-                    Regresar
+                    {{labels?.btn_back}}
                 </button>
             </div>
         </div>
@@ -32,11 +32,11 @@
             <audio *ngIf="audio && (page===0 || page===content.length-1)" class="audio" [src]="audio|cdnUrl" autoplay="true"></audio>
             <div class="bottons">
                 <button class="btn" (click)="movePage(false)">
-                    Anterior
+                    {{labels?.btn_previous}}
                 </button>
 
                 <button class="btn" (click)="movePage(true)">
-                    Siguiente
+                    {{labels?.btn_next}}
                 </button>
             </div>
             <ngb-progressbar class="progress" [value]="progress">

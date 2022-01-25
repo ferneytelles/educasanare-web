@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PageService } from '@shared/services/page.service';
+import { SessionStorageService } from '@shared/services/session-storage.service';
 
 @Component({
   selector: 'app-section-forum',
@@ -26,9 +28,14 @@ export class SectionForumComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  labels: any;
+
+  constructor(
+    private storage: SessionStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
   }
 
 }
