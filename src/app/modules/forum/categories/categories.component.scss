@@ -39,7 +39,7 @@
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
             }
-            p {
+            .description {
                 font-size: 14px;
                 line-height: 20px;
                 margin-bottom: 0;
@@ -47,6 +47,9 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
+                 ::ng-deep p {
+                    margin-bottom: 0;
+                }
             }
         }
         .info {

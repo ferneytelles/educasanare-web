@@ -5,6 +5,7 @@ import { ContactService } from '@shared/services/contact.service';
 import to from 'await-to-js';
 import { AuthenticationService } from '@shared/services/authentication.service';
 import Swal from 'sweetalert2';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-main-contact',
@@ -18,6 +19,7 @@ export class MainContactComponent implements OnInit {
   formContact: FormGroup;
   errorEmail: string;
   errorBody: string;
+  labels: any;
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +32,7 @@ export class MainContactComponent implements OnInit {
     this.content = this.storage.getStorage(
       SessionStorageService.keyPages
     ).find(obj => obj.slug === 'contacto');
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.information = this.content.sections[0].posts[0]?.description;
     // console.log(this.information);
     this.createForm();

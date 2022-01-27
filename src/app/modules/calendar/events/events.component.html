@@ -1,46 +1,67 @@
 <div class="content">
-    <h4>Lista de eventos</h4>
+    <h4>{{section?.title}}</h4>
     <div class="content-events">
         <ul class="nav" id="eventTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="link active" href="#next" data-toggle="tab" role="tab">
-                    Proximos
+                <a class="link active" href="#next" (click)="changeDate('next')" data-toggle="tab" role="tab">
+                    {{labels.event_next}}
                 </a>
                 <div class="line"></div>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="link" href="#previus" data-toggle="tab" role="tab">
-                    Anteriores
+                <a class="link" href="#previous" (click)="changeDate('previous')" data-toggle="tab" role="tab">
+                    {{labels.event_previous}}
                 </a>
                 <div class="line"></div>
             </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="next" role="tabpanel">
-                <div class="event" *ngFor="let item of events">
-                    <app-event-card [event]="item"></app-event-card>
+                <div class="error" *ngIf="!events && error">
+                    <h5>{{labels.error_load}}</h5>
                 </div>
-
+                <div *ngIf="events">
+                    <ng-container *ngIf="events.length>0; then thenBlock else elseBlock"></ng-container>
+                    <ng-template #thenBlock>
+                        <div class="event" *ngFor="let item of events">
+                            <app-event-card [event]="item.post_metadata"></app-event-card>
+                        </div>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <h5 class="text-center my-4">{{labels.no_events}}</h5>
+                    </ng-template>
+                </div>
             </div>
-            <div class="tab-pane fade" id="previus" role="tabpanel">
-                <div class="event" *ngFor="let item of events.slice(0,2)">
-                    <app-event-card [event]="item"></app-event-card>
+            <div class="tab-pane fade" id="previous" role="tabpanel">
+                <div class="error" *ngIf="!events && error">
+                    <h5>{{labels.error_load}}</h5>
+                </div>
+                <div *ngIf="events">
+                    <ng-container *ngIf="events.length>0; then thenBlock else elseBlock"></ng-container>
+                    <ng-template #thenBlock>
+                        <div class="event" *ngFor="let item of events">
+                            <app-event-card [event]="item.post_metadata"></app-event-card>
+                        </div>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <h5 class="text-center my-4">{{labels.no_events}}</h5>
+                    </ng-template>
                 </div>
             </div>
         </div>
     </div>
-    <div class="pagination">
-        <ngb-pagination [collectionSize]="1000" [pageSize]="40" [maxSize]="5" [rotate]="false">
+    <div class="pagination" *ngIf="count>12">
+        <ngb-pagination [collectionSize]="count" [pageSize]="12" [maxSize]="3" [rotate]="true" (pageChange)="pageChange($event)">
 
             <ng-template ngbPaginationPrevious>
                 <span class="material-icons-outlined notranslate">
                     arrow_back_ios
                     </span>
-                <span class="d-none d-md-block">Anterior</span>
+                <span class="d-none d-md-block">{{labels.btn_previous}}</span>
             </ng-template>
 
             <ng-template ngbPaginationNext>
-                <span class="d-none d-md-block">Siguiente</span>
+                <span class="d-none d-md-block">{{labels.btn_next}}</span>
                 <span class="material-icons-outlined notranslate">
                     arrow_forward_ios
                     </span></ng-template>

@@ -1,20 +1,20 @@
-<app-banner-top [text]="'Contacto'" [icon]="'perm_contact_calendar'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+<app-banner-top [text]="content?.title" [icon]="'perm_contact_calendar'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
 <div class="bg">
     <div class="content">
         <h4 class="title">{{content.sections[0]?.title}}</h4>
         <div class="contact">
             <form class="form" [formGroup]="formContact">
                 <span class="error" *ngIf="errorEmail">{{errorEmail}}</span>
-                <input type="email" name="" formControlName="email" placeholder="Correo electrónico*">
-                <input type="text" name="" formControlName="name" placeholder="Nombre y apellido*">
+                <input type="email" name="" formControlName="email" [placeholder]="labels.placeholder_email">
+                <input type="text" name="" formControlName="name" [placeholder]="labels.placeholder_name">
                 <select class="input-group-text" formControlName="subject">
-                    <option value="PQRS" selected>PQRS</option>
-                    <option value="Solicitud registro docente">Solicitud registro docente</option>
+                    <option value="PQRS" selected>{{labels.option_suggestion}}</option>
+                    <option value="Solicitud registro docente">{{labels.option_request}}</option>
                 </select>
                 <span class="error" *ngIf="errorBody">{{errorBody}}</span>
-                <textarea name="" formControlName="body" placeholder="Cuentanos tu sugerencia"></textarea>
+                <textarea name="" formControlName="body" [placeholder]="labels.placeholder_suggestion"></textarea>
                 <button class="btn" (click)="sendRequest()" [disabled]="formContact.invalid">
-                    Enviar
+                    {{labels.btn_send}}
                 </button>
             </form>
             <div class="info">
