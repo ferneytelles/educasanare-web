@@ -23,6 +23,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
   pagination: any;
   page = 1;
   language: string;
+  labels: any;
 
   constructor(
     private search: SearchService,
@@ -33,6 +34,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.language = PageService.language;
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.getTagSearch();
     this.search.tagSearch.pipe(takeUntil(this.unsubscribe))
     .subscribe(() => {
@@ -79,8 +81,13 @@ export class MainSearchComponent implements OnInit, OnDestroy {
     console.log(this.tagInput.nativeElement.value);
   }
 
-  navigate(value: string): void{
+  navigatePost(value: string): void{
     this.route.navigate(['/buscador/' + value]);
+    window.scroll({top: 0, behavior: 'smooth'});
+  }
+
+  navigate(value: string): void{
+    this.route.navigate([value]);
     window.scroll({top: 0, behavior: 'smooth'});
   }
 

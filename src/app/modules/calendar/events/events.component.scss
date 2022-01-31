@@ -47,6 +47,14 @@
         }
         .tab-content {
             width: 100%;
+            .error {
+                display: flex;
+                justify-content: center;
+                h5 {
+                    margin: 30px 0;
+                    text-align: center;
+                }
+            }
             .event {
                 margin-bottom: 30px;
             }

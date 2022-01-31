@@ -1,26 +1,29 @@
 <div class="card">
     <span class="date">
-        {{event?.date.toLocaleDateString()}}  {{event?.date.toLocaleTimeString()}}
+        {{event?.calendar_date}}
     </span>
     <h5 class="title">
         {{event?.title |capitalize}}
     </h5>
     <div class="location">
-        <span class="material-icons-outlined icon notranslate">
+        <!-- <span class="material-icons-outlined icon notranslate">
             location_on
-        </span>
-        <span class="text">{{event?.location}}</span>
+        </span> -->
+        <span class="text">{{event?.subtitle}}</span>
     </div>
-    <p class="text">
+    <div class="text" *ngIf="event.description" [innerHTML]="event.description"></div>
+    <!-- <p class="text">
         {{event?.text}}
-    </p>
+    </p> -->
     <div class="bottom">
-        <div class="assistants">
+        <p class="tags"><strong>{{labels.title_tags}}:</strong> {{tags}}</p>
+        <!-- <div class="assistants">
+            
             <span class="material-icons icon notranslate">
                 groups
             </span>
             <span class="text">{{event?.assistants}} Asistentes</span>
-        </div>
+        </div> -->
         <!-- <button class="btn">
             Asistiré
         </button> -->

@@ -68,7 +68,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   getHeaderInfo(): void{
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
-    console.log(this.labels);
+    // console.log(this.labels);
     const project = this.storage.getStorage(SessionStorageService.keyProject);
     this.languages = project.language;
     this.header = project.header;

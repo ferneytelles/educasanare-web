@@ -4,6 +4,7 @@ import { SearchService } from '@shared/services/search.service';
 import to from 'await-to-js';
 import { PageService } from '@shared/services/page.service';
 import { AuthenticationService } from '@shared/services/authentication.service';
+import { SessionStorageService } from '@shared/services/session-storage.service';
 
 @Component({
   selector: 'app-xp-item',
@@ -22,19 +23,23 @@ export class XpItemComponent implements OnInit {
   //   'assets/images/xp3.png'
   // ];
 
-  date = new Date(2021, 8, 15, 18, 24);
+  // date = new Date(2021, 8, 15, 18, 24);
 
-  text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, sapiente suscipit. Officia neque amet corporis similique illo ea voluptatem eos. Animi praesentium quia nulla sunt error ex atque eum, omnis officia itaque ducimus aliquam quo eligendi voluptas exercitationem magni, rem tempore ipsum quidem adipisci dolore consequuntur provident eius facilis. Repudiandae voluptatibus neque quia autem mollitia delectus assumenda quam laboriosam, eligendi, consequuntur quibusdam! Atque numquam, modi, sed ipsa aperiam amet ex velit nam veritatis obcaecati itaque laborum eius tempora molestiae ab, facere reprehenderit culpa fuga odio sequi non facilis corporis labore? In aspernatur ab qui voluptatem quisquam? Deleniti vel nulla maiores.';
+  // tslint:disable-next-line: max-line-length
+  // text = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, sapiente suscipit. Officia neque amet corporis similique illo ea voluptatem eos. Animi praesentium quia nulla sunt error ex atque eum, omnis officia itaque ducimus aliquam quo eligendi voluptas exercitationem magni, rem tempore ipsum quidem adipisci dolore consequuntur provident eius facilis. Repudiandae voluptatibus neque quia autem mollitia delectus assumenda quam laboriosam, eligendi, consequuntur quibusdam! Atque numquam, modi, sed ipsa aperiam amet ex velit nam veritatis obcaecati itaque laborum eius tempora molestiae ab, facere reprehenderit culpa fuga odio sequi non facilis corporis labore? In aspernatur ab qui voluptatem quisquam? Deleniti vel nulla maiores.';
+  labels: any;
 
   constructor(
     private activeRoute: ActivatedRoute,
     private search: SearchService,
-    private authentication: AuthenticationService
+    private authentication: AuthenticationService,
+    private storage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
     this.language = PageService.language;
     this.slug = this.activeRoute.snapshot.params.id;
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.getPost();
   }
 

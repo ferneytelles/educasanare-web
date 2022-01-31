@@ -34,7 +34,13 @@
     }
     .bottom {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
+        .tags {
+            font-size: 14px;
+            strong {
+                font-weight: 500;
+            }
+        }
         .assistants {
             display: flex;
             align-items: center;

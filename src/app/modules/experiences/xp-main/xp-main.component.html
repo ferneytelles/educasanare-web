@@ -6,16 +6,16 @@
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nobis dolor accusantium perspiciatis. Accusamus, possimus facere! Voluptatem magni vel sequi voluptatum molestias? Porro hic atque natus labore accusantium esse eveniet. Lorem ipsum dolor
             sit amet consectetur adipisicing elit.
         </p> -->
-        <select class="input-group-text" id="">
-            <option hidden selected>Ordenar por...</option>
-            <option value="1">Más reciente</option>
-            <option value="2">Más antiguo</option>
+        <select class="input-group-text" id="" (change)="setFilter($event)">
+            <option hidden selected>{{labels.order_by}}</option>
+            <option value="new">{{labels.option_recent}}</option>
+            <option value="old">{{labels.option_old}}</option>
         </select>
     </div>
 
     <div class="error" *ngIf="!experiences && error">
         <img src="assets/images/errorRequest.png" alt="">
-        <h5>Error al cargar el contenido, por favor intente más tarde!</h5>
+        <h5>{{labels.error_load}}</h5>
     </div>
 
     <div class="experiences" *ngIf="experiences">
@@ -38,7 +38,7 @@
                     </p> -->
                     <div class="botton">
                         <button class="btn" (click)="navigate('/experiencias/'+item.post_metadata.slug)">
-                        + Información
+                        + {{labels.btn_information}}
                     </button>
                     </div>
                 </div>
@@ -53,11 +53,11 @@
                 <span class="material-icons-outlined notranslate">
                     arrow_back_ios
                 </span>
-                <span class="d-none d-md-block">Anterior</span>
+                <span class="d-none d-md-block">{{labels.btn_previous}}</span>
             </ng-template>
 
             <ng-template ngbPaginationNext>
-                <span class="d-none d-md-block">Siguiente</span>
+                <span class="d-none d-md-block">{{labels.btn_next}}</span>
                 <span class="material-icons-outlined notranslate">
                     arrow_forward_ios
                 </span>

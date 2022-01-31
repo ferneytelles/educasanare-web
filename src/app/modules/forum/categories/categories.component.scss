@@ -1,4 +1,5 @@
 .content {
+    min-height: 60vh;
     padding: 40px 50px;
     background-image: url(../../../../assets/images/bgpoligon.png);
     background-size: cover;
@@ -39,7 +40,7 @@
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
             }
-            p {
+            .description {
                 font-size: 14px;
                 line-height: 20px;
                 margin-bottom: 0;
@@ -47,6 +48,9 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
+                 ::ng-deep p {
+                    margin-bottom: 0;
+                }
             }
         }
         .info {
@@ -80,6 +84,8 @@
                             img {
                                 border: 1px solid #ffffff;
                                 height: 24px;
+                                width: 24px;
+                                object-fit: cover;
                                 border-radius: 100%;
                                 margin-left: -12px;
                                 &:last-child {
@@ -106,6 +112,8 @@
                     -webkit-box-orient: vertical;
                     img {
                         height: 24px;
+                        width: 24px;
+                        object-fit: cover;
                         border-radius: 100%;
                     }
                 }

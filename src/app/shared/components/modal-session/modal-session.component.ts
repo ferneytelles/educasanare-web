@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import to from 'await-to-js';
 import { AuthenticationService } from '@shared/services/authentication.service';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-modal-session',
@@ -23,16 +25,19 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
   email: string;
   message: string;
   loginError: string;
+  labels: any;
 
   constructor(
     private modal: NgbModal,
     private sessionService: SessionService,
     private route: Router,
     private fb: FormBuilder,
-    private authentication: AuthenticationService
+    private authentication: AuthenticationService,
+    private storage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.sessionService.modalSession.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
       this.view = 0;
       this.openModal();
@@ -88,9 +93,13 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
         // this.sessionService.profile = information[0];
         this.loginError = null;
         // this.sessionService.login.next(true);
-        window.scroll({top: 0, behavior: 'smooth'});
-        this.route.navigate(['/perfil']);
-        this.modal.dismissAll();
+        if (this.route.url.includes('/foros')){
+          this.modal.dismissAll();
+        } else {
+          window.scroll({top: 0, behavior: 'smooth'});
+          this.route.navigate(['/perfil']);
+          this.modal.dismissAll();
+        }
       } else {
         // await this.authentication.tokenAccess(this.authentication.formData).toPromise();
         this.loginError = 'usuario no permitido';
@@ -134,6 +143,7 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void{
+    this.message = null;
     this.view = 0;
     this.formUser.reset();
     this.formRestore.reset();

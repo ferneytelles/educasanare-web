@@ -3,6 +3,7 @@ import { SearchService } from '@shared/services/search.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { SessionStorageService } from '@shared/services/session-storage.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-search-page',
@@ -13,12 +14,15 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   title: string;
   unsubscribe = new Subject<unknown>();
+  labels: any;
+
   constructor(
     private search: SearchService,
     private storage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.getTag();
     this.search.tagSearch.pipe(takeUntil(this.unsubscribe))
     .subscribe(() => {
