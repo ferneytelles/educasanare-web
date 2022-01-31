@@ -38,17 +38,17 @@
                     </span>
                 </div>
                 <div class="bottons" *ngIf="profile">
-                    <button class="btn" *ngIf="item.forum_metadata.user === profile.username" placement="top" ngbTooltip="Editar tema" (click)="navigate('foro/'+item.forum_metadata.slug)">
+                    <button class="btn" *ngIf="item.forum_metadata.user === profile.username" placement="top" [ngbTooltip]="labels.tooltip_edit" (click)="navigate('foro/'+item.forum_metadata.slug)">
                         <span class="material-icons-outlined notranslate">
                             edit
                         </span>
                     </button>
-                    <button class="btn" *ngIf="item.forum_metadata.user === profile.username" placement="top" ngbTooltip="Eliminar tema" (click)="deleteForum(item.forum_metadata)">
+                    <button class="btn" *ngIf="item.forum_metadata.user === profile.username" placement="top" [ngbTooltip]="labels.tooltip_delete" (click)="deleteForum(item.forum_metadata)">
                         <span class="material-icons-outlined notranslate">
                             delete_forever
                         </span>
                     </button>
-                    <button class="btn" *ngIf="item.forum_metadata.user !== profile.username" placement="top" ngbTooltip="Denunciar tema" (click)="reportForum(item.forum_metadata)">
+                    <button class="btn" *ngIf="item.forum_metadata.user !== profile.username" placement="top" [ngbTooltip]="labels.tooltip_report" (click)="reportForum(item.forum_metadata)">
                         <span class="material-icons-outlined notranslate">
                             flag
                         </span>

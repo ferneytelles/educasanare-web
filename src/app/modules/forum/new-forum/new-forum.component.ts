@@ -7,6 +7,7 @@ import { SessionStorageService } from '@shared/services/session-storage.service'
 import { PageService } from '@shared/services/page.service';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-forum',
@@ -32,7 +33,8 @@ export class NewForumComponent implements OnInit {
     private forumService: ForumsService,
     private authentication: AuthenticationService,
     private storage: SessionStorageService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private location: Location
   ) {
 
   }
@@ -103,10 +105,11 @@ export class NewForumComponent implements OnInit {
   goToBack(): void{
     // this.text.nativeElement.value = '';
     // this.height = 154;
-    const url = this.route.url.split('/');
-    url.pop();
-    url.pop();
-    this.route.navigate([url.join('/')]);
+    // const url = this.route.url.split('/');
+    // url.pop();
+    // url.pop();
+    // this.route.navigate([url.join('/')]);
+    this.location.back();
     window.scroll({top: 0, behavior: 'smooth'});
   }
 

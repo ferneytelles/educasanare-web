@@ -1,7 +1,8 @@
 <app-banner-top [text]="labels?.title_forum" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
 
 <div class="content">
-    <h3 class="title">{{labels.title_new_forum}}</h3>
+    <h3 class="title" *ngIf="slugForum === 'nuevo'">{{labels.title_new_forum}}</h3>
+    <h3 class="title" *ngIf="slugForum !== 'nuevo'">{{labels.title_edit_forum}}</h3>
 
     <div class="form" [formGroup]="formForum">
         <p class="category">
