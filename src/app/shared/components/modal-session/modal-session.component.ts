@@ -93,9 +93,13 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
         // this.sessionService.profile = information[0];
         this.loginError = null;
         // this.sessionService.login.next(true);
-        window.scroll({top: 0, behavior: 'smooth'});
-        this.route.navigate(['/perfil']);
-        this.modal.dismissAll();
+        if (this.route.url.includes('/foros')){
+          this.modal.dismissAll();
+        } else {
+          window.scroll({top: 0, behavior: 'smooth'});
+          this.route.navigate(['/perfil']);
+          this.modal.dismissAll();
+        }
       } else {
         // await this.authentication.tokenAccess(this.authentication.formData).toPromise();
         this.loginError = 'usuario no permitido';

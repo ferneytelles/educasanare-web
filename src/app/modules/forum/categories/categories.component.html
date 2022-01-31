@@ -12,7 +12,7 @@
             <h5 class="title">
                 {{item.category_metadata?.title|capitalize}}
             </h5>
-            <div class="description" [innerHTML]="item.category_metadata?.content"></div>
+            <div class="description" [innerHTML]="item.category_metadata?.content|secureHtml"></div>
             <!-- <p>
                 {{item.text}}
             </p> -->
@@ -22,33 +22,41 @@
             <div class="activity">
                 <div class="item">
                     <span class="label">{{labels?.topics}}</span>
-                    <span class="data">14</span>
+                    <span class="data " *ngIf="item.category_metadata?.forums">
+                        {{item.category_metadata?.forums.length}}
+                    </span>
+                    <span class="data" *ngIf="!item.category_metadata?.forums">
+                        0
+                    </span>
                 </div>
                 <div class="item">
                     <span class="label">{{labels.users}}</span>
                     <span class="data">
-                        <div class="images">
-                            <ng-container *ngFor="let forum of item.category_metadata?.forums">
-                                <img *ngIf="forum.avatar" [src]="forum.avatar|cdnUrl:50" alt="">
-                                <img *ngIf="!forum.avatar" src="assets/images/face0.png" alt="">
+                        <div class="images" *ngIf="item.category_metadata?.users">
+                            <ng-container *ngFor="let user of item.category_metadata?.users.slice(0, 3)">
+                                <img *ngIf="user" [src]="user|cdnUrl:50" alt="">
+                                <img *ngIf="!user" src="assets/images/face0.png" alt="">
                             </ng-container>
                         </div>
-                        <ng-container *ngIf="item.category_metadata?.forums">
-
+                        <ng-container *ngIf="item.category_metadata?.users && item.category_metadata?.users.length>3">
+                            +{{item.category_metadata?.users.length-3}}
                         </ng-container>
-                        
-                        +3
                     </span>
                 </div>
                 <div class="item">
                     <span class="label">{{labels.activity}}</span>
-                    <span class="data">Hoy, 12:45</span>
+                    <span class="data" *ngIf="item.category_metadata.activity">
+                        {{item.category_metadata.activity}}
+                    </span>
                 </div>
             </div>
             <div class="post">
                 <span class="label">{{labels.last_topic}}</span>
-                <p class="data">
-                    <img src="assets/images/face3.jpg" alt=""> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                <p class="data" *ngIf="item.category_metadata?.forums">
+                    <img *ngIf="item.category_metadata?.last_topic.avatar" [src]="item.category_metadata?.last_topic.avatar|cdnUrl:50" alt="">
+                    <img *ngIf="!item.category_metadata?.last_topic.avatar" src="assets/images/face0.png" alt="">
+                    <!-- <img src="assets/images/face3.jpg" alt=""> -->
+                    {{item.category_metadata?.last_topic?.content}}
                 </p>
             </div>
         </div>

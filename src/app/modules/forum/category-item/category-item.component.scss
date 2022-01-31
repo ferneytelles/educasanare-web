@@ -19,6 +19,9 @@
             display: -webkit-box;
             -webkit-line-clamp: 8;
             -webkit-box-orient: vertical;
+             ::ng-deep p {
+                margin-bottom: 0;
+            }
         }
     }
 }
@@ -75,6 +78,8 @@
                 margin-bottom: 12px;
                 img {
                     height: 40px;
+                    width: 40px;
+                    object-fit: cover;
                     border-radius: 100%;
                 }
                 .info {
@@ -132,6 +137,7 @@
                     display: flex;
                     align-items: center;
                     color: #555555;
+                    cursor: pointer;
                     .icon {
                         font-size: 18px;
                         margin-right: 4px;

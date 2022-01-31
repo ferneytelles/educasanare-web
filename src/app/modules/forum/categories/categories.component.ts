@@ -79,17 +79,62 @@ export class CategoriesComponent implements OnInit {
     } else {
       this.categories = response.results;
       console.log(this.categories);
-      this.getUsersImages();
+      this.getUsersImagesAndDate();
     }
   }
 
-  getUsersImages(): void {
-    const userImages = [];
+  getUsersImagesAndDate(): void {
     this.categories.forEach((element) => {
-      element.category_metadata?.forums.forEach((forum) => {
-        userImages.push(forum.avatar);
-      });
+      if (element.category_metadata.forums){
+        const userImages = [];
+        const dates = [];
+        element.category_metadata?.forums.forEach((forum) => {
+          userImages.push(forum.avatar);
+          const aux = this.transformToDate(forum.creation_date);
+          const dateForum = new Date(
+            aux[0], aux[1], aux[2], aux[3], aux[4]
+          );
+          dates.push(dateForum);
+          if (forum.children){
+            forum.children.forEach((child) => {
+              userImages.push(child.avatar);
+              const aux2 = this.transformToDate(child.creation_date);
+              const dateChild = new Date(
+                aux2[0], aux2[1], aux2[2], aux2[3], aux2[4]
+              );
+              // console.log(aux2, '', dateChild.toLocaleDateString());
+              dates.push(dateChild);
+            });
+          }
+        });
+        const maxDate = Math.max(...dates);
+        dates.forEach((value) => {
+          if (value.getTime() === maxDate){
+            const now = new Date();
+            if (value.toLocaleDateString() === now.toLocaleDateString()){
+              element.category_metadata.activity = 'hoy, ' + value.toLocaleTimeString();
+            } else{
+              element.category_metadata.activity = value.toLocaleDateString();
+            }
+            // console.log(value.toLocaleDateString());
+            // console.log(now.toLocaleDateString());
+          }
+        });
+        element.category_metadata.users = [...new Set(userImages)];
+        element.category_metadata.last_topic = element.category_metadata.forums[element.category_metadata.forums.length - 1];
+      }
     });
   }
+
+  transformToDate(date: string): Array<number>{
+    const arrDate = [];
+    arrDate.push(parseInt(date.slice(6, 10), 10));
+    arrDate.push(parseInt(date.slice(3, 5), 10) - 1);
+    arrDate.push(parseInt(date.slice(0, 2), 10));
+    arrDate.push(parseInt(date.slice(11, 13), 10));
+    arrDate.push(parseInt(date.slice(14, 16), 10));
+    return arrDate;
+  }
+
 
 }

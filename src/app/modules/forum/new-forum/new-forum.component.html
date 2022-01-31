@@ -1,15 +1,15 @@
-<app-banner-top [text]="'Foro'" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+<app-banner-top [text]="labels?.title_forum" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
 
 <div class="content">
-    <h3 class="title">Nuevo tema</h3>
+    <h3 class="title">{{labels.title_new_forum}}</h3>
 
-    <div class="form">
+    <div class="form" [formGroup]="formForum">
         <p class="category">
-            <span>Categoría:</span>{{category}}
+            <span>{{labels.label_category}}:</span>{{category?.title}}
         </p>
-        <input class="name" type="text" name="" id="" placeholder="Título del tema">
+        <input class="name" type="text" formControlName="title" name="" id="" [placeholder]="labels.placeholder_title">
 
-        <textarea #textArea name="" id="" placeholder="Contenido del tema" [ngStyle]="{'height.px': height}" (input)="setHeight()"></textarea>
+        <textarea #textArea name="" id="contentForum" formControlName="content" [placeholder]="labels.placeholder_content" [ngStyle]="{'height.px': height}" (input)="setHeight()"></textarea>
 
         <div class="bottons">
             <div class="file-content">
@@ -19,29 +19,29 @@
                             attach_file
                         </span>
                         <span  class="label">
-                            Adjuntar archivo
+                            {{labels.btn_attach}}
                         </span>
-                        <input type="file" accept="video/mp4, image/png, image/jpeg, image/jpg" (change)="changeFile($event)" title="">                    
+                        <input type="file" accept="video/mp4, image/png, image/jpg" (change)="changeFile($event)" title="">
                     </button>
                     <span #label class="name-file"></span>
                 </div>
                 <span class="text">
-                    Solo podrá cargar un archivo por tema
+                    {{labels.file_suggestion1}}
                 </span>
                 <span class="text">
-                    Máximo 2MB (imágenes) 20MB (videos)
+                    {{labels.file_suggestion2}}
                 </span>
             </div>
 
             <div class="options">
-                <button class="btn cancel">
-                    Cancelar
+                <button class="btn cancel" (click)="goToBack()">
+                    {{labels.btn_cancel}}
                 </button>
-                <button class="btn confirm">
+                <button class="btn confirm" (click)="sendForum()" [disabled]="formForum.invalid">
                     <span class="material-icons notranslate">
                         publish
                     </span>
-                    Publicar
+                    {{labels.btn_publish}}
                 </button>
             </div>
         </div>
