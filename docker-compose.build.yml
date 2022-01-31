@@ -1,0 +1,5 @@
+version: "3.7"
+services:
+  angular:
+    build: .
+    image: 372995092436.dkr.ecr.us-east-2.amazonaws.com/educasanare-frontend:latest

@@ -4,7 +4,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
+        "build": "node --max_old_space_size=1024 ./node_modules/@angular/cli/bin/ng build --configuration production",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
@@ -31,7 +31,12 @@
         "slick-carousel": "^1.8.1",
         "sweetalert2": "^11.3.0",
         "tslib": "^2.0.0",
-        "zone.js": "~0.11.4"
+        "zone.js": "~0.11.4",
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "morgan": "^1.10.0",
+        "rendertron-middleware": "^0.1.5",
+        "serve-favicon": "^2.5.0"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~12.2.13",
