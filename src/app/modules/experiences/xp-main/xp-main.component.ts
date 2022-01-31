@@ -64,7 +64,7 @@ export class XpMainComponent implements OnInit {
   language: string;
   error: boolean;
   count = 0;
-  message: any;
+  labels: any;
 
   constructor(
     private search: SearchService,
@@ -79,31 +79,41 @@ export class XpMainComponent implements OnInit {
       SessionStorageService.keyPages
     ).find(obj => obj.slug === 'experiencias');
     // console.log(this.content);
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.slugSection = this.content.sections[0]?.slug;
     // console.log(this.slugSection);
-    this.error = false;
     this.getPostsByPage();
   }
 
-  async getPostsByPage(): Promise<void> {
+  async getPostsByPage(order?: string): Promise<void> {
+    this.error = false;
     this.experiences = null;
-    const [err, result] = await to(
-      this.search.getPostsBySection(this.slugSection, this.language, this.page).toPromise()
+    const [err, result]: Array<any> = await to(
+      this.search.getPostsBySection(this.slugSection, this.language, this.page, order).toPromise()
     );
-    // @ts-ignore
     if (err ){
-      const [errToken, token] = await to(this.authentication.getToken());
-      if (errToken){
-        console.log(errToken);
-        this.error = true;
+      if (err.status === 403){
+        const [errToken, token] = await to(this.authentication.getToken());
+        // if (errToken){
+        //   console.log(errToken);
+        //   this.error = true;
+        //   return;
+        // }
+        await this.getPostsByPage(order);
+        // this.error = true;
         return;
       }
-      await this.getPostsByPage();
+      console.log(err);
       this.error = true;
       return;
     }
     this.count = result.count;
     this.experiences = result.results;
+  }
+
+  async setFilter(event: any): Promise<any> {
+    // console.log(event.target.value);
+    this.getPostsByPage(event.target.value);
   }
 
   pageChange(currentPage: number): void{

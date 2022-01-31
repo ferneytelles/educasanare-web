@@ -28,9 +28,25 @@ export class SearchService {
     );
   }
 
-  getPostsBySection(slug: string, language: string, page: number): Observable<any> {
-    return this.http.get(PostEndPoint.postsOfSection.format(slug, language, page)).pipe(
-      map((response: any) => response)
-    );
+  getPostsBySection(slug: string, language: string, page: number, order?: string): Observable<any> {
+    // console.log(`order: ${order}`);
+    if (order) {
+      return this.http.get(PostEndPoint.postsOfSectionByOrder.format(slug, language, page, order))
+      .pipe(
+        map((response: any) => response)
+      );
+    } else {
+      return this.http.get(PostEndPoint.postsOfSection.format(slug, language, page))
+      .pipe(
+        map((response: any) => response)
+      );
+    }
+  }
+
+  getEventsBySection(slug: string, language: string, page: number, date: string): Observable<any> {
+    return this.http.get(PostEndPoint.postsOfSectionByDate.format(slug, language, page, date))
+      .pipe(
+        map((response: any) => response)
+      );
   }
 }

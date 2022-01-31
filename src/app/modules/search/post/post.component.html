@@ -13,7 +13,7 @@
         <div class="description" *ngIf="post.description" [innerHTML]="post.description | secureHtml"></div>
 
         <div class="gallery" *ngIf="post.gallery">
-            <h5 class="text">Galería:</h5>
+            <h5 class="text">{{labels.title_gallery}}:</h5>
             <div class="videos" *ngIf="videos.length>0">
                 <div class="content-video" [ngClass]="{'external': !item.online_url}" *ngFor="let item of videos">
                     <ng-container *ngIf="item.online_url; then online else youtube "></ng-container>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="tags" *ngIf="tags">
-            <h5 class="text">Tags:</h5>
+            <h5 class="text">{{labels.title_tags}}:</h5>
             <div class="content-tags">
                 <p>{{tags}}</p>
             </div>

@@ -3,12 +3,12 @@
     <div class="headResults" *ngIf="posts">
         <div class="bgcolor" [ngClass]="{'green': posts?.length > 0}">
             <h4 *ngIf="posts?.length > 0">
-                Se encontraron {{pagination?.count}} resultados realcionados con "{{tag.replace('_', ' ')}}"
+                {{labels.text_results_1}} {{pagination?.count}} {{labels.text_results_2}} "{{tag.replace('_', ' ')}}"
             </h4>
             <h4 *ngIf="1 > posts?.length">
-                No se encontraron resultados relacionados con "{{tag.replace('_', ' ')}}"
+                {{labels.text_results_3}} "{{tag.replace('_', ' ')}}"
             </h4>
-            <span>{{pagination?.count}} Resultados</span>
+            <span>{{pagination?.count}} {{labels.title_results}}</span>
         </div>
     </div>
 
@@ -21,10 +21,10 @@
         <ng-template #noResults>
             <div class="noResults">
                 <div class="newSearch">
-                    <h4>Nueva búsqueda</h4>
-                    <p>Si no está satisfecho con los resultados, a continuación realice otra búqueda.</p>
+                    <h4>{{labels.title_new_search}}</h4>
+                    <p>{{labels.text_new_search}}</p>
                     <div class="search input-group">
-                        <input #tag class="input-text" type="text" name="" id="" placeholder="Buscar...">
+                        <input #tag class="input-text" type="text" name="" id="" [placeholder]="labels.placeholder_search">
                         <div class="input-group-append">
                             <button class="btn" type="submit" (click)="onSubmit()">
                             <span class="material-icons notranslate">search</span>
@@ -34,26 +34,26 @@
                 </div>
                 <div class="help">
                     <p>
-                        Si no encuentras lo que estas buscando aquí, a continuación te dejamos otras opciones de ayuda para solucionar el problema.
+                        {{labels.text_option_help}}
                     </p>
-                    <a class="link">Preguntas frecuentes</a>
-                    <a class="link">Manual instruccional</a>
-                    <a class="link" (click)="navigate('/contacto')">Contacto</a>
+                    <a class="link">{{labels.option_questions}}</a>
+                    <a class="link">{{labels.option_manual}}</a>
+                    <a class="link" (click)="navigate('/contacto')">{{labels.contact}}</a>
                 </div>
             </div>
         </ng-template>
         <ng-template #results>
             <div class="results">
                 <div class="post" *ngFor="let item of posts">
-                    <div class="image" *ngIf="item.image" (click)="navigate(item.slug)">
+                    <div class="image" *ngIf="item.image" (click)="navigatePost(item.slug)">
                         <img class="img" [src]="item.image | cdnUrl:200" alt="">
                     </div>
                     <div class="content-post" [ngClass]="{'right': item.image}">
-                        <h5 class="title" *ngIf="item.title" (click)="navigate(item.slug)">{{item.title}}</h5>
-                        <h5 class="subtitle" *ngIf="item.subtitle" (click)="navigate(item.slug)">{{item.subtitle}}</h5>
+                        <h5 class="title" *ngIf="item.title" (click)="navigatePost(item.slug)">{{item.title}}</h5>
+                        <h5 class="subtitle" *ngIf="item.subtitle" (click)="navigatePost(item.slug)">{{item.subtitle}}</h5>
                         <div class="description" [ngClass]="{'row3': item.subtitle}" *ngIf="item.description" [innerHTML]="item.description|secureHtml"></div>
                         <div class="bottom">
-                            <div class="gallery" *ngIf="item.gallery" (click)="navigate(item.slug)">
+                            <div class="gallery" *ngIf="item.gallery" (click)="navigatePost(item.slug)">
                                 <div class="gal" *ngFor="let img of item.gallery.slice(0,5)">
                                     <img class="img" *ngIf="img.type==='PHOTO'" [src]="img.image |cdnUrl: 100" alt="">
                                 </div>
@@ -75,11 +75,11 @@
                             <span class="material-icons-outlined notranslate">
                             arrow_back_ios
                             </span>
-                            <span class="d-none d-md-block">Anterior</span>
+                            <span class="d-none d-md-block">{{labels.btn_previous}}</span>
                         </ng-template>
 
                         <ng-template ngbPaginationNext>
-                            <span class="d-none d-md-block">Siguiente</span>
+                            <span class="d-none d-md-block">{{labels.btn_next}}</span>
                             <span class="material-icons-outlined notranslate">
                             arrow_forward_ios
                             </span></ng-template>

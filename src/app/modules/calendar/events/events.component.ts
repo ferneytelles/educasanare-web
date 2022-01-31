@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PageService } from '@shared/services/page.service';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import to from 'await-to-js';
+import { SearchService } from '@shared/services/search.service';
+import { AuthenticationService } from '@shared/services/authentication.service';
 
 @Component({
   selector: 'app-events',
@@ -8,48 +13,55 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EventsComponent implements OnInit {
 
   @Input() section: any;
-  events = [
-    {
-      date: new Date(2021, 8, 15, 18, 24),
-      title: 'Nombre del evento lorem ipsum segordir',
-      location: 'Yopal, Casanare',
-      assistants: 34,
-      text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur rem ratione velit? Itaque facilis deserunt hic reprehenderit. Debitis quaerat eveniet animi dignissimos non id? Hic placeat expedita optio assumenda sit.'
-    },
-    {
-      date: new Date(2021, 9, 22, 13, 56),
-      title: 'Nombre del evento lorem ipsum segordir',
-      location: 'Villanueva, Casanare',
-      assistants: 72,
-      text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur rem ratione velit? Itaque facilis deserunt hic reprehenderit. Debitis quaerat eveniet animi dignissimos non id? Hic placeat expedita optio assumenda sit.'
-    },
-    {
-      date: new Date(2021, 12, 27, 10, 12),
-      title: 'Nombre del evento lorem ipsum segordir',
-      location: 'Orocué, Casanare',
-      assistants: 72,
-      text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur rem ratione velit? Itaque facilis deserunt hic reprehenderit. Debitis quaerat eveniet animi dignissimos non id? Hic placeat expedita optio assumenda sit.'
-    },
-    {
-      date: new Date(2021, 12, 27, 10, 12),
-      title: 'Nombre del evento lorem ipsum segordir',
-      location: 'Orocué, Casanare',
-      assistants: 72,
-      text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur rem ratione velit? Itaque facilis deserunt hic reprehenderit. Debitis quaerat eveniet animi dignissimos non id? Hic placeat expedita optio assumenda sit.'
-    },
-    {
-      date: new Date(2021, 8, 15, 18, 24),
-      title: 'Nombre del evento lorem ipsum segordir',
-      location: 'Yopal, Casanare',
-      assistants: 34,
-      text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur rem ratione velit? Itaque facilis deserunt hic reprehenderit. Debitis quaerat eveniet animi dignissimos non id? Hic placeat expedita optio assumenda sit.'
-    },
-  ];
+  events: Array<any>;
+  page = 1;
+  error: boolean;
+  count = 0;
+  labels: any;
+  date = 'next';
 
-  constructor() { }
+  constructor(
+    private storage: SessionStorageService,
+    private search: SearchService,
+    private authentication: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
-    // console.log(this.section);
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
+    console.log(this.section);
+    this.getEventsByPage(this.date);
+  }
+
+  async getEventsByPage(date: string): Promise<void> {
+    this.error = false;
+    this.events = null;
+    const [err, result]: Array<any> = await to(
+      this.search.getEventsBySection(this.section.slug, PageService.language, this.page, date).toPromise()
+    );
+    if (err ){
+      if (err.status === 403){
+        await this.authentication.getToken();
+        await this.getEventsByPage(date);
+        return;
+      }
+      console.log(err);
+      this.error = true;
+      return;
+    }
+    this.count = result.count;
+    this.events = result.results;
+    console.log(this.events);
+  }
+
+  changeDate(date: string): void{
+    this.date = date;
+    this.getEventsByPage(this.date);
+  }
+
+  pageChange(currentPage: number): void{
+    this.page = currentPage;
+    this.getEventsByPage(this.date);
+    window.scroll({top: 500});
   }
 
 }

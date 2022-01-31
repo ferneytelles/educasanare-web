@@ -8,6 +8,7 @@ import { CategoryItemComponent } from './category-item/category-item.component';
 import { CategoryComponent } from './category/category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NewForumComponent } from './new-forum/new-forum.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
         component: CategoryItemComponent
       },
       {
-        path: 'nuevo-foro',
+        path: 'foro/:slug',
         component: NewForumComponent
       },
       {
@@ -46,7 +47,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule

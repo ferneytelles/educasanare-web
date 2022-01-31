@@ -1,51 +1,54 @@
-<div class="banner">
+<div class="banner" [ngStyle]="{'background-image': 'url('+category?.file+')'}">
     <div class="content">
-        <h2 class="title">Robótica</h2>
-        <p class="text">
+        <h2 class="title" *ngIf="category?.title">{{category.title|capitalize}}</h2>
+        <div class="text" *ngIf="category?.content" [innerHTML]="category.content|secureHtml">
+        </div>
+        <!-- <p class="text">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus nisi amet illum nemo architecto animi cumque est tenetur dolorem Quaerat.
-        </p>
+        </p> -->
     </div>
 </div>
 
 <div class="forums">
     <div class="head">
-        <button class="btn" (click)="navigate('nuevo-foro')">
+        <button class="btn" (click)="navigate('foro/nuevo', true)">
             <span class="material-icons-outlined notranslate">
                 add_circle_outline
             </span>
-            Agregar nuevo tema
+            {{labels.new_forum}}
         </button>
-        <select class="input-group-text" id="">
-            <option hidden selected>Ordenar por</option>
-            <option value="1">Más reciente</option>
-            <option value="2">Más antiguo</option>
+        <select class="input-group-text" id="" (change)="changeFilter($event)">
+            <!-- <option hidden selected>{{labels.order_by}}</option> -->
+            <option value="new" selected>{{labels.option_recent}}</option>
+            <option value="old">{{labels.option_old}}</option>
         </select>
     </div>
 
     <div class="content">
         <div class="forum" *ngFor="let item of forums" [ngClass]="{'borde': item.own}">
             <div class="head-forum">
-                <img [src]="item.img" alt="">
+                <img *ngIf="item.forum_metadata.avatar" [src]="item.forum_metadata.avatar|cdnUrl:60" alt="">
+                <img *ngIf="!item.forum_metadata.avatar" src="assets/images/face0.png" alt="">
                 <div class="info">
                     <span class="username">
-                        @{{item.user}}
+                        @{{item.forum_metadata.user}}
                     </span>
                     <span class="date">
-                        {{item.date}}
+                        {{item.forum_metadata.creation_date}}
                     </span>
                 </div>
-                <div class="bottons">
-                    <button class="btn" *ngIf="item.own" placement="top" ngbTooltip="Editar tema">
+                <div class="bottons" *ngIf="profile">
+                    <button class="btn" *ngIf="item.forum_metadata.user === profile.username" placement="top" ngbTooltip="Editar tema" (click)="navigate('foro/'+item.forum_metadata.slug)">
                         <span class="material-icons-outlined notranslate">
                             edit
                         </span>
                     </button>
-                    <button class="btn" *ngIf="item.own" placement="top" ngbTooltip="Eliminar tema">
+                    <button class="btn" *ngIf="item.forum_metadata.user === profile.username" placement="top" ngbTooltip="Eliminar tema" (click)="deleteForum(item.forum_metadata)">
                         <span class="material-icons-outlined notranslate">
                             delete_forever
                         </span>
                     </button>
-                    <button class="btn" *ngIf="!item.own" placement="top" ngbTooltip="Denunciar tema">
+                    <button class="btn" *ngIf="item.forum_metadata.user !== profile.username" placement="top" ngbTooltip="Denunciar tema" (click)="reportForum(item.forum_metadata)">
                         <span class="material-icons-outlined notranslate">
                             flag
                         </span>
@@ -53,36 +56,39 @@
                 </div>
             </div>
             <div class="text-forum">
-                <p class="title" (click)="navigate(item.slug)">
-                    {{item.title}}
+                <p class="title" (click)="navigate(item.forum_metadata.slug)">
+                    {{item.forum_metadata.title}}
                 </p>
                 <p class="text">
-                    {{item.text}}
+                    {{item.forum_metadata.content}}
                 </p>
-                <div class="comments">
+                <div class="comments" (click)="navigate(item.forum_metadata.slug)">
                     <span class="material-icons-outlined notranslate icon">
                         chat_bubble_outline
                     </span>
-                    <span class="number">15</span>
+                    <span class="number" *ngIf="item.forum_metadata.children">
+                        {{item.forum_metadata.children.length}}
+                    </span>
                 </div>
             </div>
         </div>
 
-        <div class="pagination">
-            <ngb-pagination [collectionSize]="1000" [pageSize]="40" [maxSize]="5" [rotate]="false">
+        <div class="pagination" *ngIf="count>12">
+            <ngb-pagination [collectionSize]="count" [pageSize]="12" [maxSize]="3" [rotate]="true" (pageChange)="pageChange($event)">
 
                 <ng-template ngbPaginationPrevious>
                     <span class="material-icons-outlined notranslate">
                         arrow_back_ios
-                        </span>
-                    <span class="d-none d-md-block">Anterior</span>
+                    </span>
+                    <span class="d-none d-md-block">{{labels.btn_previous}}</span>
                 </ng-template>
 
                 <ng-template ngbPaginationNext>
-                    <span class="d-none d-md-block">Siguiente</span>
+                    <span class="d-none d-md-block">{{labels.btn_next}}</span>
                     <span class="material-icons-outlined notranslate">
                         arrow_forward_ios
-                        </span></ng-template>
+                    </span>
+                </ng-template>
             </ngb-pagination>
         </div>
     </div>

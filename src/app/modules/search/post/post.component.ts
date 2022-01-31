@@ -21,6 +21,7 @@ export class PostComponent implements OnInit {
   height: number;
   slug: string;
   language: string;
+  labels: any;
 
   constructor(
     private route: Router,
@@ -34,6 +35,7 @@ export class PostComponent implements OnInit {
     this.language = PageService.language;
     this.slug = this.activeRoute.snapshot.params.slug;
     console.log(this.activeRoute.snapshot.params.slug);
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     // this.post = this.storage.getStorage(SessionStorageService.keyPages)
     // .find(x => x.slug === 'inicio').sections[1].posts.find(y => y.slug === slug);
     this.getPost();

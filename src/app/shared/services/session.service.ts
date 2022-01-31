@@ -38,15 +38,17 @@ export class SessionService {
   }
 
   async getInformationUser(): Promise<boolean>{
-    const [error, information] = await to(
+    const [error, information]: Array<any> = await to(
     this.dataUser().toPromise()
     );
-    // @ts-ignore
-    if (error && error.status === 403) {
-      await this.authentication.getToken();
-      return await this.getInformationUser();
+    if (error) {
+      if (error.status === 403){
+        await this.authentication.getToken();
+        return await this.getInformationUser();
+      }
+      return;
     }
-    console.log(information[0]);
+    // console.log(information[0]);
     if (!information[0].is_staff){
       this.profile = information[0];
       this.login.next(true);

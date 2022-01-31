@@ -1,13 +1,13 @@
 <ng-template #session let-modal class="content">
     <form class="modal-body" *ngIf="view===0" [formGroup]="formUser">
-        <h4 class="title">Iniciar sesión</h4>
+        <h4 class="title">{{labels.title_login}}</h4>
         <p class="errorLogin" *ngIf="loginError">{{loginError}}</p>
         <div class="label">
             <span class="material-icons notranslate icon">
                 person
             </span>
             <span class="text">
-                Correo electrónico
+                {{labels.label_email}}
             </span>
         </div>
 
@@ -18,29 +18,29 @@
                 lock_open
             </span>
             <span class="text">
-                Contraseña
+                {{labels.label_password}}
             </span>
         </div>
 
         <input formControlName="password" class="password" type="password" name="" id="pw">
 
-        <a class="link" (click)="view=1">Olvide mi contraseña</a>
+        <a class="link" (click)="view=1; loginError=null">{{labels.forget}}</a>
         <button class="btn" type="submit" (click)="valid()" [disabled]="formUser.invalid">
-            Iniciar sesión
+            {{labels.title_login}}
         </button>
     </form>
 
     <form class="modal-body" *ngIf="view===1" [formGroup]="formRestore">
-        <h4 class="title">¿Olvidó su contraseña?</h4>
+        <h4 class="title">{{labels.title_forget}}</h4>
 
-        <p class="text-reset">Restablecer su contraseña es fácil: solo díganos con qué dirección de e-mail se registró</p>
+        <p class="text-reset">{{labels.restore_text}}</p>
 
         <div class="label">
             <span class="material-icons notranslate icon">
                 person
             </span>
             <span class="text">
-                Correo electrónico
+                {{labels.label_email}}
             </span>
         </div>
         <input formControlName="emailRestore" class="user" type="text" name="" id="user">
@@ -48,10 +48,10 @@
         <div class="bottons">
             <p class="text" *ngIf="message">{{message}}</p>
             <button class="btn confirm" type="submit" (click)="getRestore()">
-                Confirmar
+                {{labels.btn_confirm}}
             </button>
             <button class="btn back" (click)="goBack()">
-                Regresar
+                {{labels.btn_back}}
             </button>
 
         </div>
@@ -59,10 +59,10 @@
 
     <div class="modal-body" *ngIf="view===2">
         <p class="message">
-            Enviamos un correo electrónico para restablecer la contraseña a <strong>{{email}}</strong>.
+            {{labels.email_text}} <strong>{{email}}</strong>
         </p>
         <button class="btn acept" (click)="modal.dismiss('Cross click')">
-            Aceptar
+            {{labels.btn_accept}}
         </button>
     </div>
 </ng-template>

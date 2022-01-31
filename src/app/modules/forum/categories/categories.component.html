@@ -1,46 +1,62 @@
-<app-banner-top [text]="'Foros'" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+<app-banner-top [text]="labels.title_forums" [icon]="'chat'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
 
 
 <div class="content">
-    <h4>Categorías</h4>
-    <div class="category" *ngFor="let item of categories" (click)="navigate(item.slug)">
+    <h4>{{labels.title_categories}}</h4>
+    <div class="category" *ngFor="let item of categories" (click)="navigate(item.category_metadata.slug)">
         <div class="image">
-            <img [src]="item.img" alt="">
+            <img [src]="item.category_metadata?.file |cdnUrl" alt="">
         </div>
 
         <div class="text">
             <h5 class="title">
-                {{item.title|capitalize}}
+                {{item.category_metadata?.title|capitalize}}
             </h5>
-            <p>
+            <div class="description" [innerHTML]="item.category_metadata?.content|secureHtml"></div>
+            <!-- <p>
                 {{item.text}}
-            </p>
+            </p> -->
         </div>
 
         <div class="info">
             <div class="activity">
                 <div class="item">
-                    <span class="label">Temas</span>
-                    <span class="data">14</span>
-                </div>
-                <div class="item">
-                    <span class="label">Usuarios</span>
-                    <span class="data">
-                        <div class="images">
-                            <img *ngFor="let face of faces" [src]="face" alt="">
-                        </div>                        
-                        +3
+                    <span class="label">{{labels?.topics}}</span>
+                    <span class="data " *ngIf="item.category_metadata?.forums">
+                        {{item.category_metadata?.forums.length}}
+                    </span>
+                    <span class="data" *ngIf="!item.category_metadata?.forums">
+                        0
                     </span>
                 </div>
                 <div class="item">
-                    <span class="label">Actividad</span>
-                    <span class="data">Hoy, 12:45</span>
+                    <span class="label">{{labels.users}}</span>
+                    <span class="data">
+                        <div class="images" *ngIf="item.category_metadata?.users">
+                            <ng-container *ngFor="let user of item.category_metadata?.users.slice(0, 3)">
+                                <img *ngIf="user" [src]="user|cdnUrl:50" alt="">
+                                <img *ngIf="!user" src="assets/images/face0.png" alt="">
+                            </ng-container>
+                        </div>
+                        <ng-container *ngIf="item.category_metadata?.users && item.category_metadata?.users.length>3">
+                            +{{item.category_metadata?.users.length-3}}
+                        </ng-container>
+                    </span>
+                </div>
+                <div class="item">
+                    <span class="label">{{labels.activity}}</span>
+                    <span class="data" *ngIf="item.category_metadata.activity">
+                        {{item.category_metadata.activity}}
+                    </span>
                 </div>
             </div>
             <div class="post">
-                <span class="label">Último tema</span>
-                <p class="data">
-                    <img src="assets/images/face3.jpg" alt=""> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                <span class="label">{{labels.last_topic}}</span>
+                <p class="data" *ngIf="item.category_metadata?.forums">
+                    <img *ngIf="item.category_metadata?.last_topic.avatar" [src]="item.category_metadata?.last_topic.avatar|cdnUrl:50" alt="">
+                    <img *ngIf="!item.category_metadata?.last_topic.avatar" src="assets/images/face0.png" alt="">
+                    <!-- <img src="assets/images/face3.jpg" alt=""> -->
+                    {{item.category_metadata?.last_topic?.content}}
                 </p>
             </div>
         </div>
