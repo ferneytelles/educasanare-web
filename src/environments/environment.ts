@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 /** constante que hace referencia al Dominio que sera utilizado en la aplicación */
-export const BASE_URL = 'https://edu.casanare.gov.co/';
+export const BASE_URL = 'https://educasanareadmin.realityapp.co/';
 // export const BASE_URL = 'http://192.168.1.113/';
 
 export const URL_MEDIA = 'https://cato-cms-bucket.s3.amazonaws.com/media/';
