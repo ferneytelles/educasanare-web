@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ForumsService } from '@shared/services/forums.service';
 import { AuthenticationService } from '@shared/services/authentication.service';
@@ -17,7 +17,7 @@ import { ContactService } from '@shared/services/contact.service';
   templateUrl: './category-item.component.html',
   styleUrls: ['./category-item.component.scss']
 })
-export class CategoryItemComponent implements OnInit {
+export class CategoryItemComponent implements OnInit, OnDestroy {
 
   forums: Array<any>;
   profile: any;
@@ -177,6 +177,13 @@ export class CategoryItemComponent implements OnInit {
       this.getForumsByCategory();
       Swal.fire(this.labels.deleted_text);
     }
+  }
+
+  ngOnDestroy(): void {
+    //  Called once, before the instance is destroyed.
+    //  Add 'implements OnDestroy' to the class.
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
 }
