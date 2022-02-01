@@ -8,6 +8,7 @@
         <p class="category">
             <span>{{labels.label_category}}:</span>{{category?.title}}
         </p>
+        <span class="errorTitle" *ngIf="errorTitle">{{errorTitle}}</span>
         <input class="name" type="text" formControlName="title" name="" id="" [placeholder]="labels.placeholder_title">
 
         <textarea #textArea name="" id="contentForum" formControlName="content" [placeholder]="labels.placeholder_content" [ngStyle]="{'height.px': height}" (input)="setHeight()"></textarea>

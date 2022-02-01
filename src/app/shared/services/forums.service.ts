@@ -37,6 +37,13 @@ export class ForumsService {
     );
   }
 
+  getForumsForHome(order: string): Observable<any> {
+    return this.http.get(ForumsEndPoint.forums.format(order))
+    .pipe(
+      tap((response: any) => response)
+    );
+  }
+
   getForum(slug: string): Observable<any> {
     return this.http.get(ForumsEndPoint.forum.format(slug))
     .pipe(
@@ -46,6 +53,13 @@ export class ForumsService {
 
   createForum(data: any): Observable<any> {
     return this.http.post(ForumsEndPoint.createForum, data)
+    .pipe(
+      tap((response: any) => response)
+    );
+  }
+
+  editForum(data: any, id: number): Observable<any> {
+    return this.http.put(ForumsEndPoint.editForum.format(id), data)
     .pipe(
       tap((response: any) => response)
     );

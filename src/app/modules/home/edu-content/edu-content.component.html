@@ -1,6 +1,6 @@
 <div class="content">
     <div class="head">
-        <h4 class="title">Contenido educativo</h4>
+        <h4 class="title">{{section?.title}}</h4>
         <div class="borde">
             <div class="line"></div>
             <span class="material-icons notranslate">school</span>
@@ -8,15 +8,16 @@
         </div>
     </div>
     <div class="pills">
-        <div class="card" *ngFor="let item of pills">
-            <img [src]="item.img" alt="">
+        <div class="card" *ngFor="let item of section.posts">
+            <img [src]="item?.image|cdnUrl:100" alt="">
             <div class="card-body">
                 <h5 class="title">
-                    {{item.title |capitalize}}
+                    {{item?.title |capitalize}}
                 </h5>
-                <p class="text">
+                <div *ngIf="item.description" class="text" [innerHTML]="item.description|secureHtml"></div>
+                <!-- <p class="text">
                     {{item.text}}
-                </p>
+                </p> -->
                 <button class="btn">
                     {{labels?.btn_more}}
                 </button>
