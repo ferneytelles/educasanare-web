@@ -41,8 +41,9 @@
             background: transparent;
             border: none;
             img {
-                width: 50%;
-                height: auto;
+                width: 140px;
+                height: 140px;
+                object-fit: cover;
                 border-radius: 100%;
             }
             .card-body {
@@ -92,7 +93,8 @@
             .card {
                 width: 45%;
                 img {
-                    width: 60%;
+                    width: 120px;
+                    height: 120px;
                 }
                 .card-body {
                     padding: 8px 8px 20px;

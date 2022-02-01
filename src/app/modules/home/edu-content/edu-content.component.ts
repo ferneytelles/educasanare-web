@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SessionStorageService } from '@shared/services/session-storage.service';
 import { PageService } from '@shared/services/page.service';
 
@@ -9,6 +9,7 @@ import { PageService } from '@shared/services/page.service';
 })
 export class EduContentComponent implements OnInit {
 
+  @Input() section: any;
   pills = [
     {
       img: 'assets/images/cap1.png',
@@ -45,6 +46,7 @@ export class EduContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
+    // console.log(this.section);
   }
 
 }

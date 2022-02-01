@@ -49,7 +49,7 @@ export class CategoryItemComponent implements OnInit {
     this.sessionService.login.pipe(takeUntil(this.unsubscribe))
     .subscribe((data: boolean) => {
       this.profile = this.sessionService.profile;
-      console.log(this.profile);
+      // console.log(this.profile);
     });
   }
 
@@ -113,7 +113,7 @@ export class CategoryItemComponent implements OnInit {
   }
 
   async reportForum(forum: any): Promise<void> {
-    const { value: reason } = await Swal.fire({
+    await Swal.fire({
       title: this.labels.text_report,
       input: 'textarea',
       // inputLabel: 'Cuentanos las razones de la denuncia',
@@ -121,31 +121,34 @@ export class CategoryItemComponent implements OnInit {
       showCancelButton: true,
       cancelButtonText: this.labels.btn_cancel,
       confirmButtonText: this.labels.text_report,
+    }).then(async (result) => {
+      if (result.isConfirmed){
+        const body = `Razón de la denuncia: ${+!!result.value ? result.value : 'Vacío'} > > > informacion del foro: {Id: ${forum.id}, Título: ${forum.title}, Slug: ${forum.slug}, Usuario creador: ${forum.user}}`;
+
+        const data = new FormData();
+        data.append('email', this.profile.email);
+        data.append('name', this.profile.username);
+        data.append('subject', 'Denuncia');
+        data.append('body', body);
+
+        const [error, response]: Array<any> = await to(
+          this.contactService.sendContactMail(data).toPromise()
+        );
+
+        if (response) {
+          Swal.fire(this.labels.report_sent);
+        }
+      }
     });
-    const body = `Razón de la denuncia: ${+!!reason ? reason : 'Vacío'} > > > informacion del foro: {Id: ${forum.id}, Título: ${forum.title}, Slug: ${forum.slug}, Usuario creador: ${forum.user}}`;
-
-    const data = new FormData();
-    data.append('email', this.profile.email);
-    data.append('name', this.profile.username);
-    data.append('subject', 'Denuncia');
-    data.append('body', body);
-
-    const [error, result]: Array<any> = await to(
-      this.contactService.sendContactMail(data).toPromise()
-    );
-
-    if (result) {
-      Swal.fire(`Denuncia enviada!`);
-    }
   }
 
   async deleteForum(forum: any): Promise<void> {
     console.log(forum);
     // let [error, response]: Array<any> = [];
     await Swal.fire({
-      title: 'Eliminar',
-      text: 'Seguro que deseas eliminar el tema?',
-      confirmButtonText: 'Eliminar',
+      title: this.labels.delete,
+      text: this.labels.delete_question,
+      confirmButtonText: this.labels.delete,
       cancelButtonText: this.labels.btn_cancel,
       showCancelButton: true,
     }).then((result) => {
@@ -172,7 +175,7 @@ export class CategoryItemComponent implements OnInit {
       console.log(error);
     } else {
       this.getForumsByCategory();
-      Swal.fire('Tema eliminado!');
+      Swal.fire(this.labels.deleted_text);
     }
   }
 

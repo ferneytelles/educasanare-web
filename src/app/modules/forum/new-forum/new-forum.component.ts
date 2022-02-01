@@ -27,6 +27,8 @@ export class NewForumComponent implements OnInit {
   file: any;
   formForum: FormGroup;
 
+  errorTitle: string;
+
   constructor(
     private route: Router,
     private actived: ActivatedRoute,
@@ -75,8 +77,8 @@ export class NewForumComponent implements OnInit {
       console.log(this.forum);
       this.formForum.get('title').setValue(this.forum.title);
       this.formForum.get('content').setValue(this.forum.content);
-      const file = this.forum.file.split('/');
-      this.labelFile.nativeElement.innerHTML = file.pop();
+      const file = +!!this.forum.file ? this.forum.file?.split('/') : null;
+      this.labelFile.nativeElement.innerHTML = +!!file ? file.pop() : '';
     }
   }
 
@@ -105,11 +107,11 @@ export class NewForumComponent implements OnInit {
   goToBack(): void{
     // this.text.nativeElement.value = '';
     // this.height = 154;
-    // const url = this.route.url.split('/');
-    // url.pop();
-    // url.pop();
-    // this.route.navigate([url.join('/')]);
-    this.location.back();
+    const url = this.route.url.split('/');
+    url.pop();
+    url.pop();
+    this.route.navigate([url.join('/')]);
+    // this.location.back();
     window.scroll({top: 0, behavior: 'smooth'});
   }
 
@@ -152,29 +154,65 @@ export class NewForumComponent implements OnInit {
   }
 
   async sendForum(): Promise<void>{
+    this.errorTitle = null;
     const dataOfForm = this.formForum.getRawValue();
-    const dataNewForum = new FormData();
-    dataNewForum.append('category', this.category.id);
-    dataNewForum.append('title', dataOfForm.title);
-    dataNewForum.append('content', dataOfForm.content);
+    const dataForum = new FormData();
+    dataForum.append('category', this.category.id);
+    dataForum.append('title', dataOfForm.title);
+    dataForum.append('content', dataOfForm.content);
     if (!!this.file) {
-      dataNewForum.append('file', this.file);
+      dataForum.append('file', this.file);
     }
 
+    if (!!this.forum) {
+      this.editForum(dataForum);
+    } else {
+      this.newForum(dataForum);
+    }
+  }
+
+  async newForum(dataForum: FormData): Promise<any> {
     const [error, response]: Array<any> = await to(
-      this.forumService.createForum(dataNewForum).toPromise()
+      this.forumService.createForum(dataForum).toPromise()
     );
     if (error) {
       if (error.status === 403) {
         await this.authentication.getToken();
-        this.sendForum();
+        this.newForum(dataForum);
         return;
+      }
+      if (error.status === 500){
+        this.errorTitle = this.labels.error_title_forum;
       }
       console.log(error);
     } else {
       console.log(response);
       // this.formForum.reset();
+      /////////////////////////////////////////// falta label
       await Swal.fire('Publicado con éxito!');
+      this.goToBack();
+    }
+  }
+
+  async editForum(dataForum: FormData): Promise<any> {
+    const [error, response]: Array<any> = await to(
+      this.forumService.editForum(dataForum, this.forum.id).toPromise()
+    );
+    if (error) {
+      if (error.status === 403) {
+        await this.authentication.getToken();
+        this.editForum(dataForum);
+        return;
+      }
+      if (error.status === 500){
+        this.errorTitle = this.labels.error_title_forum;
+      }
+      console.log(error);
+    } else {
+      console.log(response);
+      // this.formForum.reset();
+      /////////////////////////////////////// falta label
+      await Swal.fire('Actualizado con éxito!');
       this.goToBack();
     }
   }

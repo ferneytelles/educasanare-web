@@ -21,6 +21,7 @@ export class RestoreComponent implements OnInit {
     private form: FormBuilder,
     private actived: ActivatedRoute,
     private session: SessionService,
+    private authentication: AuthenticationService,
     private route: Router
   ) { }
 
@@ -32,12 +33,18 @@ export class RestoreComponent implements OnInit {
 
   async verifyToken(): Promise<void> {
     console.log('sdsfghjdsfsghjgffdgh');
-    const [err, confirm] = await to(
+    const [err, confirm]: Array<any> = await to(
       this.session.confirmPassword('a', this.token).toPromise()
     );
-    // @ts-ignore
-    if (err.error.status === 'notfound') {
-      this.route.navigate(['/inicio']);
+    if (err) {
+      if (err.error.status === 403){
+        await this.authentication.getToken();
+        this.verifyToken();
+        return;
+      }
+      if (err.error.status === 'notfound') {
+        this.route.navigate(['/inicio']);
+      }
     }
   }
 
@@ -61,10 +68,17 @@ export class RestoreComponent implements OnInit {
   async sendPassword(): Promise<void>{
     let message = '';
     const data = this.formPassword.getRawValue();
-    console.log(data.password);
+    // console.log(data.password);
     const [err, confirm]: any = await to(
       this.session.confirmPassword(data.password, this.token).toPromise()
     );
+    if (err){
+      if (err.error.status === 403){
+        await this.authentication.getToken();
+        this.sendPassword();
+        return;
+      }
+    }
     if (confirm) {
       console.log(confirm);
       Swal.fire({

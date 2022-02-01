@@ -1,34 +1,35 @@
 <div class="content">
-    <h4 class="title">Foros</h4>
+    <h4 class="title">{{labels.title_forums}}</h4>
     <div class="forums">
-        <h5>Últimos temas</h5>
+        <h5>{{labels.last_themes}}</h5>
         <div class="forum" *ngFor="let item of forums">
             <div class="head">
-                <img [src]="item.img" alt="">
+                <img *ngIf="item.forum_metadata.avatar" [src]="item.forum_metadata.avatar|cdnUrl:60" alt="">
+                <img *ngIf="!item.forum_metadata.avatar" src="assets/images/face0.png" alt="">
                 <div class="info">
                     <span class="username">
-                        @{{item.user}}
+                        @{{item.forum_metadata.user}}
                     </span>
                     <span class="date">
-                        {{item.date.toLocaleDateString()}}  {{item.date.toLocaleTimeString()}}
+                        {{item.forum_metadata.creation_date}}
                     </span>
                 </div>
-                <a class="category">
+                <!-- <a class="category">
                     En la categoría "{{item.category|capitalize}}"
-                </a>
+                </a> -->
             </div>
             <div class="text-forum">
                 <p class="title">
-                    {{item.title}}
+                    {{item.forum_metadata.title}}
                 </p>
                 <p class="text">
-                    {{item.text}}
+                    {{item.forum_metadata.content}}
                 </p>
             </div>
         </div>
     </div>
     <div class="botton">
-        <button class="btn">
+        <button class="btn" (click)="navigateToForums()">
             {{labels?.btn_forums}}
         </button>
     </div>

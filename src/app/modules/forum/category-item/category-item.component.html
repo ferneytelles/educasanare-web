@@ -25,7 +25,7 @@
     </div>
 
     <div class="content">
-        <div class="forum" *ngFor="let item of forums" [ngClass]="{'borde': item.own}">
+        <div class="forum" *ngFor="let item of forums" [ngClass]="{'borde': item.forum_metadata.user === profile?.username}">
             <div class="head-forum">
                 <img *ngIf="item.forum_metadata.avatar" [src]="item.forum_metadata.avatar|cdnUrl:60" alt="">
                 <img *ngIf="!item.forum_metadata.avatar" src="assets/images/face0.png" alt="">
