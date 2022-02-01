@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '@shared/services/authentication.service';
 import { ContactService } from '@shared/services/contact.service';
@@ -18,7 +18,7 @@ import { URL_MEDIA } from '@env/environment';
   templateUrl: './forum-item.component.html',
   styleUrls: ['./forum-item.component.scss']
 })
-export class ForumItemComponent implements OnInit {
+export class ForumItemComponent implements OnInit, OnDestroy {
 
   profile: any;
   forum: any;
@@ -280,4 +280,10 @@ export class ForumItemComponent implements OnInit {
     this.height = 60;
   }
 
+  ngOnDestroy(): void {
+    //  Called once, before the instance is destroyed.
+    //  Add 'implements OnDestroy' to the class.
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
 }

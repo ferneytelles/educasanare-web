@@ -175,6 +175,7 @@ export class ProfilePageComponent implements OnInit {
     this.route.navigate(['/inicio']);
     window.scroll({top: 0, behavior: 'smooth'});
     await this.authentication.tokenAccess(this.authentication.formData).toPromise();
+    this.sessionService.getInformationUser();
     this.sessionService.login.next(false);
   }
 
