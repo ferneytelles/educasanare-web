@@ -9,7 +9,8 @@
     </div>
     <div class="pills">
         <div class="card" *ngFor="let item of section.posts">
-            <img [src]="item?.image|cdnUrl:100" alt="">
+            <img *ngIf="item.image" [src]="item?.image|cdnUrl:200" alt="">
+            <img *ngIf="!item.image" src="assets/images/sinImage.png" alt="">
             <div class="card-body">
                 <h5 class="title">
                     {{item?.title |capitalize}}
@@ -18,7 +19,7 @@
                 <!-- <p class="text">
                     {{item.text}}
                 </p> -->
-                <button class="btn">
+                <button class="btn" (click)="navigate(item.slug)">
                     {{labels?.btn_more}}
                 </button>
             </div>

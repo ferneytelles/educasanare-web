@@ -5,6 +5,8 @@ import { AuthenticationService } from '@shared/services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import to from 'await-to-js';
 import Swal from 'sweetalert2';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import { PageService } from '@shared/services/page.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -20,6 +22,7 @@ export class ProfilePageComponent implements OnInit {
   imageFile: any;
   userEditing = false;
   passwordEditing = false;
+  labels: any;
 
   // mensajes de error en la actualización de los datos
   errorUsername: string;
@@ -29,6 +32,7 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private sessionService: SessionService,
     private authentication: AuthenticationService,
+    private storage: SessionStorageService,
     private route: Router,
     private fb: FormBuilder,
   ) {
@@ -36,6 +40,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.createForm();
     this.getData();
     // if (this.sessionService.file){

@@ -4,7 +4,7 @@
         <div class="head">
             <div class="options">
                 <div class="option" *ngFor="let item of options">
-                    <button class="btn">
+                    <button class="btn" (click)="action(item.action, item.value)">
                         <span class="material-icons-outlined notranslate">
                             {{item.iconName}}
                         </span>

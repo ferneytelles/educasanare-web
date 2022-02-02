@@ -1,4 +1,4 @@
-<app-banner-top [text]="'Cuenta'" [icon]="'person_outline'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+<app-banner-top [text]="labels?.btn_account" [icon]="'person_outline'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
 
 <div class="content">
     <div class="profile" *ngIf="user">
@@ -9,10 +9,10 @@
             </div>
             <div class="line" *ngIf="userEditing">
                 <button class="btn photo">
-                    Cambiar foto de perfil
+                    {{labels.btn_change_image}}
                     <input type="file" accept="image/png, image/jpeg, image/jpg" (change)="changeFile($event)" title="">
                 </button>
-                <span class="text">Archivos jpg o png de 2MB máximo</span>
+                <span class="text">{{labels.limit_image}}</span>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
                     person
                 </span>
                 <span class="label">
-                    Nombre de usuario
+                    {{labels.label_username_profile}}
                 </span>
                 <input type="text" formControlName="username" name="">
                 <span class="error" *ngIf="errorUsername">{{errorUsername}}</span>
@@ -33,7 +33,7 @@
                     email
                 </span>
                 <span class="label">
-                    Correo electrónico
+                    {{labels.label_email}}
                 </span>
                 <input type="email" name="" formControlName="email">
             </div>
@@ -42,7 +42,7 @@
                     face
                 </span>
                 <span class="label">
-                    Nombres
+                    {{labels.names_profile}}
                 </span>
                 <input class="name" type="text" name="" formControlName="first_name">
             </div>
@@ -51,7 +51,7 @@
                     supervised_user_circle
                 </span>
                 <span class="label">
-                    Apellidos
+                    {{labels.surnames}}
                 </span>
                 <input class="name" type="text" name="" formControlName="last_name">
             </div>
@@ -61,24 +61,24 @@
                     <h6 class="title">
                         <span class="material-icons notranslate">
                         lock_open
-                    </span>Cambiar contraseña
+                    </span>{{labels.change_password}}
                     </h6>
                     <div class="item">
                         <span class="label">
-                            Contraseña actual
+                            {{labels.now_password}}
                         </span>
                         <input class="name" formControlName="now_password" type="password" name="">
                         <span class="error" *ngIf="errorNowPassword">{{errorNowPassword}}</span>
                     </div>
                     <div class="item">
                         <span class="label">
-                            Nueva contraseña
+                            {{labels.new_password}}
                         </span>
                         <input class="name" formControlName="password" type="password" name="">
                     </div>
                     <div class="item">
                         <span class="label">
-                            Confirmar nueva contraseña
+                            {{labels.confirm_password}}
                         </span>
                         <input class="name" formControlName="re_password" type="password" name="">
                         <span class="error" *ngIf="errorNonFieldErrors">{{errorNonFieldErrors}}</span>
@@ -89,27 +89,27 @@
             <div class="bottons">
                 <ng-container *ngIf="!userEditing && !passwordEditing">
                     <button class="btn edit" (click)="enableEditing()">
-                        Editar perfil
+                        {{labels.edit_profile}}
                     </button>
                     <button class="btn edit" (click)="passwordEditing=true">
-                        Cambiar contraseña
+                        {{labels.change_password}}
                     </button>
                     <button class="btn off" (click)="offSession()">
                         <span class="material-icons notranslate">
                             logout
                         </span>
-                        Cerrar sesión
+                        {{labels.btn_logout}}
                     </button>
                 </ng-container>
                 <ng-container *ngIf="userEditing || passwordEditing">
                     <button class="btn confirm" *ngIf="userEditing" (click)="sendData()">
-                        Guardar cambios
+                        {{labels.save_changes}}
                     </button>
                     <button class="btn confirm" *ngIf="passwordEditing" (click)="sendData()" [disabled]="formUser.invalid">
-                        Guardar cambios
+                        {{labels.save_changes}}
                     </button>
                     <button class="btn cancel" (click)="cancelAction()">
-                        Cancelar
+                        {{labels.btn_cancel}}
                     </button>
                 </ng-container>
 

@@ -1,0 +1,43 @@
+<div class="results" *ngIf="posts">
+    <div class="post" *ngFor="let item of posts">
+        <!-- <div class="image" *ngIf="item.image" (click)="navigatePost(item.slug)">
+            <img class="img" [src]="item.image | cdnUrl:200" alt="">
+        </div> -->
+        <div class="content-post">
+            <h5 class="title" *ngIf="item.post_metadata.title" (click)="navigatePost(item.post_metadata.slug)">{{item.post_metadata.title}}</h5>
+            <!-- <h5 class="subtitle" *ngIf="item.subtitle" (click)="navigatePost(item.slug)">{{item.post_metadata.subtitle}}</h5>
+            <div class="description" [ngClass]="{'row3': item.subtitle}" *ngIf="item.post_metadata.description" [innerHTML]="item.post_metadata.description|secureHtml"></div> -->
+            <!-- <div class="bottom">
+                <div class="gallery" *ngIf="item.post_metadata.gallery" (click)="navigatePost(item.post_metadata.slug)">
+                    <div class="gal" *ngFor="let img of item.gallery.slice(0,5)">
+                        <img class="img" *ngIf="img.type==='PHOTO'" [src]="img.image |cdnUrl: 100" alt="">
+                    </div>
+                    <div class="plus" *ngIf="item.gallery.length>4">
+                        <span class="material-icons notranslate">add</span>
+                    </div>
+                </div>
+                <div class="date">
+                    <span>{{item.creation_date.split(' ').shift()}}</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="pagination" *ngIf="count>12">
+        <ngb-pagination [collectionSize]="count" [pageSize]="12" [maxSize]="3" [rotate]="true" (pageChange)="pageChange($event)">
+
+            <ng-template ngbPaginationPrevious>
+                <span class="material-icons-outlined notranslate">
+                arrow_back_ios
+                </span>
+                <span class="d-none d-md-block">{{labels.btn_previous}}</span>
+            </ng-template>
+
+            <ng-template ngbPaginationNext>
+                <span class="d-none d-md-block">{{labels.btn_next}}</span>
+                <span class="material-icons-outlined notranslate">
+                arrow_forward_ios
+                </span></ng-template>
+        </ngb-pagination>
+    </div>
+</div>

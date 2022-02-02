@@ -37,14 +37,14 @@
             <div class="bottons">
                 <h5 class="title">{{labels?.title_download}}</h5>
                 <div class="btns">
-                    <button>
+                    <button (click)="navigateUrl('https://apps.apple.com/tt/app/educasanare/id1597365900?uo=2')">
                         <img src="assets/images/icon-apple.png" alt="">
                         <div class="text">
                             <span class="text1">{{labels?.btn_ios}}</span>
                             <span class="text2">App Store</span>
                         </div>
                     </button>
-                    <button>
+                    <button (click)="navigateUrl('https://play.google.com/store/apps/details?id=com.cato.educasanare&hl=es_PY')">
                         <img src="assets/images/icon-play.png" alt="">
                         <div class="text">
                             <span class="text1">{{labels?.btn_android}}</span>
@@ -54,7 +54,7 @@
                 </div>
                 <h6 class="title t2">{{labels?.title_simulator}}</h6>
                 <div class="btns">
-                    <button>
+                    <button (click)="navigateUrl('https://www.google.com/')">
                         {{labels?.btn_simulator}}
                     </button>
                 </div>

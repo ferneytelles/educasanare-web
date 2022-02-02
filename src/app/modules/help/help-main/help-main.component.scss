@@ -1,0 +1,145 @@
+.results {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 50px;
+    .post {
+        display: flex;
+        // margin-top: 20px;
+        padding: 10px;
+        // border-top: 1px solid #d7d7d7;
+        .image {
+            width: 130px;
+            min-width: 130px;
+            height: 130px;
+            border: 1px solid #0072BC;
+            border-radius: 6px;
+            cursor: pointer;
+            overflow: hidden;
+            .img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                // background: linear-gradient(to bottom right, #d7d7d7, #ffffff);
+                background: #d7d7d7;
+            }
+        }
+        .content-post {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            &.right {
+                padding-left: 20px;
+            }
+            .title {
+                color: #0072BC;
+                width: fit-content;
+                cursor: pointer;
+                &:hover {
+                    color: #00538a;
+                    text-decoration: underline;
+                }
+            }
+            .subtitle {
+                font-weight: initial;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            .title,
+            .subtitle {
+                margin-bottom: 5px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+            .description {
+                font-size: 16px !important;
+                margin-bottom: 5px !important;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                -webkit-box-orient: vertical;
+                &.row3 {
+                    -webkit-line-clamp: 3;
+                }
+                 ::ng-deep p {
+                    margin-bottom: 0px !important;
+                }
+                 ::ng-deep strong {
+                    font-weight: initial;
+                }
+            }
+            .bottom {
+                display: flex;
+                .gallery {
+                    display: flex;
+                    .img {
+                        object-fit: cover;
+                    }
+                    .img,
+                    .plus {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 4px;
+                        border: 1px solid #0072BC;
+                        cursor: pointer;
+                        margin-right: 10px;
+                    }
+                    .plus {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: #d8ebf6;
+                        span {
+                            font-size: 40px;
+                            color: #0072BC;
+                        }
+                    }
+                }
+                .date {
+                    margin-left: auto;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        padding: 40px 0 30px;
+        span.notranslate {
+            font-size: 17px;
+        }
+         ::ng-deep .pagination {
+            margin-bottom: 0px;
+        }
+         ::ng-deep .page-item:first-child .page-link,
+         ::ng-deep .page-item:last-child .page-link {
+            display: flex;
+            align-items: center;
+        }
+         ::ng-deep .page-item.active .page-link {
+            background-color: #0072BC;
+            border-color: #0072BC;
+            color: #ffffff;
+        }
+         ::ng-deep .page-link {
+            // background: transparent;
+            // box-shadow: 0 0 5px #00000039;
+            color: #555555;
+            border-color: #d7d7d7;
+            font-size: 16px;
+            line-height: 18px;
+            padding: 3px 7px;
+            border-radius: 4px;
+            border: none;
+            margin: 0px 2px;
+        }
+         ::ng-deep .page-link:focus {
+            box-shadow: none;
+        }
+    }
+}

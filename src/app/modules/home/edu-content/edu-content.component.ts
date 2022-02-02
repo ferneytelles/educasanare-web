@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SessionStorageService } from '@shared/services/session-storage.service';
 import { PageService } from '@shared/services/page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edu-content',
@@ -41,12 +42,18 @@ export class EduContentComponent implements OnInit {
   labels: any;
 
   constructor(
+    private route: Router,
     private storage: SessionStorageService
   ) { }
 
   ngOnInit(): void {
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     // console.log(this.section);
+  }
+
+  navigate(slug: string): void{
+    this.route.navigate([`/buscador/${slug}`]);
+    window.scroll({top: 0, behavior: 'smooth'});
   }
 
 }
