@@ -5,6 +5,7 @@ import { SessionStorageService } from '@shared/services/session-storage.service'
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ComicsService } from '../../../shared/services/comics.service';
+import { URL_MEDIA } from '@env/environment';
 
 @Component({
   selector: 'app-modal-comic',
@@ -13,24 +14,10 @@ import { ComicsService } from '../../../shared/services/comics.service';
 })
 export class ModalComicComponent implements OnInit, OnDestroy {
 
-  options = [
-    {
-      iconName: 'home',
-      text: 'inicio'
-    },
-    {
-      iconName: 'file_copy',
-      text: 'metadatos'
-    },
-    {
-      iconName: 'menu_book',
-      text: 'manual'
-    },
-    {
-      iconName: 'info',
-      text: 'créditos'
-    }
-  ];
+  @Input() metadata: string;
+  @Input() manual: string;
+  @Input() credits: string;
+  options: Array<any>;
   page = 0;
   progress = 0;
   @Input() content: Array<any>;
@@ -46,6 +33,33 @@ export class ModalComicComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.options = [
+      {
+        iconName: 'home',
+        text: 'inicio',
+        action: this.moveInit,
+        value: 0
+      },
+      {
+        iconName: 'file_copy',
+        text: 'metadatos',
+        action: this.openFile,
+        value: this.metadata
+      },
+      {
+        iconName: 'menu_book',
+        text: 'manual',
+        action: this.openFile,
+        value: this.manual
+      },
+      {
+        iconName: 'info',
+        text: 'créditos',
+        action: this.openFile,
+        value: this.credits
+      }
+    ];
+    console.log(this.content);
     this.comicService.modalComic.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
       this.openModal();
     });
@@ -69,7 +83,18 @@ export class ModalComicComponent implements OnInit, OnDestroy {
     }});
   }
 
+  action(event: any, value: any): void{
+    event(value);
+  }
 
+  moveInit = (value: number) => {
+    this.page = value;
+    this.setProgress();
+  }
+
+  openFile = (value: string) => {
+    window.open(URL_MEDIA + value, '_blank');
+  }
 
   movePage(value: boolean): void{
     if (value) {

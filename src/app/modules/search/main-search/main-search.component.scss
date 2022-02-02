@@ -214,3 +214,27 @@
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .content {
+        .results {
+            padding: 15px;
+            .post {
+                margin-top: 5px;
+                padding: 10px;
+                .image {
+                    width: 90px;
+                    min-width: 90px;
+                    height: 90px;
+                }
+                .content-post {
+                    .bottom {
+                        .gallery {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PageService } from '@shared/services/page.service';
+import { SessionStorageService } from '@shared/services/session-storage.service';
 
 @Component({
   selector: 'app-section-poll',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionPollComponent implements OnInit {
 
-  constructor() { }
+  labels: any;
+
+  constructor(
+    private route: Router,
+    private storage: SessionStorageService
+  ) { }
 
   ngOnInit(): void {
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
+  }
+
+  navigateToHelp(): void{
+    this.route.navigate(['/ayuda']);
+    window.scroll({top: 0, behavior: 'smooth'});
   }
 
 }

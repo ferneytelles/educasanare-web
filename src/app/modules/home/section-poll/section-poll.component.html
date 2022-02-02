@@ -7,15 +7,15 @@
         <span class="material-icons notranslate icon">
             live_help
         </span>
-        <h4>¿Tienes alguna duda?</h4>
+        <h4>{{labels.title_section_help}}</h4>
         <div class="text">
-            <span>Resuelve tus dudas en esta sección</span>
+            <span>{{labels.text_help}}</span>
             <!-- <span>esta sección</span> -->
         </div>
         <div class="links">
-            <a>Preguntas frecuentes</a>
-            <a>Manual instruccional</a>
-            <a>Ayuda</a>
+            <a (click)="navigateToHelp()">{{labels.link_questions}}</a>
+            <a>{{labels.link_manual}}</a>
+            <a (click)="navigateToHelp()">{{labels.link_help}}</a>
         </div>
     </div>
 </div>
