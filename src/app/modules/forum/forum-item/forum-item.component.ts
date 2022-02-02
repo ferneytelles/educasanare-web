@@ -26,29 +26,29 @@ export class ForumItemComponent implements OnInit, OnDestroy {
 
   unsubscribe = new Subject<unknown>();
 
-  answers = [
-    {
-      own: false,
-      img: 'assets/images/face1.jpg',
-      user: 'afsdfd_35',
-      date: '21/05/2021 15:45',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque minus enim nobis ad, cupiditate, dolorem velit quis modi explicabo fugiat magnam odio, quod officia voluptas ducimus. Recusandae, asperiores labore. cupiditate, dolorem velit quis modi explicabo fugiat magnam odio.'
-    },
-    {
-      own: true,
-      img: 'assets/images/face3.jpg',
-      user: 'afsdfd_35',
-      date: '21/05/2021 15:45',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque minus enim nobis ad, cupiditate, dolorem velit quis modi explicabo fugiat magnam odio, quod officia voluptas ducimus. Recusandae, asperiores labore. cupiditate, dolorem velit quis modi explicabo fugiat magnam odio.'
-    },
-    {
-      own: false,
-      img: 'assets/images/face2.jpg',
-      user: 'afsdfd_35',
-      date: '21/05/2021 15:45',
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque minus enim nobis ad, cupiditate, dolorem velit quis modi explicabo fugiat magnam odio, quod officia voluptas ducimus. Recusandae, asperiores labore. cupiditate, dolorem velit quis modi explicabo fugiat magnam odio.'
-    }
-  ];
+  // answers = [
+  //   {
+  //     own: false,
+  //     img: 'assets/images/face1.jpg',
+  //     user: 'afsdfd_35',
+  //     date: '21/05/2021 15:45',
+  //     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque minus enim nobis ad, cupiditate, dolorem velit quis modi explicabo fugiat magnam odio, quod officia voluptas ducimus. Recusandae, asperiores labore. cupiditate, dolorem velit quis modi explicabo fugiat magnam odio.'
+  //   },
+  //   {
+  //     own: true,
+  //     img: 'assets/images/face3.jpg',
+  //     user: 'afsdfd_35',
+  //     date: '21/05/2021 15:45',
+  //     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque minus enim nobis ad, cupiditate, dolorem velit quis modi explicabo fugiat magnam odio, quod officia voluptas ducimus. Recusandae, asperiores labore. cupiditate, dolorem velit quis modi explicabo fugiat magnam odio.'
+  //   },
+  //   {
+  //     own: false,
+  //     img: 'assets/images/face2.jpg',
+  //     user: 'afsdfd_35',
+  //     date: '21/05/2021 15:45',
+  //     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga atque minus enim nobis ad, cupiditate, dolorem velit quis modi explicabo fugiat magnam odio, quod officia voluptas ducimus. Recusandae, asperiores labore. cupiditate, dolorem velit quis modi explicabo fugiat magnam odio.'
+  //   }
+  // ];
 
   height = 60;
   @ViewChild('textArea') text: ElementRef;
