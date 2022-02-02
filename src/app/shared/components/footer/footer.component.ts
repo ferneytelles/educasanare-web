@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from '@shared/services/session-storage.service';
 import { PageService } from '@shared/services/page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -15,6 +16,7 @@ export class FooterComponent implements OnInit {
   labels: any;
 
   constructor(
+    // private route: Router,
     private storage: SessionStorageService
   ) { }
 
@@ -24,6 +26,11 @@ export class FooterComponent implements OnInit {
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.menu = project.footer.find(x => x.language === this.language).menu;
     // console.log(this.menu);
+  }
+
+  navigateUrl(url: string): void{
+    // this.route.navigateByUrl()
+    window.open(url, '_blank');
   }
 
 }

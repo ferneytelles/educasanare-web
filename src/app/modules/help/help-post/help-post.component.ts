@@ -1,18 +1,18 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SessionStorageService } from '@shared/services/session-storage.service';
-import to from 'await-to-js';
-import { SearchService } from '@shared/services/search.service';
 import { AuthenticationService } from '@shared/services/authentication.service';
 import { PageService } from '@shared/services/page.service';
-import { Location } from '@angular/common';
+import { SearchService } from '@shared/services/search.service';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import to from 'await-to-js';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  selector: 'app-help-post',
+  templateUrl: './help-post.component.html',
+  styleUrls: ['./help-post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class HelpPostComponent implements OnInit {
 
   @ViewChild('video') video: ElementRef;
   post: any;
@@ -21,7 +21,6 @@ export class PostComponent implements OnInit {
   tags: string;
   height: number;
   slug: string;
-  language: string;
   labels: any;
 
   constructor(
@@ -34,18 +33,15 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.language = PageService.language;
     this.slug = this.activeRoute.snapshot.params.slug;
-    console.log(this.activeRoute.snapshot.params.slug);
+    // console.log(this.activeRoute.snapshot.params.slug);
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
-    // this.post = this.storage.getStorage(SessionStorageService.keyPages)
-    // .find(x => x.slug === 'inicio').sections[1].posts.find(y => y.slug === slug);
     this.getPost();
   }
 
   async getPost(): Promise<void>{
     const [error, post] = await to(
-      this.search.getPost(this.slug, this.language).toPromise()
+      this.search.getPost(this.slug, PageService.language).toPromise()
     );
     // @ts-ignore
     if (error && error.status === 403){
@@ -53,8 +49,8 @@ export class PostComponent implements OnInit {
       await this.getPost();
       return;
     }
-    console.log(post);
     this.post = post.results[0].post_metadata;
+    console.log(this.post);
     if (this.post.gallery){
       this.videos = this.post.gallery.filter(x => x.type === 'VIDEO');
       this.photos = this.post.gallery.filter(x => x.type === 'PHOTO');
@@ -67,7 +63,6 @@ export class PostComponent implements OnInit {
       this.tags = this.tags + '.';
     }
   }
-
 
   goBack(): void{
     // this.route.navigate(['/buscador']);

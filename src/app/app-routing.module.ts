@@ -52,6 +52,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/search-page/search-page.module').then(m => m.SearchPageModule)
       },
       {
+        path: 'ayuda',
+        loadChildren: () => import('./pages/help-page/help-page.module').then(m => m.HelpPageModule)
+      },
+      {
         path: '**',
         redirectTo: 'inicio',
         pathMatch: 'full'
