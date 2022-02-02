@@ -223,15 +223,19 @@
                 margin-top: 5px;
                 padding: 10px;
                 .image {
-                    width: 90px;
-                    min-width: 90px;
-                    height: 90px;
+                    width: 80px;
+                    min-width: 80px;
+                    height: 80px;
                 }
                 .content-post {
+                    &.right {
+                        padding-left: 10px;
+                    }
                     .bottom {
-                        .gallery {
-                            display: none;
-                        }
+                        display: none;
+                        // .gallery {
+                        //     display: none;
+                        // }
                     }
                 }
             }
