@@ -34,7 +34,7 @@ export class AuthenticationService {
   }
 
   async getToken(): Promise<void> {
-    if (this.isTokenRefresh){
+    if (this.isTokenRefresh()){
       const [err, response] = await to(this.tokenRefresh().toPromise());
       // console.log(response);
       // @ts-ignore
