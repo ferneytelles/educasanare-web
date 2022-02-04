@@ -65,8 +65,8 @@ export class ForumsService {
     );
   }
 
-  deleteForum(id: number): Observable<any> {
-    return this.http.delete(ForumsEndPoint.deleteForum.format(id))
+  deleteForum(id: number, data?: FormData): Observable<any> {
+    return this.http.delete(ForumsEndPoint.deleteForum.format(id), {body: data})
     .pipe(
       tap((response: any) => response)
     );
