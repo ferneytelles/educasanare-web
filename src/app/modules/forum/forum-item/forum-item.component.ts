@@ -111,6 +111,9 @@ export class ForumItemComponent implements OnInit, OnDestroy {
       console.log(error);
     } else {
       this.forum = response.results[0].forum_metadata;
+      if (this.forum.children){
+        this.forum.children = this.forum.children.reverse();
+      }
       console.log(this.forum);
       // this.getCategory();
     }
@@ -243,7 +246,7 @@ export class ForumItemComponent implements OnInit, OnDestroy {
   }
 
   async deleteForum(forum: any, isParent: boolean): Promise<void> {
-    console.log(forum);
+    // console.log(forum);
     // let [error, response]: Array<any> = [];
     await Swal.fire({
       title: this.labels.delete,
@@ -259,12 +262,23 @@ export class ForumItemComponent implements OnInit, OnDestroy {
   }
 
   async confirmDeleteForum(id: number, isParent: boolean): Promise<void> {
-    const [error, response]: Array<any> = await to(
-      this.forumService.deleteForum(id).toPromise()
-    );
+    const dataParent = new FormData();
+    let [error, response]: Array<any> = [];
+    if (!isParent) {
+      dataParent.append('parent', this.forum.id);
+      [error, response] = await to(
+        this.forumService.deleteForum(id, dataParent).toPromise()
+      );
+    } else {
+      // dataParent.append('parent', null);
+      [error, response] = await to(
+        this.forumService.deleteForum(id).toPromise()
+      );
+    }
     if (error){
       console.log(error);
     } else {
+      console.log(response, isParent);
       if (isParent){
         await Swal.fire(this.labels.deleted_text);
         this.location.back();
