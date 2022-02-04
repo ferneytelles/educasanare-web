@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, Input, SimpleChanges } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PageService } from '@shared/services/page.service';
 import { SessionStorageService } from '@shared/services/session-storage.service';
@@ -33,6 +33,7 @@ export class ModalComicComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    console.log('se asignaron los pdfs');
     this.options = [
       {
         iconName: 'home',
@@ -66,6 +67,16 @@ export class ModalComicComponent implements OnInit, OnDestroy {
     this.setProgress();
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     this.setTextButtons();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    if (!!this.options && changes.metadata){
+      this.options[1].value = this.metadata;
+      this.options[2].value = this.manual;
+      this.options[3].value = this.credits;
+    }
   }
 
   setTextButtons(): void{
