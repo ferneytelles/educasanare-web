@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
   labels: any;
 
   constructor(
-    // private route: Router,
+    private route: Router,
     private storage: SessionStorageService
   ) { }
 
@@ -31,6 +31,15 @@ export class FooterComponent implements OnInit {
   navigateUrl(url: string): void{
     // this.route.navigateByUrl()
     window.open(url, '_blank');
+  }
+
+  navigate(url: string): void{
+    if (url.includes('http')) {
+      this.navigateUrl(url);
+    } else {
+      this.route.navigate([`/${url}`]);
+      window.scroll({top: 0, behavior: 'smooth'});
+    }
   }
 
 }
