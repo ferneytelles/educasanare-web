@@ -111,6 +111,7 @@ export class ProfilePageComponent implements OnInit {
       // this.user.avatar = this.objectURL;
       this.image.nativeElement.src = this.objectURL;
       this.imageFile = element.target.files[0];
+      // console.log(this.imageFile);
     }
   }
 
@@ -150,6 +151,7 @@ export class ProfilePageComponent implements OnInit {
       console.log('eliminó los campos de contraseña');
     }
     // console.log(userData.get('now_password'));
+    // console.log(userData);
 
     const [error, result]: Array<any> = await to(
       this.sessionService.updateUser(userData).toPromise()
