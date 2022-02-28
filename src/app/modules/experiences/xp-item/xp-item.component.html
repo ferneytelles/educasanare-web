@@ -8,7 +8,7 @@
                 <li *ngFor="let item of images; let i=index" data-target="#carouselImages" attr.data-slide-to="{{i}}" [ngClass]="{'active': i==0}"></li>
             </ol>
             <!-- data-interval="10000" -->
-            <div class="carousel-inner">
+            <div class="carousel-inner" data-interval="false">
                 <div class="carousel-item" *ngFor="let item of images; let i=index" [ngClass]="{'active': i==0}" data-interval="false">
                     <img [src]="item|cdnUrl:600" class="d-block w-100" alt="...">
                 </div>

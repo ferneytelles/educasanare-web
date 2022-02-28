@@ -1,29 +1,26 @@
 <div class="content" *ngIf="section">
     <div class="elements">
-        <div class="item1" *ngIf="section?.posts[0]">
-            <div class="image">
+
+        <div class="item" *ngFor="let post of section.posts">
+            <div class="image" [ngStyle]="{'background-image': post?.image ? 'url('+urlMedia+post?.image+')' : ''}">
                 <h4 class="title">
-                    {{section.posts[0]?.title}}
+                    {{post?.title}}
                 </h4>
             </div>
             <div class="text">
                 <div class="content-text">
-                    <div class="description" [innerHTML]="section.posts[0]?.description|secureHtml"></div>
-                    <!-- <p>
-                        {{text}}
-                    </p> -->
+                    <div class="description" [innerHTML]="post?.description|secureHtml"></div>
+
                     <div class="box1"></div>
                     <div class="box2"></div>
                 </div>
             </div>
         </div>
-        <div class="item2" *ngIf="section?.posts[1]">
+        <!-- <div class="item2" *ngIf="section?.posts[1]">
             <div class="text">
                 <div class="content-text">
                     <div class="description" [innerHTML]="section.posts[1]?.description|secureHtml"></div>
-                    <!-- <p>
-                        {{text}}
-                    </p> -->
+
                     <div class="box1"></div>
                     <div class="box2"></div>
                 </div>
@@ -33,6 +30,6 @@
                     {{section.posts[1]?.title}}
                 </h4>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

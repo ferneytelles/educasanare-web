@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
   videos: Array<any>;
   photos: Array<any>;
   tags: string;
-  height: number;
+  // height: number;
   slug: string;
   language: string;
   labels: any;

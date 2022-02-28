@@ -1,25 +1,18 @@
 .content {
     width: 100%;
-    position: relative;
-    height: 0;
-    padding-bottom: 62%;
     .elements {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         display: flex;
         flex-direction: column;
-        .item1,
-        .item2 {
+        .item {
             width: 100%;
-            height: 50%;
             display: flex;
+            .image {
+                background-size: cover;
+                background-position: center;
+            }
             .image,
             .text {
                 width: 50%;
-                height: 100%;
                 padding: 30px;
                 display: flex;
                 justify-content: center;
@@ -37,7 +30,7 @@
                     position: relative;
                     width: 100%;
                     height: 100%;
-                    padding: 30px;
+                    padding: 50px 30px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -57,8 +50,8 @@
                         position: absolute;
                         top: 0;
                         left: 0;
-                        width: 30%;
-                        padding-bottom: 30%;
+                        width: 20%;
+                        padding-bottom: 20%;
                         border-left: 1px solid;
                         border-top: 1px solid;
                     }
@@ -74,41 +67,55 @@
                 }
             }
         }
-        .item1 {
-            .image {
-                background-image: url(../../../../assets/images/bgrv.png);
-                background-size: cover;
-                background-position: center;
-            }
+        .item:nth-child(2n+1) {
             .text {
                 background: #0072BC;
                 color: #ffffff;
             }
         }
-        .item2 {
-            .image {
-                background-image: url(../../../../assets/images/bgen.png);
-                background-size: cover;
-                background-position: center;
-            }
+        .item:nth-child(2n) {
             .text {
+                order: -1;
                 background-image: url(../../../../assets/images/bgen2.png);
                 background-size: cover;
                 background-position: center;
+                color: #000000;
             }
         }
+        // .item1 {
+        //     .image {
+        //         background-image: url(../../../../assets/images/bgrv.png);
+        //         background-size: cover;
+        //         background-position: center;
+        //     }
+        //     .text {
+        //         background: #0072BC;
+        //         color: #ffffff;
+        //     }
+        // }
+        // .item2 {
+        //     .image {
+        //         background-image: url(../../../../assets/images/bgen.png);
+        //         background-size: cover;
+        //         background-position: center;
+        //     }
+        //     .text {
+        //         background-image: url(../../../../assets/images/bgen2.png);
+        //         background-size: cover;
+        //         background-position: center;
+        //     }
+        // }
     }
 }
 
 @media screen and (max-width: 960px) {
     .content {
         .elements {
-            .item1,
-            .item2 {
+            .item {
                 .text {
                     padding: 15px;
                     .content-text {
-                        padding: 15px;
+                        padding: 30px 15px;
                     }
                 }
             }
@@ -122,13 +129,14 @@
         padding-bottom: 0;
         .elements {
             position: relative;
-            .item1,
-            .item2 {
+            .item {
                 flex-direction: column;
                 .image {
                     width: 100%;
+                    padding: 60px 20px;
                 }
                 .text {
+                    order: 2 !important;
                     width: 100%;
                     .content-text {
                         .box1 {
@@ -142,11 +150,11 @@
                     }
                 }
             }
-            .item2 {
-                .text {
-                    order: 2;
-                }
-            }
+            // .item2 {
+            //     .text {
+            //         order: 2;
+            //     }
+            // }
         }
     }
 }
