@@ -40,12 +40,12 @@ export class HelpMainComponent implements OnInit {
     }
     this.count = result.count;
     this.posts = result.results;
-    console.log(this.posts);
+    // console.log(this.posts);
   }
 
   pageChange(page: number): void{
     // evento de cambio de página
-    console.log(page);
+    // console.log(page);
     this.page = page;
     this.getPosts();
     window.scroll({top: 0});

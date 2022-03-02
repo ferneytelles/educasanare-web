@@ -58,7 +58,7 @@ export class SectionForumComponent implements OnInit {
         this.getForums();
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
       this.forums = response.results.slice(0, 2);
       // console.log(this.forums);

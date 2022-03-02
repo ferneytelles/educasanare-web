@@ -55,12 +55,12 @@ export class MainContactComponent implements OnInit {
     if (!data.body){
       delete data.body;
     }
-    console.log(data);
+    // console.log(data);
     const [error, result]: Array<any> = await to(
       this.contactService.sendContactMail(data).toPromise()
     );
     if (error){
-      console.log(error);
+      // console.log(error);
       if (error.status === 403){
         await this.authentication.getToken();
         this.sendRequest();
@@ -73,7 +73,7 @@ export class MainContactComponent implements OnInit {
         this.errorBody = '* ' + error.error.body[0];
       }
     }else{
-      console.log(result);
+      // console.log(result);
       Swal.fire({
         icon: 'success',
         text: 'Mensaje enviado, pronto te llegará una respuesta al correo electrónico'

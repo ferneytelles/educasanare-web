@@ -78,7 +78,7 @@ export class PageService {
     // }
     // await this.getGeneralInformation();
     const [error, pages] = await to(this.getPages(3).toPromise());
-    console.log(pages);
+    // console.log(pages);
     if (error){
       // @ts-ignore
       if (error.status === 403){
@@ -92,7 +92,7 @@ export class PageService {
     }
     
 
-    console.log(pages);
+    // console.log(pages);
     const arrayPages = [];
     for (const item of pages) {
       const page = await this.getPage(item.id, PageService.language).toPromise();
@@ -116,7 +116,7 @@ export class PageService {
     const [err, data] = await to(this.authentication.getToken());
     // @ts-ignore
     if (err){
-      console.log(err);
+      // console.log(err);
       this.serverError.next(err);
       return false;
     }
@@ -141,7 +141,7 @@ export class PageService {
         projectInfo
       );
     }else {
-      console.log(err2);
+      // console.log(err2);
       return false;
     }
     return true;

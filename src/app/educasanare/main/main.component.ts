@@ -64,7 +64,7 @@ export class MainComponent implements OnInit {
       await this.getPages();
       // console.log('api');
     }
-    console.log(this.pages);
+    // console.log(this.pages);
   }
 
   async getPages(): Promise<void> {

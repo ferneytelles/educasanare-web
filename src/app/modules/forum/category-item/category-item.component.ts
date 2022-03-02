@@ -63,7 +63,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
         this.getCategory();
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
       this.category = response.results[0].category_metadata;
       this.category.file = `${URL_CDN}${this.category.file}?w=900`;
@@ -82,7 +82,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
         this.getForumsByCategory();
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
       this.count = response.count;
       this.forums = response.results;
@@ -92,7 +92,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
 
   changeFilter(element: any): void{
     this.order = element.target.value;
-    console.log(this.order);
+    // console.log(this.order);
     this.getForumsByCategory();
   }
 
@@ -143,7 +143,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
   }
 
   async deleteForum(forum: any): Promise<void> {
-    console.log(forum);
+    // console.log(forum);
     // let [error, response]: Array<any> = [];
     await Swal.fire({
       title: this.labels.delete,
@@ -172,7 +172,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
       this.forumService.deleteForum(id).toPromise()
     );
     if (error){
-      console.log(error);
+      // console.log(error);
     } else {
       this.getForumsByCategory();
       Swal.fire(this.labels.deleted_text);

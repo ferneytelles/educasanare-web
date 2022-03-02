@@ -75,10 +75,10 @@ export class CategoriesComponent implements OnInit {
         this.getListCategories();
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
       this.categories = response.results;
-      console.log(this.categories);
+      // console.log(this.categories);
       this.getUsersImagesAndDate();
     }
   }

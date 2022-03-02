@@ -54,7 +54,7 @@ export class XpItemComponent implements OnInit {
       return;
     }
     this.post = post.results[0].post_metadata;
-    console.log(this.post);
+    // console.log(this.post);
     this.setImagesCarousel();
   }
 
@@ -70,7 +70,7 @@ export class XpItemComponent implements OnInit {
         }
       });
       this.images = this.images.concat(aux);
-      console.log(this.images);
+      // console.log(this.images);
     }
   }
 
