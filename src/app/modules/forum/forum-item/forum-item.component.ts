@@ -108,13 +108,13 @@ export class ForumItemComponent implements OnInit, OnDestroy {
         this.getForum();
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
       this.forum = response.results[0].forum_metadata;
       if (this.forum.children){
         this.forum.children = this.forum.children.reverse();
       }
-      console.log(this.forum);
+      // console.log(this.forum);
       // this.getCategory();
     }
   }
@@ -162,9 +162,9 @@ export class ForumItemComponent implements OnInit, OnDestroy {
           this.sendForum();
           return;
         }
-        console.log(error);
+        // console.log(error);
       } else {
-        console.log(response);
+        // console.log(response);
         // this.formForum.reset();
         // await Swal.fire('Publicado con éxito!');
         this.text.nativeElement.value = '';
@@ -216,7 +216,7 @@ export class ForumItemComponent implements OnInit, OnDestroy {
       showCancelButton: true,
     }).then((result) => {
       if (result.isConfirmed){
-        console.log(result.value);
+        // console.log(result.value);
         const dataForum = new FormData();
         dataForum.append('category', this.forum.category);
         dataForum.append('title', forum.title);
@@ -238,9 +238,9 @@ export class ForumItemComponent implements OnInit, OnDestroy {
         this.confirmUpdateForum(dataForum, id);
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log(response);
+      // console.log(response);
       this.getForum();
     }
   }
@@ -276,9 +276,9 @@ export class ForumItemComponent implements OnInit, OnDestroy {
       );
     }
     if (error){
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log(response, isParent);
+      // console.log(response, isParent);
       if (isParent){
         await Swal.fire(this.labels.deleted_text);
         this.location.back();

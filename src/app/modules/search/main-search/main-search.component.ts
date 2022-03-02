@@ -46,7 +46,8 @@ export class MainSearchComponent implements OnInit, OnDestroy {
     this.realized = false;
     if (this.storage.isStorage(SessionStorageService.keySearch)){
       this.tag = this.storage.getStorage(SessionStorageService.keySearch);
-      this.tag = this.tag.replace(' ', '_');
+      const aux = this.tag.split(' ');
+      this.tag = aux.join('_');
       await this.getResults();
       // this.posts = [];
       // this.posts = this.storage.getStorage(SessionStorageService.keyPages).find(x => x.slug === 'inicio').sections[1].posts;
@@ -78,7 +79,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
     );
     this.search.tagSearch.next();
     this.tagInput.nativeElement.value = '';
-    console.log(this.tagInput.nativeElement.value);
+    // console.log(this.tagInput.nativeElement.value);
   }
 
   navigatePost(value: string): void{
@@ -93,7 +94,7 @@ export class MainSearchComponent implements OnInit, OnDestroy {
 
   pageChange(page: number): void{
     // evento de cambio de página
-    console.log(page);
+    // console.log(page);
     this.page = page;
     this.getResults();
     window.scroll({top: 0});

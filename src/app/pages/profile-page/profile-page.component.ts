@@ -52,7 +52,7 @@ export class ProfilePageComponent implements OnInit {
   async getData(): Promise<void> {
     if (await this.sessionService.getInformationUser()) {
       this.user = this.sessionService.profile;
-      console.log(this.user);
+      // console.log(this.user);
       this.resetFormValues();
     } else {
       this.route.navigate(['/inicio']);
@@ -148,7 +148,7 @@ export class ProfilePageComponent implements OnInit {
       userData.delete('now_password');
       userData.delete('password');
       userData.delete('re_password');
-      console.log('eliminó los campos de contraseña');
+      // console.log('eliminó los campos de contraseña');
     }
     // console.log(userData.get('now_password'));
     // console.log(userData);
@@ -157,7 +157,7 @@ export class ProfilePageComponent implements OnInit {
       this.sessionService.updateUser(userData).toPromise()
     );
     if (error){
-      console.log(error);
+      // console.log(error);
       if (error.status === 403){
         await this.authentication.getToken();
         this.sendData();
@@ -173,7 +173,7 @@ export class ProfilePageComponent implements OnInit {
         this.errorNonFieldErrors = error.error.non_field_errors[0];
       }
     }else{
-      console.log(result);
+      // console.log(result);
       window.location.reload();
     }
   }

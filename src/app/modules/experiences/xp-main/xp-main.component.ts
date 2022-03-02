@@ -103,7 +103,7 @@ export class XpMainComponent implements OnInit {
         // this.error = true;
         return;
       }
-      console.log(err);
+      // console.log(err);
       this.error = true;
       return;
     }

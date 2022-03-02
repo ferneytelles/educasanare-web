@@ -28,7 +28,7 @@ export class EventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
-    console.log(this.section);
+    // console.log(this.section);
     this.getEventsByPage(this.date);
   }
 
@@ -44,13 +44,13 @@ export class EventsComponent implements OnInit {
         await this.getEventsByPage(date);
         return;
       }
-      console.log(err);
+      // console.log(err);
       this.error = true;
       return;
     }
     this.count = result.count;
     this.events = result.results;
-    console.log(this.events);
+    // console.log(this.events);
   }
 
   changeDate(date: string): void{

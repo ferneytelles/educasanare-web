@@ -90,7 +90,7 @@ export class MainAboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.urlCdn = URL_CDN;
-    console.log(this.content);
+    // console.log(this.content);
     this.banner = this.content.sections[0]?.posts;
     this.objectives = this.content?.sections[1];
     this.dataInterest = this.content.sections[2]?.posts;

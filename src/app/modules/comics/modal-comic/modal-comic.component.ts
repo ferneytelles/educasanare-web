@@ -33,7 +33,7 @@ export class ModalComicComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    console.log('se asignaron los pdfs');
+    // console.log('se asignaron los pdfs');
     this.options = [
       {
         iconName: 'home',
@@ -60,7 +60,7 @@ export class ModalComicComponent implements OnInit, OnDestroy {
         value: this.credits
       }
     ];
-    console.log(this.content);
+    // console.log(this.content);
     this.comicService.modalComic.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
       this.openModal();
     });

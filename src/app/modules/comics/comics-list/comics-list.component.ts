@@ -17,7 +17,7 @@ export class ComicsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.content);
+    // console.log(this.content);
     this.comics = this.content?.posts;
   }
   openComic(index: number): void{

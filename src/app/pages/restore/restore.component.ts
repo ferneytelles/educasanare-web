@@ -32,7 +32,7 @@ export class RestoreComponent implements OnInit {
   }
 
   async verifyToken(): Promise<void> {
-    console.log('sdsfghjdsfsghjgffdgh');
+    // console.log('sdsfghjdsfsghjgffdgh');
     const [err, confirm]: Array<any> = await to(
       this.session.confirmPassword('a', this.token).toPromise()
     );
@@ -80,18 +80,18 @@ export class RestoreComponent implements OnInit {
       }
     }
     if (confirm) {
-      console.log(confirm);
+      // console.log(confirm);
       Swal.fire({
         icon: 'success',
         text: 'Contraseña actualizada'
       }).then((willDelete) => {
         if (willDelete) {
-          console.log('Cerró la alerta');
+          // console.log('Cerró la alerta');
           this.route.navigate(['/inicio']);
         }
       });
     } else {
-      console.log(err);
+      // console.log(err);
       if (err.error.password){
         // @ts-ignore
         err.error.password.forEach((x) => {
@@ -106,7 +106,7 @@ export class RestoreComponent implements OnInit {
         confirmButtonColor: '#0072BC'
       }).then((willDelete) => {
         if (willDelete) {
-          console.log('Cerró la alerta');
+          // console.log('Cerró la alerta');
           this.formPassword.reset();
         }
       });

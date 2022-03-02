@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.language = PageService.language;
     this.slug = this.activeRoute.snapshot.params.slug;
-    console.log(this.activeRoute.snapshot.params.slug);
+    // console.log(this.activeRoute.snapshot.params.slug);
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
     // this.post = this.storage.getStorage(SessionStorageService.keyPages)
     // .find(x => x.slug === 'inicio').sections[1].posts.find(y => y.slug === slug);
@@ -53,7 +53,7 @@ export class PostComponent implements OnInit {
       await this.getPost();
       return;
     }
-    console.log(post);
+    // console.log(post);
     this.post = post.results[0].post_metadata;
     if (this.post.gallery){
       this.videos = this.post.gallery.filter(x => x.type === 'VIDEO');

@@ -52,7 +52,7 @@ export class ComicsComponent implements OnInit {
 
   ngOnInit(): void {
     // this.comics2 = this.comicService.comics.slice(0, 4);
-    console.log(this.section);
+    // console.log(this.section);
     this.comics2 = this.section?.posts.slice(0, 4);
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
   }

@@ -50,7 +50,7 @@ export class HelpPostComponent implements OnInit {
       return;
     }
     this.post = post.results[0].post_metadata;
-    console.log(this.post);
+    // console.log(this.post);
     if (this.post.gallery){
       this.videos = this.post.gallery.filter(x => x.type === 'VIDEO');
       this.photos = this.post.gallery.filter(x => x.type === 'PHOTO');

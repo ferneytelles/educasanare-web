@@ -132,13 +132,13 @@ export class ModalSessionComponent implements OnInit, OnDestroy {
       this.message = 'Enviamos un correo electrónico para restablecer la contraseña a';
       this.email = data.emailRestore;
       this.view = 2;
-      console.log(response);
+      // console.log(response);
     } else {
       // @ts-ignore
       // console.log(error.error.email);
       // @ts-ignore
       this.message = error.error.email[0];
-      console.log(error);
+      // console.log(error);
     }
   }
 

@@ -48,7 +48,7 @@ export class NewForumComponent implements OnInit {
     this.slugForum = this.actived.snapshot.params.slug;
     this.getCategory();
     this.createForm();
-    console.log(this.slugForum);
+    // console.log(this.slugForum);
   }
 
   createForm(): void{
@@ -71,10 +71,10 @@ export class NewForumComponent implements OnInit {
         this.getForum();
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
       this.forum = response.results[0].forum_metadata;
-      console.log(this.forum);
+      // console.log(this.forum);
       this.formForum.get('title').setValue(this.forum.title);
       this.formForum.get('content').setValue(this.forum.content);
       const file = +!!this.forum.file ? this.forum.file?.split('/') : null;
@@ -92,7 +92,7 @@ export class NewForumComponent implements OnInit {
         this.getCategory();
         return;
       }
-      console.log(error);
+      // console.log(error);
     } else {
       this.category = response.results[0].category_metadata;
     }
@@ -116,12 +116,12 @@ export class NewForumComponent implements OnInit {
   }
 
   changeFile(input: any): void{
-    console.log(input);
-    console.log(input.target.files[0].name);
+    // console.log(input);
+    // console.log(input.target.files[0].name);
     const ext = input.target.files[0].type.split('.').shift();
     const size = input.target.files[0].size;
-    console.log(size);
-    console.log(ext);
+    // console.log(size);
+    // console.log(ext);
 
     if (ext.includes('image')){
       if (size > 2097152){
@@ -184,9 +184,9 @@ export class NewForumComponent implements OnInit {
       if (error.status === 500){
         this.errorTitle = this.labels.error_title_forum;
       }
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log(response);
+      // console.log(response);
       // this.formForum.reset();
       /////////////////////////////////////////// falta label
       await Swal.fire('Publicado con éxito!');
@@ -207,9 +207,9 @@ export class NewForumComponent implements OnInit {
       if (error.status === 500){
         this.errorTitle = this.labels.error_title_forum;
       }
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log(response);
+      // console.log(response);
       // this.formForum.reset();
       /////////////////////////////////////// falta label
       await Swal.fire('Actualizado con éxito!');
