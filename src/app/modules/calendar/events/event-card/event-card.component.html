@@ -15,7 +15,7 @@
     <!-- <p class="text">
         {{event?.text}}
     </p> -->
-    <div class="bottom">
+    <div class="bottom" *ngIf="event.tags.length > 0">
         <p class="tags"><strong>{{labels.title_tags}}:</strong> {{tags}}</p>
         <!-- <div class="assistants">
             
