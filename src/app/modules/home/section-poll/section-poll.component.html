@@ -1,6 +1,8 @@
 <div class="content">
     <div class="poll">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSexUYhwF3uGx-JUSNKZ3XlW2uEDSSShlFxLVwE93-DDUXVRtw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSexUYhwF3uGx-JUSNKZ3XlW2uEDSSShlFxLVwE93-DDUXVRtw/viewform?embedded=true"
+            frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
     </div>
 
     <div class="help">
@@ -14,7 +16,7 @@
         </div>
         <div class="links">
             <a (click)="navigateToHelp()">{{labels.link_questions}}</a>
-            <a href="https://fdm-bucket.s3.us-east-2.amazonaws.com/media/Manual+instruccional.pdf" target="_blank">{{labels.link_manual}}</a>
+            <a [href]="linkManual" target="_blank">{{labels.link_manual}}</a>
             <a (click)="navigateToHelp()">{{labels.link_help}}</a>
         </div>
     </div>
