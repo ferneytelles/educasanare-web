@@ -13,7 +13,8 @@
 <div class="info">
     <div class="content">
         <h5 class="title">{{slides[currentSilde]?.title}}</h5>
-        <div class="text" [innerHTML]="slides[currentSilde]?.description"></div>
+        <div class="text" *ngIf="slides[currentSilde]?.description" [innerHTML]="slides[currentSilde]?.description">
+        </div>
         <!-- {{slides[currentSilde].text}} -->
     </div>
 </div>
