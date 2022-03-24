@@ -12,8 +12,7 @@ import { SectionForumComponent } from './section-forum/section-forum.component';
 import { SectionPollComponent } from './section-poll/section-poll.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComicsModule } from '../comics/comics.module';
-
-
+import { SectionVrComponent } from './section-vr/section-vr.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +24,10 @@ import { ComicsModule } from '../comics/comics.module';
     ServicesComponent,
     SectionInfoComponent,
     SectionForumComponent,
-    SectionPollComponent
+    SectionPollComponent,
+    SectionVrComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    NgbModule,
-    ComicsModule
-  ],
+  imports: [CommonModule, SharedModule, NgbModule, ComicsModule],
   exports: [
     CarouselComponent,
     SectionXpComponent,
@@ -42,7 +37,8 @@ import { ComicsModule } from '../comics/comics.module';
     ServicesComponent,
     SectionInfoComponent,
     SectionForumComponent,
-    SectionPollComponent
-  ]
+    SectionPollComponent,
+    SectionVrComponent,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

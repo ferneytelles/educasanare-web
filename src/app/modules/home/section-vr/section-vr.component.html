@@ -1,0 +1,8 @@
+<div class="content">
+  <div class="item" *ngFor="let item of section.posts" [ngStyle]="{'background-image': 'url('+urlCdn+item.image+')'}">
+    <div class="info">
+      <span>{{item.title}}</span>
+      <a [href]="item.external_url" target="_blank">Ir al sitio</a>
+    </div>
+  </div>
+</div>
