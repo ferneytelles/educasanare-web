@@ -4,7 +4,7 @@
 
 /** constante que hace referencia al Dominio que sera utilizado en la aplicación */
 
-export const BASE_URL = 'http://educasanareadmin.realityapp.co/';
+export const BASE_URL = 'https://educasanareadmin.realityapp.co/';
 // export const BASE_URL = 'http://192.168.1.144:3000/';
 
 
