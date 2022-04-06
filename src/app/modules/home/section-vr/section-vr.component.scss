@@ -35,3 +35,14 @@
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  .content {
+    flex-direction: column;
+    .item {
+      .info {
+        padding: 30px 15px;
+      }
+    }
+  }
+}
