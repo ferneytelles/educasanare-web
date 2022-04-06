@@ -29,7 +29,7 @@
                     {{item.text}}
                 </p> -->
                 <button class="btn" (click)="navigate(item)">
-                    <ng-container *ngIf="item.external && item.external_url.includes('youtube'); else more">
+                    <ng-container *ngIf="item.external_url && item.external_url.includes('youtube'); else more">
                         {{labels?.btn_video}}
                     </ng-container>
                     <ng-template #more>
