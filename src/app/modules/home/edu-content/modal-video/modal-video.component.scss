@@ -1,0 +1,63 @@
+::ng-deep.videoModal .modal-dialog {
+  max-width: 50% !important;
+  max-height: 80vh !important;
+  // margin: auto 0 0 0 !important;
+}
+
+::ng-deep.videoModal .modal-dialog .modal-content {
+  border-radius: 8px;
+  // width: fit-content;
+  // max-width: 100%;
+  background: #d8ebf6;
+}
+
+.modal-header {
+  // background: #eeeeee;
+  padding: 1px 10px;
+  justify-content: start;
+  align-items: center;
+  border-radius: 8px 8px 0px 0px;
+  border-bottom: none;
+  .cerrar {
+    padding: 0px;
+    margin-left: auto;
+    border: none;
+    background: none;
+    display: flex;
+    outline: none;
+    span {
+      font-size: 24px;
+    }
+  }
+}
+
+.modal-body {
+  padding: 0 10px 10px;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .video {
+    // background: #ffffff;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+    }
+    .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      // z-index: 6;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

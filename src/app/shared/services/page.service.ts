@@ -10,65 +10,59 @@ import { to } from 'await-to-js';
 import { SessionService } from '@shared/services/session.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PageService {
-
   static language = 'ES';
   changeLanguage = new Subject<string>();
   serverError = new Subject<any>();
+  /** Subject para ejecutar la modal de video */
+  modalVideo: Subject<string> = new Subject<string>();
 
   constructor(
     private http: HttpClient,
     private authentication: AuthenticationService,
     private session: SessionStorageService,
     private sessionService: SessionService
-  ) { }
+  ) {}
 
   getPages(idProject: number): Observable<any> {
-    return this.http.get(PageEndPoint.pages.format(idProject))
-                .pipe(
-                  map((response: any) => response.results)
-                );
+    return this.http
+      .get(PageEndPoint.pages.format(idProject))
+      .pipe(map((response: any) => response.results));
   }
 
   getPage(idPage: number, language: string): Observable<any> {
-    return this.http.get(PageEndPoint.page.format(idPage, language))
-                .pipe(
-                  map((response: any) => response.results[0].page_metadata)
-                );
+    return this.http
+      .get(PageEndPoint.page.format(idPage, language))
+      .pipe(map((response: any) => response.results[0].page_metadata));
   }
 
   getProject(): Observable<any> {
-    return this.http.get(PageEndPoint.projectInfo)
-        .pipe(
-          map((response: any) => response)
-        );
+    return this.http
+      .get(PageEndPoint.projectInfo)
+      .pipe(map((response: any) => response));
   }
 
   getPageInicio(): Observable<any> {
-    return this.http.get('assets/data/pageInicio.json')
-                .pipe(
-                  map((response: any) => response[0].page_metadata)
-                );
+    return this.http
+      .get('assets/data/pageInicio.json')
+      .pipe(map((response: any) => response[0].page_metadata));
   }
 
   getPageProject(): Observable<any> {
-    return this.http.get('assets/data/pageProject.json')
-                .pipe(
-                  map((response: any) => response[0].page_metadata)
-                );
+    return this.http
+      .get('assets/data/pageProject.json')
+      .pipe(map((response: any) => response[0].page_metadata));
   }
 
   getWebLabels(): Observable<any> {
-    return this.http.get(PageEndPoint.webLabels)
-    .pipe(
-      map((response: any) => response)
-    );
+    return this.http
+      .get(PageEndPoint.webLabels)
+      .pipe(map((response: any) => response));
   }
 
-
-  async setPagesStorage(): Promise<any>{
+  async setPagesStorage(): Promise<any> {
     // const p = await this.getPages(3);
     // const pages = await from(p).toPromise<any>();
     ////////////////////////////////////////////////////////
@@ -79,9 +73,9 @@ export class PageService {
     // await this.getGeneralInformation();
     const [error, pages] = await to(this.getPages(3).toPromise());
     // console.log(pages);
-    if (error){
+    if (error) {
       // @ts-ignore
-      if (error.status === 403){
+      if (error.status === 403) {
         await this.getAuthentication();
         await this.setPagesStorage();
         return;
@@ -90,12 +84,14 @@ export class PageService {
         return false;
       }
     }
-    
 
     // console.log(pages);
     const arrayPages = [];
     for (const item of pages) {
-      const page = await this.getPage(item.id, PageService.language).toPromise();
+      const page = await this.getPage(
+        item.id,
+        PageService.language
+      ).toPromise();
       arrayPages.push(page);
     }
     /////////////////////////////////////////////////////
@@ -104,18 +100,14 @@ export class PageService {
     // const pages = arrayPages;
     /////////////////////////////////////////////////////
 
-    
-    this.session.setStorage(
-      SessionStorageService.keyPages,
-      arrayPages
-    );
+    this.session.setStorage(SessionStorageService.keyPages, arrayPages);
     return pages;
   }
 
-  async getAuthentication(): Promise<boolean>{
+  async getAuthentication(): Promise<boolean> {
     const [err, data] = await to(this.authentication.getToken());
     // @ts-ignore
-    if (err){
+    if (err) {
       // console.log(err);
       this.serverError.next(err);
       return false;
@@ -124,29 +116,18 @@ export class PageService {
   }
 
   async getGeneralInformation(): Promise<boolean> {
-    if (!await this.getAuthentication()){
+    if (!(await this.getAuthentication())) {
       return false;
     }
     const [err2, projectInfo] = await to(this.getProject().toPromise());
-    if (projectInfo){
-      const [error2, labels] = await to(
-        this.getWebLabels().toPromise()
-      );
-      this.session.setStorage(
-        SessionStorageService.keyLabels,
-        labels
-      );
-      this.session.setStorage(
-        SessionStorageService.keyProject,
-        projectInfo
-      );
-    }else {
+    if (projectInfo) {
+      const [error2, labels] = await to(this.getWebLabels().toPromise());
+      this.session.setStorage(SessionStorageService.keyLabels, labels);
+      this.session.setStorage(SessionStorageService.keyProject, projectInfo);
+    } else {
       // console.log(err2);
       return false;
     }
     return true;
   }
-
-
-
 }

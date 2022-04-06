@@ -13,6 +13,7 @@ import { SectionPollComponent } from './section-poll/section-poll.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComicsModule } from '../comics/comics.module';
 import { SectionVrComponent } from './section-vr/section-vr.component';
+import { ModalVideoComponent } from './edu-content/modal-video/modal-video.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SectionVrComponent } from './section-vr/section-vr.component';
     SectionForumComponent,
     SectionPollComponent,
     SectionVrComponent,
+    ModalVideoComponent,
   ],
   imports: [CommonModule, SharedModule, NgbModule, ComicsModule],
   exports: [
@@ -39,6 +41,7 @@ import { SectionVrComponent } from './section-vr/section-vr.component';
     SectionForumComponent,
     SectionPollComponent,
     SectionVrComponent,
+    ModalVideoComponent,
   ],
 })
 export class HomeModule {}
