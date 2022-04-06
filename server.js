@@ -42,7 +42,7 @@ app.use(rendertron.makeMiddleware({
 }));
 
 // Static Assets
-app.get('*.*', express.static('dist'));
+app.get('*.*', express.static( DIST_FOLDER ));
 
 // Point all routes to index...
 app.get('*', (req, res) => {
