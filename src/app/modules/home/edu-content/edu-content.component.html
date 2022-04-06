@@ -1,4 +1,4 @@
-<div class="content"
+<div class="content mt-4"
     [ngStyle]="{'background-image': section.background_image ? 'url('+url+section.background_image+')' : 'url(assets/images/bgedu.png)'}">
     <div class="head">
         <h4 class="title">{{section?.title}}</h4>
@@ -11,7 +11,7 @@
     <div class="pills">
         <div class="card" *ngFor="let item of section.posts">
 
-            <ng-container *ngIf="item?.external_url.includes('youtube'); else image">
+            <ng-container *ngIf="item.external_url && item.external_url.includes('youtube'); else image">
                 <img *ngIf="item.image" [src]="item?.image|cdnUrl:400" alt="" (click)="navigate(item)">
             </ng-container>
 
@@ -29,7 +29,7 @@
                     {{item.text}}
                 </p> -->
                 <button class="btn" (click)="navigate(item)">
-                    <ng-container *ngIf="item?.external_url.includes('youtube'); else more">
+                    <ng-container *ngIf="item.external && item.external_url.includes('youtube'); else more">
                         {{labels?.btn_video}}
                     </ng-container>
                     <ng-template #more>
