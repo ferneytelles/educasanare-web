@@ -1,0 +1,22 @@
+<ng-template #modalVideo let-modal class="modal">
+  <div class="modal-header">
+    <!-- Botón de cerrar modal -->
+    <button type="button" class="cerrar" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="material-icons notranslate">close</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="video">
+
+      <iframe [src]="urlVideo | youtubeUrl" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+
+      <div class="spinner" *ngIf="spinner">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ng-template>

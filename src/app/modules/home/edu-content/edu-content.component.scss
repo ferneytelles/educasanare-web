@@ -1,6 +1,7 @@
 .content {
   padding: 40px;
-  background-image: url(../../../../assets/images/bgedu.png);
+  background: #000000d9;
+  // background-image: url(../../../../assets/images/bgedu.png);
   background-size: cover;
   background-position: center;
   .head {
@@ -45,6 +46,7 @@
         height: 140px;
         object-fit: cover;
         border-radius: 100%;
+        cursor: pointer;
       }
       .card-body {
         display: flex;
