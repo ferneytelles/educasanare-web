@@ -6,40 +6,42 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-
   language: string;
   content: any;
   menu: Array<any>;
   labels: any;
 
-  constructor(
-    private route: Router,
-    private storage: SessionStorageService
-  ) { }
+  linksApps: any;
+
+  constructor(private route: Router, private storage: SessionStorageService) {}
 
   ngOnInit(): void {
     this.language = PageService.language;
     const project = this.storage.getStorage(SessionStorageService.keyProject);
-    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
-    this.menu = project.footer.find(x => x.language === this.language).menu;
-    // console.log(this.menu);
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[
+      PageService.language
+    ];
+    this.menu = project.footer.find((x) => x.language === this.language).menu;
+    if (this.menu.length > 3) {
+      this.linksApps = this.menu[3]?.children;
+    }
+    console.log(this.menu);
   }
 
-  navigateUrl(url: string): void{
+  navigateUrl(url: string): void {
     // this.route.navigateByUrl()
     window.open(url, '_blank');
   }
 
-  navigate(url: string): void{
+  navigate(url: string): void {
     if (url.includes('http')) {
       this.navigateUrl(url);
     } else {
       this.route.navigate([`/${url}`]);
-      window.scroll({top: 0, behavior: 'smooth'});
+      window.scroll({ top: 0, behavior: 'smooth' });
     }
   }
-
 }

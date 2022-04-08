@@ -1,160 +1,160 @@
 .content {
-    width: 100%;
-    .elements {
+  width: 100%;
+  .elements {
+    display: flex;
+    flex-direction: column;
+    .item {
+      width: 100%;
+      display: flex;
+      .image {
+        background-size: cover;
+        background-position: center;
+      }
+      .image,
+      .text {
+        width: 50%;
+        padding: 30px;
         display: flex;
-        flex-direction: column;
-        .item {
-            width: 100%;
-            display: flex;
-            .image {
-                background-size: cover;
-                background-position: center;
-            }
-            .image,
-            .text {
-                width: 50%;
-                padding: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                .title {
-                    color: #ffffff;
-                    font-weight: normal;
-                    border: 1px solid #ffffff;
-                    border-radius: 5px;
-                    padding: 2px 8px;
-                    margin-bottom: 0;
-                }
-                .content-text {
-                    // border: 1px dashed #ffffff;
-                    position: relative;
-                    width: 100%;
-                    height: 100%;
-                    padding: 60px 30px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    .description {
-                        z-index: 1;
-                        font-size: 18px;
-                        line-height: 22px;
-                        text-align: justify;
-                        margin-bottom: 0;
-                        max-height: 100%;
-                        overflow: hidden;
-                        // display: -webkit-box;
-                        // -webkit-line-clamp: 12;
-                        // -webkit-box-orient: vertical;
-                    }
-                    .box1 {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 20%;
-                        padding-bottom: 20%;
-                        border-left: 1px solid;
-                        border-top: 1px solid;
-                    }
-                    .box2 {
-                        position: absolute;
-                        bottom: 0;
-                        right: 0;
-                        width: 20%;
-                        padding-top: 20%;
-                        border-right: 1px solid;
-                        border-bottom: 1px solid;
-                    }
-                }
-            }
+        justify-content: center;
+        align-items: center;
+        .title {
+          color: #ffffff;
+          font-weight: normal;
+          border: 1px solid #ffffff;
+          border-radius: 5px;
+          padding: 2px 8px;
+          margin-bottom: 0;
         }
-        .item:nth-child(2n+1) {
-            .text {
-                background: #0072BC;
-                color: #ffffff;
-            }
+        .content-text {
+          // border: 1px dashed #ffffff;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          padding: 60px 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .description {
+            z-index: 1;
+            font-size: 18px;
+            line-height: 22px;
+            text-align: justify;
+            margin-bottom: 0;
+            max-height: 100%;
+            overflow: hidden;
+            // display: -webkit-box;
+            // -webkit-line-clamp: 12;
+            // -webkit-box-orient: vertical;
+          }
+          .box1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            padding-bottom: 60px;
+            border-left: 1px solid;
+            border-top: 1px solid;
+          }
+          .box2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            padding-top: 60px;
+            border-right: 1px solid;
+            border-bottom: 1px solid;
+          }
         }
-        .item:nth-child(2n) {
-            .text {
-                order: -1;
-                background-image: url(../../../../assets/images/bgen2.png);
-                background-size: cover;
-                background-position: center;
-                color: #000000;
-            }
-        }
-        // .item1 {
-        //     .image {
-        //         background-image: url(../../../../assets/images/bgrv.png);
-        //         background-size: cover;
-        //         background-position: center;
-        //     }
-        //     .text {
-        //         background: #0072BC;
-        //         color: #ffffff;
-        //     }
-        // }
-        // .item2 {
-        //     .image {
-        //         background-image: url(../../../../assets/images/bgen.png);
-        //         background-size: cover;
-        //         background-position: center;
-        //     }
-        //     .text {
-        //         background-image: url(../../../../assets/images/bgen2.png);
-        //         background-size: cover;
-        //         background-position: center;
-        //     }
-        // }
+      }
     }
+    .item:nth-child(2n + 1) {
+      .text {
+        background: #0072bc;
+        color: #ffffff;
+      }
+    }
+    .item:nth-child(2n) {
+      .text {
+        order: -1;
+        background-image: url(../../../../assets/images/bgen2.png);
+        background-size: cover;
+        background-position: center;
+        color: #000000;
+      }
+    }
+    // .item1 {
+    //     .image {
+    //         background-image: url(../../../../assets/images/bgrv.png);
+    //         background-size: cover;
+    //         background-position: center;
+    //     }
+    //     .text {
+    //         background: #0072BC;
+    //         color: #ffffff;
+    //     }
+    // }
+    // .item2 {
+    //     .image {
+    //         background-image: url(../../../../assets/images/bgen.png);
+    //         background-size: cover;
+    //         background-position: center;
+    //     }
+    //     .text {
+    //         background-image: url(../../../../assets/images/bgen2.png);
+    //         background-size: cover;
+    //         background-position: center;
+    //     }
+    // }
+  }
 }
 
 @media screen and (max-width: 960px) {
-    .content {
-        .elements {
-            .item {
-                .text {
-                    padding: 15px;
-                    .content-text {
-                        padding: 30px 15px;
-                    }
-                }
-            }
+  .content {
+    .elements {
+      .item {
+        .text {
+          padding: 15px;
+          .content-text {
+            padding: 30px 15px;
+          }
         }
+      }
     }
+  }
 }
 
 @media screen and (max-width: 750px) {
-    .content {
-        height: auto;
-        padding-bottom: 0;
-        .elements {
-            position: relative;
-            .item {
-                flex-direction: column;
-                .image {
-                    width: 100%;
-                    padding: 60px 20px;
-                }
-                .text {
-                    order: 2 !important;
-                    width: 100%;
-                    .content-text {
-                        .box1 {
-                            width: 10%;
-                            padding-bottom: 10%;
-                        }
-                        .box2 {
-                            width: 10%;
-                            padding-top: 10%;
-                        }
-                    }
-                }
-            }
-            // .item2 {
-            //     .text {
-            //         order: 2;
-            //     }
-            // }
+  .content {
+    height: auto;
+    padding-bottom: 0;
+    .elements {
+      position: relative;
+      .item {
+        flex-direction: column;
+        .image {
+          width: 100%;
+          padding: 60px 20px;
         }
+        .text {
+          order: 2 !important;
+          width: 100%;
+          .content-text {
+            .box1 {
+              width: 40px;
+              padding-bottom: 40px;
+            }
+            .box2 {
+              width: 40px;
+              padding-top: 40px;
+            }
+          }
+        }
+      }
+      // .item2 {
+      //     .text {
+      //         order: 2;
+      //     }
+      // }
     }
+  }
 }
