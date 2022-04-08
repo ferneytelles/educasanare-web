@@ -1,7 +1,7 @@
 <ngb-carousel *ngIf="slides.length>0" class="carousel" [activeId]="0" (slide)="changeCarousel($event)">
     <ng-template ngbSlide [id]="i.toString()" *ngFor="let item of slides; let i=index">
         <div class="picsum-img-wrapper">
-            <img [src]="item?.image |cdnUrl:900" alt="">
+            <img [src]="item?.image |cdnUrl:1400" alt="">
         </div>
         <div class="carousel-caption content">
             <h5 class="title">{{item?.title}}</h5>

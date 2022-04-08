@@ -1,7 +1,7 @@
 <div class="content">
     <div class="main">
         <div class="info" *ngIf="menu">
-            <div class="options" *ngFor="let item of menu">
+            <div class="options" *ngFor="let item of menu.slice(0, 3)">
                 <h5>{{item.name}}</h5>
                 <a *ngFor="let option of item.children" (click)="navigate(option.url)">{{option.name}}</a>
                 <!-- <a>Información del proyecto</a>
@@ -32,19 +32,19 @@
                 <a>Buzón de sugerencias</a>
             </div> -->
         </div>
-        <div class="services">
+        <div class="services" *ngIf="linksApps && linksApps.length>2">
             <img src="assets/images/vectorFooter.png" alt="">
             <div class="bottons">
                 <h5 class="title">{{labels?.title_download}}</h5>
                 <div class="btns">
-                    <button (click)="navigateUrl('https://apps.apple.com/tt/app/educasanare/id1597365900?uo=2')">
+                    <button (click)="navigateUrl(linksApps[0]?.url)">
                         <img src="assets/images/icon-apple.png" alt="">
                         <div class="text">
                             <span class="text1">{{labels?.btn_ios}}</span>
                             <span class="text2">App Store</span>
                         </div>
                     </button>
-                    <button (click)="navigateUrl('https://play.google.com/store/apps/details?id=com.cato.educasanare&hl=es_PY')">
+                    <button (click)="navigateUrl(linksApps[1]?.url)">
                         <img src="assets/images/icon-play.png" alt="">
                         <div class="text">
                             <span class="text1">{{labels?.btn_android}}</span>
@@ -54,7 +54,7 @@
                 </div>
                 <h6 class="title t2">{{labels?.title_simulator}}</h6>
                 <div class="btns">
-                    <button (click)="navigateUrl('https://aulas.casanare.gov.co/')">
+                    <button (click)="navigateUrl(linksApps[2]?.url)">
                         {{labels?.btn_simulator}}
                     </button>
                 </div>
