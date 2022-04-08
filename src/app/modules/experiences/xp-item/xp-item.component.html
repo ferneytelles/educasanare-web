@@ -1,5 +1,11 @@
 <div class="content">
+
+    <span class="material-icons notranslate goBack" (click)="backRedirect()">
+        undo
+    </span>
+
     <h4 class="title">{{post?.title}}</h4>
+
 
     <div class="carousel-content" *ngIf="images.length>0">
         <div id="carouselImages" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -12,17 +18,24 @@
             <div class="carousel-inner">
                 <div class="carousel-item" *ngFor="let item of images; let i=index" [ngClass]="{'active': i==0}"
                     data-interval="false">
-                    <img [src]="item|cdnUrl:600" class="d-block w-100" alt="...">
+                    <img [src]="item|cdnUrl:1000" class="d-block w-100" alt="...">
+                    <!-- <div class="carousel-caption">
+                        <span>
+                            {{item.title}}
+                        </span>
+                    </div> -->
                 </div>
+
+
             </div>
 
             <a class="carousel-control-prev" href="#carouselImages" role="button" data-slide="prev">
-                <span class="material-icons notranslate">
+                <span class="icon material-icons notranslate">
                     chevron_left
                 </span>
             </a>
             <a class="carousel-control-next" href="#carouselImages" role="button" data-slide="next">
-                <span class="material-icons notranslate">
+                <span class="icon material-icons notranslate">
                     chevron_right
                 </span>
             </a>
