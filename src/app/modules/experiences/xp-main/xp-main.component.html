@@ -1,4 +1,5 @@
-<app-banner-top [text]="content?.title" [icon]="'star_half'" [bgColor]="'D1EADD'" [textColor]="'004123'"></app-banner-top>
+<app-banner-top [text]="content?.title" [icon]="'star_half'" [bgColor]="'D1EADD'" [textColor]="'004123'">
+</app-banner-top>
 <div class="content">
     <div class="top">
         <div class="text" [innerHTML]="content.sections[0]?.description|secureHtml"></div>
@@ -22,24 +23,25 @@
         <div class="content-card" *ngFor="let item of experiences">
             <div class="card">
                 <div class="image">
-                    <img [src]="item?.post_metadata.image|cdnUrl:300" alt="">
+                    <img [src]="item?.post_metadata.image|cdnUrl:400" alt="">
                 </div>
                 <div class="card-body">
                     <h6 class="title">
-                        {{item?.post_metadata.title |capitalize}}
+                        {{item?.post_metadata.title }}
                     </h6>
                     <span class="date">
-                    {{item.post_metadata.creation_date?.split(' ').shift()}}
-                </span>
-                    <div class="text" *ngIf="item.post_metadata.description" [innerHTML]="item?.post_metadata.description|secureHtml">
+                        {{item.post_metadata.creation_date?.split(' ').shift()}}
+                    </span>
+                    <div class="text" *ngIf="item.post_metadata.description"
+                        [innerHTML]="item?.post_metadata.description|secureHtml">
                     </div>
                     <!-- <p class="text">
                         {{item.text}}
                     </p> -->
                     <div class="botton">
                         <button class="btn" (click)="navigate('/experiencias/'+item.post_metadata.slug)">
-                        + {{labels.btn_information}}
-                    </button>
+                            + {{labels.btn_information}}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -47,7 +49,8 @@
 
     </div>
     <div class="pagination" *ngIf="count>12">
-        <ngb-pagination [collectionSize]="count" [pageSize]="12" [maxSize]="3" [rotate]="true" (pageChange)="pageChange($event)">
+        <ngb-pagination [collectionSize]="count" [pageSize]="12" [maxSize]="3" [rotate]="true"
+            (pageChange)="pageChange($event)">
 
             <ng-template ngbPaginationPrevious>
                 <span class="material-icons-outlined notranslate">
