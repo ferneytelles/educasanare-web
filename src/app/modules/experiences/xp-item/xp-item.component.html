@@ -10,7 +10,7 @@
     <div class="carousel-content" *ngIf="images.length>0">
         <div id="carouselImages" class="carousel slide" data-ride="carousel" data-interval="false">
 
-            <ol class="carousel-indicators">
+            <ol class="carousel-indicators" *ngIf="15>images.length">
                 <li *ngFor="let item of images; let i=index" data-target="#carouselImages" attr.data-slide-to="{{i}}"
                     [ngClass]="{'active': i==0}"></li>
             </ol>
