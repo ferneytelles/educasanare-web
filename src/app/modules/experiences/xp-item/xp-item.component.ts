@@ -5,14 +5,14 @@ import to from 'await-to-js';
 import { PageService } from '@shared/services/page.service';
 import { AuthenticationService } from '@shared/services/authentication.service';
 import { SessionStorageService } from '@shared/services/session-storage.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-xp-item',
   templateUrl: './xp-item.component.html',
-  styleUrls: ['./xp-item.component.scss']
+  styleUrls: ['./xp-item.component.scss'],
 })
 export class XpItemComponent implements OnInit {
-
   post: any;
   slug: string;
   language: string;
@@ -33,13 +33,16 @@ export class XpItemComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private search: SearchService,
     private authentication: AuthenticationService,
-    private storage: SessionStorageService
-  ) { }
+    private storage: SessionStorageService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.language = PageService.language;
     this.slug = this.activeRoute.snapshot.params.id;
-    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[
+      PageService.language
+    ];
     this.getPost();
   }
 
@@ -48,7 +51,7 @@ export class XpItemComponent implements OnInit {
       this.search.getPost(this.slug, this.language).toPromise()
     );
     // @ts-ignore
-    if (err && err.status === 403){
+    if (err && err.status === 403) {
       await this.authentication.getToken();
       await this.getPost();
       return;
@@ -58,14 +61,14 @@ export class XpItemComponent implements OnInit {
     this.setImagesCarousel();
   }
 
-  setImagesCarousel(): void{
-    if (this.post.image){
+  setImagesCarousel(): void {
+    if (this.post.image) {
       this.images[0] = this.post.image;
     }
-    if (this.post.gallery){
+    if (this.post.gallery) {
       const aux = [];
-      this.post.gallery.forEach(element => {
-        if (element.type === 'PHOTO'){
+      this.post.gallery.forEach((element) => {
+        if (element.type === 'PHOTO') {
           aux.push(element?.image);
         }
       });
@@ -74,4 +77,7 @@ export class XpItemComponent implements OnInit {
     }
   }
 
+  backRedirect(): void {
+    this.location.back();
+  }
 }
