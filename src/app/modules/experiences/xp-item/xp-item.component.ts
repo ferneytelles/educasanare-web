@@ -31,9 +31,9 @@ export class XpItemComponent implements OnInit {
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private search: SearchService,
     private authentication: AuthenticationService,
     private storage: SessionStorageService,
+    private search: SearchService,
     private location: Location
   ) {}
 
