@@ -22,7 +22,7 @@
     <div class="experiences" *ngIf="experiences">
         <div class="content-card" *ngFor="let item of experiences">
             <div class="card">
-                <div class="image">
+                <div class="image" (click)="navigate('/experiencias/'+item.post_metadata.slug)">
                     <img [src]="item?.post_metadata.image|cdnUrl:400" alt="">
                 </div>
                 <div class="card-body">
