@@ -15,10 +15,9 @@ import { ContactService } from '@shared/services/contact.service';
 @Component({
   selector: 'app-category-item',
   templateUrl: './category-item.component.html',
-  styleUrls: ['./category-item.component.scss']
+  styleUrls: ['./category-item.component.scss'],
 })
 export class CategoryItemComponent implements OnInit, OnDestroy {
-
   forums: Array<any>;
   profile: any;
 
@@ -38,26 +37,29 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
     private storage: SessionStorageService,
     private sessionService: SessionService,
     private contactService: ContactService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.slug = this.activeRoute.snapshot.params.id;
     this.getCategory();
     this.getForumsByCategory();
-    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[PageService.language];
+    this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[
+      PageService.language
+    ];
     this.profile = this.sessionService.profile;
-    this.sessionService.login.pipe(takeUntil(this.unsubscribe))
-    .subscribe((data: boolean) => {
-      this.profile = this.sessionService.profile;
-      // console.log(this.profile);
-    });
+    this.sessionService.login
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((data: boolean) => {
+        this.profile = this.sessionService.profile;
+        // console.log(this.profile);
+      });
   }
 
   async getCategory(): Promise<void> {
     const [error, response]: Array<any> = await to(
       this.forumService.getCategory(this.slug).toPromise()
     );
-    if (error){
+    if (error) {
       if (error.status === 403) {
         await this.authentication.getToken();
         this.getCategory();
@@ -72,11 +74,11 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
     }
   }
 
-  async getForumsByCategory(): Promise<void>{
+  async getForumsByCategory(): Promise<void> {
     const [error, response]: Array<any> = await to(
       this.forumService.getForums(this.slug, this.page, this.order).toPromise()
     );
-    if (error){
+    if (error) {
       if (error.status === 403) {
         await this.authentication.getToken();
         this.getForumsByCategory();
@@ -90,25 +92,25 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
     }
   }
 
-  changeFilter(element: any): void{
+  changeFilter(element: any): void {
     this.order = element.target.value;
     // console.log(this.order);
     this.getForumsByCategory();
   }
 
-  pageChange(currentPage: number): void{
+  pageChange(currentPage: number): void {
     this.page = currentPage;
     this.getForumsByCategory();
-    window.scroll({top: 0});
+    window.scroll({ top: 0 });
   }
 
-  navigate(value: string, isLogged?: boolean): void{
-    if (isLogged && !!!this.profile){
+  navigate(value: string, isLogged?: boolean): void {
+    if (isLogged && !!!this.profile) {
       this.sessionService.modalSession.next(true);
     } else {
       const url = this.route.url;
       this.route.navigate([url + '/' + value]);
-      window.scroll({top: 0, behavior: 'smooth'});
+      window.scroll({ top: 0, behavior: 'smooth' });
     }
   }
 
@@ -122,8 +124,12 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
       cancelButtonText: this.labels.btn_cancel,
       confirmButtonText: this.labels.text_report,
     }).then(async (result) => {
-      if (result.isConfirmed){
-        const body = `Razón de la denuncia: ${+!!result.value ? result.value : 'Vacío'} > > > informacion del foro: {Id: ${forum.id}, Título: ${forum.title}, Slug: ${forum.slug}, Usuario creador: ${forum.user}}`;
+      if (result.isConfirmed) {
+        const body = `Razón de la denuncia: ${
+          +!!result.value ? result.value : 'Vacío'
+        } > > > informacion del foro: {Id: ${forum.id}, Título: ${
+          forum.title
+        }, Slug: ${forum.slug}, Usuario creador: ${forum.user}}`;
 
         const data = new FormData();
         data.append('email', this.profile.email);
@@ -136,6 +142,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
         );
 
         if (response) {
+          // console.log(response);
           Swal.fire(this.labels.report_sent);
         }
       }
@@ -152,7 +159,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
       cancelButtonText: this.labels.btn_cancel,
       showCancelButton: true,
     }).then((result) => {
-      if (result.isConfirmed){
+      if (result.isConfirmed) {
         this.confirmDeleteForum(forum.id);
         // [error, response] = await to(
         //   this.forumService.deleteForum(forum.id).toPromise()
@@ -171,7 +178,7 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
     const [error, response]: Array<any> = await to(
       this.forumService.deleteForum(id).toPromise()
     );
-    if (error){
+    if (error) {
       // console.log(error);
     } else {
       this.getForumsByCategory();
@@ -185,5 +192,4 @@ export class CategoryItemComponent implements OnInit, OnDestroy {
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }
-
 }
