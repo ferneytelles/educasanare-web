@@ -28,7 +28,7 @@ export class FooterComponent implements OnInit {
     if (this.menu.length > 3) {
       this.linksApps = this.menu[3]?.children;
     }
-    console.log(this.menu);
+    // console.log(this.menu);
   }
 
   navigateUrl(url: string): void {

@@ -27,7 +27,7 @@ export class EduContentComponent implements OnInit {
     this.labels = this.storage.getStorage(SessionStorageService.keyLabels)[
       PageService.language
     ];
-    console.log(this.section);
+    // console.log(this.section);
   }
 
   navigate(post: any): void {
