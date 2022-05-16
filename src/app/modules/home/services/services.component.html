@@ -1,25 +1,24 @@
-<div class="content" *ngIf="section">
-    <h4 class="title">{{section?.title}}</h4>
-    <div class="services">
-        <div class="serv" *ngFor="let item of section?.posts">
-            <!-- <span class="material-icons notranslate">
+<div class="bg">
+
+    <div class="content" *ngIf="section">
+        <h4 class="title">{{section?.title}}</h4>
+        <div class="services">
+            <div class="serv" *ngFor="let item of section?.posts">
+                <!-- <span class="material-icons notranslate">
                 {{item.icon}}
             </span> -->
-            <img class="image" [src]="item.image |cdnUrl:100" alt="">
-            <div class="info">
-                <h5 class="title">
-                    {{item?.title}}
-                </h5>
-                <!-- <p class="text">
+                <img class="image" [src]="item.image |cdnUrl:500" alt="">
+                <div class="info">
+                    <h5 class="title">
+                        {{item?.title}}
+                    </h5>
+                    <!-- <p class="text">
                     {{item.text}}
                 </p> -->
-                <div class="text" [innerHTML]="item?.description|secureHtml"></div>
+                    <div class="text" [innerHTML]="item?.description|secureHtml"></div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- <div class="botton">
-        <button class="btn">
-            {{labels?.btn_services}}
-        </button>
-    </div> -->
+
 </div>
