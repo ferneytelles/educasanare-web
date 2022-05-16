@@ -1,5 +1,10 @@
+.bg {
+  background: #eeeeeee0;
+}
 .content {
-  background: #eeeeee;
+  // background: #eeeeee65;
+  background-image: url(../../../../assets/images/bgfiguras.png);
+  background-size: auto 100%;
   padding: 40px;
   .title {
     text-align: center;
@@ -9,27 +14,41 @@
   .services {
     display: flex;
     justify-content: space-evenly;
+
     .serv {
+      position: relative;
       width: 30%;
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      border-radius: 4px;
+      overflow: hidden;
       span {
         font-size: 50px;
         color: #888888;
         margin-right: 8px;
       }
       .image {
-        width: 50px;
-        margin-right: 10px;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: 0;
+        // margin-right: 10px;
       }
       .info {
+        background: #0000008f;
+        z-index: 1;
+        height: 100%;
+        padding: 12px;
+        margin-top: 50%;
         .title {
-          text-align: start;
+          text-align: center;
           margin-bottom: 6px;
-          color: #555555;
+          color: #ffffff;
         }
         .text {
-          text-align: justify;
+          color: #ffffff;
+          text-align: center;
           font-size: 14px;
           line-height: 18px;
           margin-bottom: 0;
@@ -37,6 +56,17 @@
           // display: -webkit-box;
           // -webkit-line-clamp: 4;
           // -webkit-box-orient: vertical;
+          ::ng-deep p {
+            margin-bottom: 0;
+          }
+          ::ng-deep a {
+            text-decoration: underline;
+            font-size: 16px;
+            color: #009846;
+            // font-weight: bold;
+            text-shadow: 1px 0px 1px #0072bc;
+            letter-spacing: 1px;
+          }
         }
       }
     }
